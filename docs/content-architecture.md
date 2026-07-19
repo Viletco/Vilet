@@ -2,7 +2,7 @@
 
 ## Purpose
 
-The content architecture provides a strongly typed, validated boundary between authored homepage content and future presentation components, APIs, or a CMS. Step 7 does not render this content. The visible homepage remains the foundation placeholder.
+The content architecture provides a strongly typed, validated boundary between authored homepage content and presentation components, future APIs, or a CMS. The production homepage renders approved records from this boundary; proof-dependent collections remain absent until evidence is approved.
 
 All current copy values in square brackets are descriptive authoring slots, not approved marketing copy. Proof-dependent collections are intentionally empty.
 
@@ -15,8 +15,7 @@ src/
 │   ├── content-validation.ts  # Runtime validation and section selectors
 │   ├── homepage.ts            # Typed homepage authoring data
 │   ├── icons.ts               # Allowed content icon names
-│   ├── navigation.ts          # Existing typed public navigation
-│   └── routes.ts              # Existing typed placeholder routes
+│   └── navigation.ts          # Typed public navigation and route union
 └── lib/
     └── icon-registry.ts       # Icon-name to Lucide-component resolution
 ```
@@ -92,7 +91,7 @@ Three homepage sections are proof- or content-dependent:
 - Trust is visible only when at least one item has approved status.
 - FAQ is visible only when at least one item exists.
 
-The initial exports resolve all three flags to `false`. Step 8 should conditionally render entire sections from these flags. It must not create placeholder cards, fallback testimonials, fake projects, or empty section headings.
+The production exports keep Featured Work and Trust hidden while their approved collections are empty. FAQ is visible because approved FAQ records exist. The homepage renderer conditionally renders entire sections from these flags; it must not create placeholder cards, fallback testimonials, fake projects, or empty section headings.
 
 `getPublishedFeaturedProjects()` centralizes project publication filtering so the Work page and homepage can use the same rule later.
 
@@ -125,7 +124,7 @@ Project publication uses a discriminated state:
 
 Trust evidence excludes placeholder status and requires source information. Items become homepage-visible only after their status is approved. Future CMS adapters should preserve source, approval, and review dates.
 
-SEO data currently has placeholder status, robots indexing disabled, no social images, and disabled JSON-LD entries. Do not use it to replace the current application metadata until final content and business facts are approved.
+SEO data now supplies approved homepage metadata and canonical values. Generated social images are provisional brand assets, and JSON-LD remains disabled until complete verified organization facts are approved.
 
 ## Future CMS migration
 
@@ -175,7 +174,7 @@ The broader modular registry is documented in [Content Platform](content-platfor
 ## Step 8 implementation rules
 
 - Do not render authoring slots as public copy.
-- Replace or approve required placeholder fields before homepage implementation.
+- Continue rejecting placeholder authoring markers from approved production fields.
 - Render conditional sections only through exported visibility selectors.
 - Keep the homepage as a server component.
 - Resolve icons through `getIcon()` rather than importing icon components in content.

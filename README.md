@@ -14,7 +14,7 @@ The Vilét website uses Next.js with the App Router, TypeScript, Tailwind CSS, a
 
 Requirements:
 
-- A current Node.js LTS release
+- Node.js 20.9 or newer (use a current LTS release)
 - npm
 
 Install dependencies:
@@ -47,6 +47,7 @@ npm run dev
 - `npm run lint` — run ESLint.
 - `npm run format` — format supported files with Prettier.
 - `npm run format:check` — check formatting without modifying files.
+- `npm run check` — run the complete formatting, lint, type, and production-build gate.
 
 ## Repository conventions
 
@@ -79,5 +80,6 @@ npm run dev
 - [Deployment preparation](docs/deployment.md)
 - [Preview deployment preparation](docs/preview-deployment.md)
 - [Vercel preview QA](docs/preview-qa.md)
+- [Production-readiness review](docs/production-readiness.md)
 - [Launch checklist](docs/launch-checklist.md)
 - [Initial commit review](docs/initial-commit-review.md)
