@@ -78,5 +78,6 @@ npm run dev
 - [Launch-readiness audit](docs/launch-readiness.md)
 - [Deployment preparation](docs/deployment.md)
 - [Preview deployment preparation](docs/preview-deployment.md)
+- [Vercel preview QA](docs/preview-qa.md)
 - [Launch checklist](docs/launch-checklist.md)
 - [Initial commit review](docs/initial-commit-review.md)

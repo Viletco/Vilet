@@ -28,4 +28,8 @@ After owner approval, connect `vilet.co` in Vercel and add only the DNS records 
 
 Rollback by redeploying the last known-good commit or using Vercel's previous deployment promotion after reviewing configuration compatibility. Provider modes can be returned to `disabled` without inventing a successful delivery response.
 
-Known blockers after the Git baseline: no Vercel connection, no approved provider credentials or destinations, no final brand approval, no approved privacy contact/legal review, and no published portfolio evidence.
+The `Viletco/Vilet` repository is connected to the Vercel project `vilet`; see
+`preview-qa.md` for the hosted QA record. Remaining blockers are no approved
+provider credentials or destinations, no production-safe shared rate limiter, no
+final brand approval, no approved privacy contact/legal review, no domain or DNS
+connection, and no published portfolio evidence.

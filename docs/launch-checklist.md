@@ -47,14 +47,15 @@ Legend: `[x]` automatically validated or completed in the repository; `[ ]` requ
 
 - [x] Semantic landmarks, heading hierarchy, skip link, form labeling, and native FAQs
 - [x] 320px reflow and required responsive viewports
-- [ ] **Post-deployment:** repeat keyboard and assistive-technology review
+- [x] **Preview review:** keyboard, focus, responsive, and semantic checks repeated
+- [ ] **Production review:** repeat with assistive technology on the final domain
 
 ## Security
 
 - [x] CSP and supporting security headers configured
 - [x] Server-only provider secrets and safe public errors
 - [x] No personal inquiry logging or local persistence
-- [ ] **Deployment review:** proxy identity header and CSP production report
+- [x] **Preview review:** Vercel identity boundary and hosted security headers checked
 
 ## Performance
 
@@ -70,13 +71,13 @@ Legend: `[x]` automatically validated or completed in the repository; `[ ]` requ
 ## Deployment and domain
 
 - [x] Deployment workflow documented
-- [ ] **External access:** connect GitHub repository to Vercel
+- [x] **External access:** GitHub repository connected to the `vilet` Vercel project
 - [ ] **External access:** configure `vilet.co` and `www` redirect
 - [ ] **Post-deployment:** verify HTTPS before HSTS reliance
 
 ## Post-launch verification
 
-- [ ] Route, link, 404, metadata, image, and header smoke test
+- [x] Preview route, link, 404, metadata, image, and header smoke test
 - [ ] Approved contact delivery and Reply-To test
 - [ ] Sitemap fetch and Search Console submission
 - [ ] Production console, responsive, accessibility, and performance review
