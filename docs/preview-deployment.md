@@ -30,9 +30,11 @@ After preview QA and owner approval, configure Resend with an approved API key, 
 ## Preview verification
 
 When Vercel supplies `VERCEL_ENV=preview`, every response receives
-`X-Robots-Tag: noindex, nofollow`. This server-side protection does not apply to
-the eventual Vercel production environment. Verify the header on the hosted
-preview before sharing its URL or considering a domain connection.
+`X-Robots-Tag: noindex, nofollow`. A server-side host guard applies the same
+header to Vercel-owned `.vercel.app` aliases, including the temporary production
+alias created during project import. The guard does not match the eventual
+`vilet.co` hostname. Verify the header on every hosted preview URL before sharing
+it or considering a domain connection.
 
 Verify all public routes and the following launch surfaces:
 

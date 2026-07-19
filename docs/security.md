@@ -8,7 +8,9 @@ The site also sends `Referrer-Policy: strict-origin-when-cross-origin`, `X-Conte
 
 Vercel preview deployments are detected server-side through the platform-provided
 `VERCEL_ENV=preview` value and receive `X-Robots-Tag: noindex, nofollow`. The
-header is intentionally absent from the eventual Vercel production environment.
+same header is added at request time for Vercel-owned `.vercel.app` hostnames so
+the temporary production alias created during import is also protected. The host
+guard does not match the eventual `vilet.co` production hostname.
 
 ## Application boundaries
 
