@@ -1,0 +1,85 @@
+/* Responsive type roles: use these classes by meaning, not visual size alone. */
+@utility type-display-xl {
+  font-size: clamp(3.5rem, 10vw, 8rem);
+  font-weight: 650;
+  line-height: 0.92;
+  letter-spacing: -0.06em;
+}
+
+@utility type-display-lg {
+  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+  font-weight: 650;
+  line-height: 0.96;
+  letter-spacing: -0.05em;
+}
+
+@utility type-heading-1 {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 650;
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+
+@utility type-heading-2 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 620;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+@utility type-heading-3 {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+}
+
+@utility type-heading-4 {
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+@utility type-body-lg {
+  font-size: clamp(1.125rem, 1.5vw, 1.25rem);
+  font-weight: 400;
+  line-height: 1.65;
+  letter-spacing: -0.01em;
+}
+
+@utility type-body {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.65;
+  letter-spacing: -0.005em;
+}
+
+@utility type-body-sm {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0;
+}
+
+@utility type-caption {
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+}
+
+@utility type-button {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.005em;
+}
+
+@utility type-code {
+  font-family: var(--ds-font-mono);
+  font-size: 0.875em;
+  font-weight: 450;
+  line-height: 1.6;
+  letter-spacing: 0;
+}

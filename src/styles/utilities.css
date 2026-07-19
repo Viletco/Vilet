@@ -1,0 +1,53 @@
+/* Shared layout primitives */
+.section {
+  padding-block: var(--ds-section-space);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--ds-container-content);
+  margin-inline: auto;
+  padding-inline: var(--ds-page-padding);
+}
+
+.container-reading {
+  width: 100%;
+  max-width: var(--ds-container-reading);
+  margin-inline: auto;
+  padding-inline: var(--ds-page-padding);
+}
+
+.grid-layout {
+  display: grid;
+  gap: var(--ds-grid-gap);
+}
+
+/* Restrained visual treatments */
+.text-gradient-accent {
+  color: var(--ds-color-accent);
+  background-image: var(--ds-gradient-accent);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.glass {
+  border: var(--ds-border-width) solid var(--ds-color-border);
+  background: var(--ds-color-glass);
+  box-shadow: var(--ds-shadow-sm);
+  backdrop-filter: blur(var(--ds-glass-blur));
+}
+
+.background-hero {
+  background: var(--ds-gradient-hero);
+}
+
+.background-card-glow {
+  background-image: var(--ds-gradient-card-glow);
+}
+
+.section-divider {
+  width: 100%;
+  height: var(--ds-border-width);
+  border: 0;
+  background: var(--ds-gradient-section-divider);
+}

@@ -1,0 +1,164 @@
+/* Tailwind-facing semantic tokens and project breakpoints. */
+@theme inline {
+  --color-background: var(--ds-color-background);
+  --color-surface: var(--ds-color-surface);
+  --color-surface-elevated: var(--ds-color-surface-elevated);
+  --color-card: var(--ds-color-card);
+  --color-border: var(--ds-color-border);
+  --color-divider: var(--ds-color-divider);
+  --color-text-primary: var(--ds-color-text-primary);
+  --color-text-secondary: var(--ds-color-text-secondary);
+  --color-text-muted: var(--ds-color-text-muted);
+  --color-accent: var(--ds-color-accent);
+  --color-accent-hover: var(--ds-color-accent-hover);
+  --color-success: var(--ds-color-success);
+  --color-warning: var(--ds-color-warning);
+  --color-danger: var(--ds-color-danger);
+  --color-focus-ring: var(--ds-color-focus-ring);
+  --color-overlay: var(--ds-color-overlay);
+  --color-glass: var(--ds-color-glass);
+
+  --font-sans: var(--ds-font-sans);
+  --font-mono: var(--ds-font-mono);
+
+  --radius-sm: var(--ds-radius-sm);
+  --radius-md: var(--ds-radius-md);
+  --radius-lg: var(--ds-radius-lg);
+  --radius-xl: var(--ds-radius-xl);
+  --radius-full: var(--ds-radius-full);
+
+  --shadow-sm: var(--ds-shadow-sm);
+  --shadow-md: var(--ds-shadow-md);
+  --shadow-lg: var(--ds-shadow-lg);
+  --shadow-glow: var(--ds-shadow-glow);
+  --shadow-glow-soft: var(--ds-shadow-glow-soft);
+
+  --breakpoint-mobile: 30rem;
+  --breakpoint-tablet: 48rem;
+  --breakpoint-laptop: 64rem;
+  --breakpoint-desktop: 80rem;
+  --breakpoint-wide: 96rem;
+}
+
+:root {
+  /* Semantic color system */
+  --ds-color-background: #09090b;
+  --ds-color-surface: #111114;
+  --ds-color-surface-elevated: #18181c;
+  --ds-color-card: #141418;
+  --ds-color-border: #2a2930;
+  --ds-color-divider: #211f27;
+  --ds-color-text-primary: #f7f7f8;
+  --ds-color-text-secondary: #b5b3bd;
+  --ds-color-text-muted: #777580;
+  --ds-color-accent: #8b7cf6;
+  --ds-color-accent-hover: #a69af8;
+  --ds-color-success: #57ad83;
+  --ds-color-warning: #d5a64c;
+  --ds-color-danger: #d96b75;
+  --ds-color-selection: rgb(139 124 246 / 35%);
+  --ds-color-focus-ring: #a69af8;
+  --ds-color-overlay: rgb(5 5 7 / 72%);
+  --ds-color-glass: rgb(17 17 20 / 72%);
+
+  /* Typography families */
+  --ds-font-sans:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  --ds-font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+
+  /* Spacing scale */
+  --ds-space-xs: 0.25rem;
+  --ds-space-sm: 0.5rem;
+  --ds-space-md: 0.75rem;
+  --ds-space-lg: 1rem;
+  --ds-space-xl: 1.5rem;
+  --ds-space-2xl: 2rem;
+  --ds-space-3xl: 3rem;
+  --ds-space-4xl: 4rem;
+  --ds-space-5xl: 6rem;
+
+  /* Layout and container rhythm */
+  --ds-container-content: 80rem;
+  --ds-container-reading: 45rem;
+  --ds-section-space: clamp(4rem, 9vw, 8rem);
+  --ds-grid-gap: clamp(1rem, 2vw, 1.5rem);
+  --ds-page-padding: 1.25rem;
+  --ds-header-height: 4.5rem;
+  --ds-mobile-menu-width: min(88vw, 24rem);
+
+  /* Radius scale */
+  --ds-radius-sm: 0.375rem;
+  --ds-radius-md: 0.625rem;
+  --ds-radius-lg: 1rem;
+  --ds-radius-xl: 1.5rem;
+  --ds-radius-full: 9999px;
+
+  /* Borders and focus */
+  --ds-border-width: 1px;
+  --ds-focus-width: 2px;
+  --ds-focus-offset: 3px;
+  --ds-glass-blur: 16px;
+
+  /* Depth */
+  --ds-shadow-sm: 0 1px 2px rgb(0 0 0 / 24%);
+  --ds-shadow-md: 0 12px 30px rgb(0 0 0 / 24%);
+  --ds-shadow-lg: 0 24px 70px rgb(0 0 0 / 34%);
+  --ds-shadow-glow: 0 0 56px rgb(139 124 246 / 20%);
+  --ds-shadow-glow-soft: 0 0 32px rgb(139 124 246 / 10%);
+
+  /* Subtle gradient treatments */
+  --ds-gradient-hero:
+    radial-gradient(circle at 50% 0%, rgb(139 124 246 / 12%), transparent 42%),
+    linear-gradient(180deg, #0d0c12 0%, var(--ds-color-background) 72%);
+  --ds-gradient-accent: linear-gradient(
+    135deg,
+    #c2bafc 0%,
+    #8b7cf6 52%,
+    #6d5ed0 100%
+  );
+  --ds-gradient-card-glow: radial-gradient(
+    circle at 50% 0%,
+    rgb(139 124 246 / 10%),
+    transparent 68%
+  );
+  --ds-gradient-section-divider: linear-gradient(
+    90deg,
+    transparent,
+    rgb(139 124 246 / 28%) 50%,
+    transparent
+  );
+
+  /* Motion timing and easing */
+  --ds-motion-fast: 120ms;
+  --ds-motion-normal: 220ms;
+  --ds-motion-slow: 420ms;
+  --ds-motion-hover: 180ms;
+  --ds-motion-page: 500ms;
+  --ds-motion-modal: 280ms;
+  --ds-motion-reduced: 1ms;
+  --ds-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ds-ease-emphasized: cubic-bezier(0.16, 1, 0.3, 1);
+  --ds-ease-exit: cubic-bezier(0.4, 0, 1, 1);
+
+  /* Layering */
+  --ds-z-base: 0;
+  --ds-z-raised: 10;
+  --ds-z-sticky: 100;
+  --ds-z-overlay: 200;
+  --ds-z-modal: 300;
+  --ds-z-toast: 400;
+  --ds-z-tooltip: 500;
+}
+
+@media (min-width: 48rem) {
+  :root {
+    --ds-page-padding: 2rem;
+  }
+}
+
+@media (min-width: 80rem) {
+  :root {
+    --ds-page-padding: 2.5rem;
+  }
+}
