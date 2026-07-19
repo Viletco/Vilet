@@ -29,6 +29,11 @@ After preview QA and owner approval, configure Resend with an approved API key, 
 
 ## Preview verification
 
+When Vercel supplies `VERCEL_ENV=preview`, every response receives
+`X-Robots-Tag: noindex, nofollow`. This server-side protection does not apply to
+the eventual Vercel production environment. Verify the header on the hosted
+preview before sharing its URL or considering a domain connection.
+
 Verify all public routes and the following launch surfaces:
 
 - `/sitemap.xml`, `/robots.txt`, and `/manifest.webmanifest` return their expected content types;

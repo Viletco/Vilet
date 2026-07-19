@@ -28,6 +28,8 @@ if (
     "NEXT_PUBLIC_SITE_URL must be the approved origin https://vilet.co.",
   );
 
+const isVercelPreview = process.env.VERCEL_ENV === "preview";
+
 const securityHeaders = [
   {
     key: "Content-Security-Policy",
@@ -62,6 +64,9 @@ const securityHeaders = [
           value: "max-age=31536000; includeSubDomains",
         },
       ]
+    : []),
+  ...(isVercelPreview
+    ? [{ key: "X-Robots-Tag", value: "noindex, nofollow" }]
     : []),
 ] as const;
 

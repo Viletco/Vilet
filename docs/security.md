@@ -6,6 +6,10 @@ All routes receive a Content Security Policy limited to same-origin content, dat
 
 The site also sends `Referrer-Policy: strict-origin-when-cross-origin`, `X-Content-Type-Options: nosniff`, a restrictive Permissions Policy, Cross-Origin Opener Policy, and Cross-Origin Resource Policy. HSTS is emitted only in production builds. Resend and Upstash are server-side connections and require no browser CSP destination.
 
+Vercel preview deployments are detected server-side through the platform-provided
+`VERCEL_ENV=preview` value and receive `X-Robots-Tag: noindex, nofollow`. The
+header is intentionally absent from the eventual Vercel production environment.
+
 ## Application boundaries
 
 Contact secrets remain server-only. Configuration validation fails enabled modes with missing or invalid values. Email HTML is escaped, sender/recipient are configuration-controlled, fetches have timeouts, provider details are normalized, request bodies are limited to 64 KB, and no personal submission data is logged. Next.js owns Server Action transport and origin enforcement; application validation remains mandatory.
