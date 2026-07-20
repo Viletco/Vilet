@@ -187,5 +187,113 @@
     "requiredForLaunch": true,
     "owner": "Vilét owner",
     "selection": null
+  },
+  {
+    "id": "ai-provider-approval",
+    "label": "AI provider approval",
+    "category": "owner-decision",
+    "status": "unresolved",
+    "requiredForLaunch": false,
+    "owner": "Vilét owner",
+    "selection": null
+  },
+  {
+    "id": "ai-model-approval",
+    "label": "AI model approval",
+    "category": "owner-decision",
+    "status": "unresolved",
+    "requiredForLaunch": false,
+    "owner": "Vilét owner",
+    "selection": null
+  },
+  {
+    "id": "ai-privacy-legal-approval",
+    "label": "AI privacy and legal approval",
+    "category": "legal-approval",
+    "status": "unresolved",
+    "requiredForLaunch": false,
+    "owner": "Vilét owner and legal reviewer",
+    "selection": null
+  },
+  {
+    "id": "ai-public-launch-approval",
+    "label": "AI public launch approval",
+    "category": "owner-decision",
+    "status": "unresolved",
+    "requiredForLaunch": false,
+    "owner": "Vilét owner",
+    "selection": null
+  },
+  {
+    "id": "ai-indexing-approval",
+    "label": "AI route indexing approval",
+    "category": "search-seo",
+    "status": "unresolved",
+    "requiredForLaunch": false,
+    "owner": "Vilét owner",
+    "selection": null
+  },
+  {
+    "id": "ai-rate-limit-policy",
+    "label": "AI rate-limit policy",
+    "category": "rate-limiting",
+    "status": "unresolved",
+    "requiredForLaunch": false,
+    "owner": "Vilét owner",
+    "selection": null
+  },
+  {
+    "id": "website-analyzer-availability",
+    "label": "Website Analyzer public availability",
+    "category": "owner-decision",
+    "status": "unresolved",
+    "requiredForLaunch": false,
+    "owner": "Vilét owner",
+    "selection": null
+  },
+  {
+    "id": "website-analyzer-authorization-wording",
+    "label": "Website Analyzer authorization wording",
+    "category": "legal-approval",
+    "status": "unresolved",
+    "requiredForLaunch": false,
+    "owner": "Vilét owner and legal reviewer",
+    "selection": null
+  },
+  {
+    "id": "ai-insights-collection",
+    "label": "AI unanswered-question insights collection",
+    "category": "optional-post-launch",
+    "status": "unresolved",
+    "requiredForLaunch": false,
+    "owner": "Vilét owner and legal reviewer",
+    "selection": null
+  },
+  {
+    "id": "ai-session-storage-decision",
+    "label": "AI explicit handoff session storage",
+    "category": "legal-approval",
+    "status": "unresolved",
+    "requiredForLaunch": false,
+    "owner": "Vilét owner and legal reviewer",
+    "selection": null
+  },
+  {
+    "id": "ai-cost-ceiling",
+    "label": "AI provider cost ceiling",
+    "category": "owner-decision",
+    "status": "unresolved",
+    "requiredForLaunch": false,
+    "owner": "Vilét owner",
+    "selection": null
+  },
+  {
+    "id": "ai-emergency-disable-owner",
+    "label": "AI emergency-disable owner",
+    "category": "owner-decision",
+    "status": "unresolved",
+    "requiredForLaunch": false,
+    "owner": "Vilét owner",
+    "selection": null
   }
 ]

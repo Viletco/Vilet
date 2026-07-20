@@ -46,7 +46,33 @@ function checkEnvironment() {
       if (!hasEnvironmentVariable(name)) issues.push(`${name} is missing`);
     }
   }
-  return { deliveryMode, issues, rateLimitMode };
+  const aiMode = process.env.AI_ASSISTANT_MODE ?? "disabled";
+  const aiProvider = process.env.AI_PROVIDER ?? "none";
+  const aiRateMode = process.env.AI_CHAT_RATE_LIMIT_MODE ?? "memory";
+  const analyzerMode = process.env.AI_WEBSITE_ANALYZER_MODE ?? "disabled";
+  if (!["disabled", "provider"].includes(aiMode))
+    issues.push("AI_ASSISTANT_MODE has an unsupported mode");
+  if (!["none", "openai"].includes(aiProvider))
+    issues.push("AI_PROVIDER has an unsupported provider");
+  if (!["memory", "upstash"].includes(aiRateMode))
+    issues.push("AI_CHAT_RATE_LIMIT_MODE has an unsupported mode");
+  if (!["disabled", "enabled"].includes(analyzerMode))
+    issues.push("AI_WEBSITE_ANALYZER_MODE has an unsupported mode");
+  if (aiMode === "disabled" && aiProvider !== "none")
+    issues.push("disabled AI requires AI_PROVIDER=none");
+  if (aiMode === "provider")
+    for (const name of ["AI_PROVIDER_API_KEY", "AI_PROVIDER_MODEL"])
+      if (!hasEnvironmentVariable(name)) issues.push(`${name} is missing`);
+  if (aiRateMode === "upstash")
+    for (const name of [
+      "AI_CHAT_RATE_LIMIT_SALT",
+      "AI_CHAT_UPSTASH_REDIS_REST_URL",
+      "AI_CHAT_UPSTASH_REDIS_REST_TOKEN",
+    ])
+      if (!hasEnvironmentVariable(name)) issues.push(`${name} is missing`);
+  if (analyzerMode === "enabled" && aiMode !== "provider")
+    issues.push("Website Analyzer requires provider AI mode");
+  return { aiMode, analyzerMode, deliveryMode, issues, rateLimitMode };
 }
 
 async function main() {
@@ -86,21 +112,43 @@ async function main() {
     for (const issue of structuralIssues) fail(issue);
     return;
   }
+  const environment = checkEnvironment();
+  const aiDecisionIds = new Set([
+    "ai-provider-approval",
+    "ai-model-approval",
+    "ai-privacy-legal-approval",
+    "ai-public-launch-approval",
+    "ai-indexing-approval",
+    "ai-rate-limit-policy",
+    "website-analyzer-availability",
+    "website-analyzer-authorization-wording",
+    "ai-session-storage-decision",
+    "ai-cost-ceiling",
+    "ai-emergency-disable-owner",
+  ]);
   const blocking = decisions.filter(
     ({ requiredForLaunch, status }) =>
       requiredForLaunch && status !== "approved" && status !== "not-required",
   );
+  const aiBlocking =
+    environment.aiMode === "provider"
+      ? decisions.filter(
+          ({ id, status }) =>
+            aiDecisionIds.has(id) &&
+            status !== "approved" &&
+            status !== "not-required",
+        )
+      : [];
   const recommended = decisions.filter(
     ({ requiredForLaunch, status }) =>
       !requiredForLaunch && status === "unresolved",
   );
-  const environment = checkEnvironment();
   console.log(
-    `Launch decisions: ${decisions.length} tracked, ${blocking.length} blocking.`,
+    `Launch decisions: ${decisions.length} tracked, ${blocking.length + aiBlocking.length} blocking.`,
   );
-  if (blocking.length > 0) {
+  if (blocking.length > 0 || aiBlocking.length > 0) {
     console.log("Required decisions still blocking production:");
-    for (const decision of blocking)
+    for (const decision of [...blocking, ...aiBlocking])
       console.log(`- ${decision.label} [${decision.id}]`);
   }
   if (recommended.length > 0)
@@ -110,11 +158,18 @@ async function main() {
   console.log(
     `Contact modes: delivery=${environment.deliveryMode}, rate-limit=${environment.rateLimitMode}.`,
   );
+  console.log(
+    `AI modes: assistant=${environment.aiMode}, analyzer=${environment.analyzerMode}.`,
+  );
   if (environment.issues.length > 0) {
     console.error("Environment configuration issues:");
     for (const issue of environment.issues) console.error(`- ${issue}`);
   }
-  if (blocking.length > 0 || environment.issues.length > 0) {
+  if (
+    blocking.length > 0 ||
+    aiBlocking.length > 0 ||
+    environment.issues.length > 0
+  ) {
     process.exitCode = 1;
     console.error(
       "Launch readiness: BLOCKED. No secret values were inspected or printed.",

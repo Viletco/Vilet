@@ -59,6 +59,18 @@ const expectedDecisionIds = [
   "final-content-review",
   "public-indexing-authorization",
   "production-launch-authorization",
+  "ai-provider-approval",
+  "ai-model-approval",
+  "ai-privacy-legal-approval",
+  "ai-public-launch-approval",
+  "ai-indexing-approval",
+  "ai-rate-limit-policy",
+  "website-analyzer-availability",
+  "website-analyzer-authorization-wording",
+  "ai-insights-collection",
+  "ai-session-storage-decision",
+  "ai-cost-ceiling",
+  "ai-emergency-disable-owner",
 ] as const;
 
 function isRecord(value: unknown): value is Record<string, unknown> {
