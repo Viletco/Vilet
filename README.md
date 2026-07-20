@@ -49,6 +49,7 @@ npm run dev
 - `npm run format:check` — check formatting without modifying files.
 - `npm run typecheck` — run strict TypeScript validation without emitting files.
 - `npm run check:launch` — report unresolved launch decisions and enabled-provider configuration; an unresolved production plan exits nonzero by design.
+- `npm run test:ai` — run lightweight AI configuration, guardrail, workflow, and URL-security tests.
 - `npm run check` — run the complete formatting, lint, type, and production-build gate.
 
 ## Repository conventions
@@ -96,3 +97,10 @@ npm run dev
 - [Footer and contact plan](docs/footer-contact-plan.md)
 - [Launch checklist](docs/launch-checklist.md)
 - [Initial commit review](docs/initial-commit-review.md)
+- [Vilét AI Consultant](docs/ai-consultant.md)
+- [AI configuration](docs/ai-configuration.md)
+- [AI safety](docs/ai-safety.md)
+- [Website Analyzer](docs/website-analyzer.md)
+- [Project scoping](docs/project-scoping.md)
+- [AI privacy review](docs/ai-privacy-review.md)
+- [AI launch checklist](docs/ai-launch-checklist.md)

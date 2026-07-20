@@ -24,6 +24,12 @@ assets, provider credentials, or the production domain.
 - Empty architecture markers were removed from populated or unused directories.
 - Historical content-architecture guidance was corrected to describe the current
   production renderer and metadata state.
+- Optional Vilét AI now has a fail-closed provider boundary, approved-content
+  grounding, AI-specific abuse controls, and a noindex disabled route. It adds
+  no provider call or global client bundle in the default configuration.
+- Website Analyzer execution remains disabled. Defensive URL, DNS, redirect,
+  response-type, timeout, and size primitives are prepared, but public execution
+  requires the remaining security and legal checklist.
 
 ## Release gate
 

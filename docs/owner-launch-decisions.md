@@ -32,4 +32,16 @@ Complete this worksheet before authorizing production. Record approved outcomes 
 - [ ] Add case studies only after publication rights and evidence are approved.
 - [ ] Add testimonials, client marks, metrics, awards, or certifications only after proof and usage permission are recorded.
 
+### Vilét AI (optional; remains disabled)
+
+- [ ] Approve provider and exact model: __________
+- [ ] Approve privacy/legal status and public launch: reviewer/date __________
+- [ ] Approve `/ai` indexing or keep `noindex`: __________
+- [ ] Approve chat/analyzer/summary rate limits and shared Upstash resources: __________
+- [ ] Approve Website Analyzer availability and authorization wording: __________
+- [ ] Keep insights disabled or approve a future aggregate design: __________
+- [ ] Approve explicit one-time session-storage Contact handoff: __________
+- [ ] Set monthly/request cost ceiling: __________
+- [ ] Name the emergency-disable owner: __________
+
 Portfolio and trust evidence are intentionally not technical launch blockers. Their current evidence-safe absence is valid.

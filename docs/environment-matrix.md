@@ -16,3 +16,17 @@ Secrets belong in local untracked `.env.local` files or scoped Vercel environmen
 | `CONTACT_RATE_LIMIT_SALT`  | Optional           | Unique preview value              | Unique production value          | Yes                  | High-entropy value; do not reuse across environments                      |
 
 Use separate preview and production resources or credentials where provider plans permit. After configuration, run `npm run check:launch` in a securely populated environment; it reports presence and modes without printing values.
+
+## Optional Vilét AI
+
+| Variable                                          | Local/preview default | Production                       | Sensitive | Notes                                         |
+| ------------------------------------------------- | --------------------- | -------------------------------- | --------- | --------------------------------------------- |
+| `AI_ASSISTANT_MODE` / `AI_PROVIDER`               | `disabled` / `none`   | Remain disabled until approval   | No        | Provider mode fails closed                    |
+| `AI_PROVIDER_API_KEY`                             | Empty                 | Provider secret                  | Yes       | Server-only                                   |
+| `AI_PROVIDER_MODEL`                               | Empty                 | Approved model identifier        | No        | Owner/cost review required                    |
+| `AI_PROVIDER_TIMEOUT_MS` / `AI_MAX_OUTPUT_TOKENS` | `12000` / `700`       | Reviewed bounded values          | No        | Enforced ranges                               |
+| `AI_CHAT_RATE_LIMIT_MODE`                         | `memory`              | Approved `upstash`               | No        | Separate AI policy                            |
+| `AI_CHAT_RATE_LIMIT_SALT`                         | Empty                 | Unique environment secret        | Yes       | Hashes connection identifiers                 |
+| `AI_CHAT_UPSTASH_REDIS_REST_URL` / `TOKEN`        | Empty                 | Scoped AI database credentials   | Yes       | Required in Upstash mode                      |
+| `AI_INSIGHTS_MODE`                                | `disabled`            | `disabled`                       | No        | Aggregate mode is not implemented or approved |
+| `AI_WEBSITE_ANALYZER_MODE`                        | `disabled`            | Disabled until separate approval | No        | No URL fetch occurs while disabled            |

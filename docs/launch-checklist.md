@@ -4,6 +4,8 @@ Legend: `[x]` automatically validated or completed in the repository; `[ ]` requ
 
 Use `docs/owner-launch-decisions.md` to collect approvals, `config/launch-decisions.json` as the non-secret status source, and `npm run check:launch` as the production gate. Detailed ownership and deferral rules are in `docs/launch-blockers.md`.
 
+Vilét AI is optional and disabled. Its unresolved decisions do not block the existing non-AI website, but all must be approved before `AI_ASSISTANT_MODE=provider`; see `docs/ai-launch-checklist.md`.
+
 ## Business approvals
 
 - [ ] **Owner approval:** production branch and launch date
