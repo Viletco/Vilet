@@ -32,6 +32,10 @@ const sections = [
     title: "Retention and service providers",
     body: "When contact delivery is enabled, inquiry content may be retained by the selected delivery provider and receiving mailbox according to their configured behavior. No specific retention period is promised in this starter notice.",
   },
+  {
+    title: "Vilét AI",
+    body: "Vilét AI and website analysis are currently disabled. When explicitly activated, current-tab messages may be sent to the approved AI provider to generate guidance, but transcripts are not stored by this website by default. A project summary is placed in session storage only when a visitor explicitly chooses to transfer it to Contact, and it is removed when read. Website analysis would temporarily retrieve limited public HTML after authorization confirmation and would not retain the fetched page. Provider processing and retention require separate owner and legal review before activation.",
+  },
 ] as const;
 
 export default function PrivacyPage() {
