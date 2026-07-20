@@ -24,7 +24,7 @@ Use separate preview and production resources or credentials where provider plan
 | `AI_ASSISTANT_MODE` / `AI_PROVIDER`               | `disabled` / `none`   | Remain disabled until approval   | No        | Provider mode fails closed                    |
 | `AI_PROVIDER_API_KEY`                             | Empty                 | Provider secret                  | Yes       | Server-only                                   |
 | `AI_PROVIDER_MODEL`                               | Empty                 | Approved model identifier        | No        | Owner/cost review required                    |
-| `AI_PROVIDER_TIMEOUT_MS` / `AI_MAX_OUTPUT_TOKENS` | `12000` / `700`       | Reviewed bounded values          | No        | Enforced ranges                               |
+| `AI_PROVIDER_TIMEOUT_MS` / `AI_MAX_OUTPUT_TOKENS` | `15000` / `600`       | Reviewed bounded values          | No        | Enforced ranges                               |
 | `AI_CHAT_RATE_LIMIT_MODE`                         | `memory`              | Approved `upstash`               | No        | Separate AI policy                            |
 | `AI_CHAT_RATE_LIMIT_SALT`                         | Empty                 | Unique environment secret        | Yes       | Hashes connection identifiers                 |
 | `AI_CHAT_UPSTASH_REDIS_REST_URL` / `TOKEN`        | Empty                 | Scoped AI database credentials   | Yes       | Required in Upstash mode                      |

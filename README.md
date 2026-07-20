@@ -104,3 +104,8 @@ npm run dev
 - [Project scoping](docs/project-scoping.md)
 - [AI privacy review](docs/ai-privacy-review.md)
 - [AI launch checklist](docs/ai-launch-checklist.md)
+- [AI pre-evaluation audit](docs/ai-pre-evaluation-audit.md)
+- [AI preview cost review](docs/ai-preview-cost-review.md)
+- [AI preview evaluation](docs/ai-preview-evaluation.md)
+- [AI production decision](docs/ai-production-decision.md)
+- [AI operations](docs/ai-operations.md)
