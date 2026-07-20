@@ -1,10 +1,12 @@
 import type { NextConfig } from "next";
 
+import { launchDecisions } from "./src/config/launch-decisions";
 import { homepageContent } from "./src/content";
 import { validateContactEnvironment } from "./src/lib/contact/config-core";
 
 // Importing validated content makes malformed authoring data fail the build.
 void homepageContent;
+void launchDecisions;
 validateContactEnvironment({
   CONTACT_DELIVERY_MODE: process.env.CONTACT_DELIVERY_MODE,
   CONTACT_RATE_LIMIT_MODE: process.env.CONTACT_RATE_LIMIT_MODE,
