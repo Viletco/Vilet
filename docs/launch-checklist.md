@@ -2,6 +2,8 @@
 
 Legend: `[x]` automatically validated or completed in the repository; `[ ]` requires approval, an external account, deployment access, or remains blocked.
 
+Use `docs/owner-launch-decisions.md` to collect approvals, `config/launch-decisions.json` as the non-secret status source, and `npm run check:launch` as the production gate. Detailed ownership and deferral rules are in `docs/launch-blockers.md`.
+
 ## Business approvals
 
 - [ ] **Owner approval:** production branch and launch date

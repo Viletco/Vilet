@@ -130,3 +130,14 @@ contact delivery and production rate limiting, privacy/legal review, final brand
 and social assets, footer contact destination, Vercel production environment,
 DNS access, `www` redirect, and Search Console ownership. Continue to use normal
 commits and redeploy an immutable known-good commit for rollback.
+
+## Step 21 live recheck — 2026-07-20
+
+The temporary public alias `https://vilet.vercel.app` was rechecked in the in-app
+browser. Home, Services, Work, About, Process, Contact, and Privacy loaded with
+the expected unique titles and no captured console warnings or errors. The
+homepage exposed one H1, a canonical URL of `https://vilet.co`, no empty
+interactive controls, and only implemented internal destinations. The alias is
+still serving the previously deployed baseline; Step 21 documentation and launch
+registry changes require a new preview after push. No form was submitted and no
+external account, domain, DNS, indexing, or provider state was changed.

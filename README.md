@@ -47,6 +47,8 @@ npm run dev
 - `npm run lint` — run ESLint.
 - `npm run format` — format supported files with Prettier.
 - `npm run format:check` — check formatting without modifying files.
+- `npm run typecheck` — run strict TypeScript validation without emitting files.
+- `npm run check:launch` — report unresolved launch decisions and enabled-provider configuration; an unresolved production plan exits nonzero by design.
 - `npm run check` — run the complete formatting, lint, type, and production-build gate.
 
 ## Repository conventions
@@ -81,5 +83,16 @@ npm run dev
 - [Preview deployment preparation](docs/preview-deployment.md)
 - [Vercel preview QA](docs/preview-qa.md)
 - [Production-readiness review](docs/production-readiness.md)
+- [Launch blocker register](docs/launch-blockers.md)
+- [Owner launch decisions](docs/owner-launch-decisions.md)
+- [Environment matrix](docs/environment-matrix.md)
+- [Final launch sequence](docs/final-launch-sequence.md)
+- [Resend activation](docs/resend-activation.md)
+- [Upstash activation](docs/upstash-activation.md)
+- [Domain connection plan](docs/domain-connection-plan.md)
+- [Search Console plan](docs/search-console-plan.md)
+- [Legal approval checklist](docs/legal-approval-checklist.md)
+- [Brand asset approval](docs/brand-asset-approval.md)
+- [Footer and contact plan](docs/footer-contact-plan.md)
 - [Launch checklist](docs/launch-checklist.md)
 - [Initial commit review](docs/initial-commit-review.md)
