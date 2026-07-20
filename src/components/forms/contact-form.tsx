@@ -6,6 +6,7 @@ import type { ServiceRecord } from "@/content";
 import type { ContactActionState, ContactField } from "@/lib/contact";
 import { Button, Heading, Text } from "@/components/ui";
 import { cn } from "@/lib/cn";
+import { parseContactHandoff } from "@/lib/ai";
 
 const initialState: ContactActionState = { status: "idle" };
 const controlClasses =
@@ -46,10 +47,8 @@ export function ContactForm({
     if (!handoff || !formRef.current) return;
     sessionStorage.removeItem("vilet-ai-handoff");
     try {
-      const values = JSON.parse(handoff) as {
-        projectSummary?: string;
-        goals?: string;
-      };
+      const values = parseContactHandoff(handoff);
+      if (!values) return;
       for (const name of ["projectSummary", "goals"] as const) {
         const control = formRef.current.elements.namedItem(name);
         if (control instanceof HTMLTextAreaElement && values[name])

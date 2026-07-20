@@ -6,6 +6,12 @@ const injectionPattern =
   /(ignore|override|reveal|repeat|print).{0,32}(instruction|prompt|policy|secret|api.?key|system message)/i;
 const sensitivePattern =
   /(password|api.?key|credit card|social security|government id|private key|health record)/i;
+const internalPattern =
+  /((?:internal|hidden) (?:configuration|launch decision|repository path)s?|[a-z]:\\(?:users|projects)|\/(?:src|etc|home)\/|another user|store (?:this|the) conversation permanently)/i;
+const fabricatedClaimPattern =
+  /(claim|say|pretend|invent|guarantee|promise).{0,64}(worked with|client|testimonial|result|price|delivery|accepted|sent|three days|capability)/i;
+const highRiskPattern =
+  /(medical diagnosis|legal advice|investment recommendation|credential harvesting|malware|employee surveillance|private.data extraction|political persuasion|authenticated website)/i;
 const pricePattern = /(how much|price|pricing|cost|quote|discount)/i;
 const timelinePattern =
   /(how long|timeline|delivery date|when can|weeks|months)/i;
@@ -13,7 +19,13 @@ const timelinePattern =
 export function preflightGuidance(
   message: string,
 ): AiGuidance | "unsafe" | null {
-  if (injectionPattern.test(message) || sensitivePattern.test(message))
+  if (
+    injectionPattern.test(message) ||
+    sensitivePattern.test(message) ||
+    internalPattern.test(message) ||
+    fabricatedClaimPattern.test(message) ||
+    highRiskPattern.test(message)
+  )
     return "unsafe";
   if (pricePattern.test(message))
     return {

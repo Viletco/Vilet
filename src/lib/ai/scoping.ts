@@ -60,6 +60,40 @@ export function formatProjectBrief(
   ].join("\n\n");
 }
 
+export interface ContactHandoff {
+  readonly projectSummary: string;
+  readonly goals: string;
+}
+
+export function serializeContactHandoff(summary: string) {
+  const handoff: ContactHandoff = {
+    projectSummary: summary.trim().slice(0, 2000),
+    goals:
+      "Review the preliminary discovery summary and clarify the appropriate next step.",
+  };
+  return JSON.stringify(handoff);
+}
+
+export function parseContactHandoff(value: string): ContactHandoff | null {
+  try {
+    const parsed = JSON.parse(value) as Partial<ContactHandoff>;
+    if (
+      typeof parsed.projectSummary !== "string" ||
+      !parsed.projectSummary.trim() ||
+      parsed.projectSummary.length > 2000 ||
+      typeof parsed.goals !== "string" ||
+      parsed.goals.length > 1500
+    )
+      return null;
+    return {
+      projectSummary: parsed.projectSummary,
+      goals: parsed.goals,
+    };
+  } catch {
+    return null;
+  }
+}
+
 export function createGrowthAdvice(input: {
   challenge: string;
   repetitiveProcess: string;

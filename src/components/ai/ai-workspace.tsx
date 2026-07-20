@@ -8,6 +8,7 @@ import {
   createGrowthAdvice,
   createProjectBrief,
   formatProjectBrief,
+  serializeContactHandoff,
   type AiMessage,
   type ProjectCategory,
 } from "@/lib/ai";
@@ -90,11 +91,7 @@ export function AiWorkspace({
   function handoff(summary: string) {
     sessionStorage.setItem(
       "vilet-ai-handoff",
-      JSON.stringify({
-        projectSummary: summary.slice(0, 2000),
-        goals:
-          "Review the preliminary discovery summary and clarify the appropriate next step.",
-      }),
+      serializeContactHandoff(summary),
     );
   }
 

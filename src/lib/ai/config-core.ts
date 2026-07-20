@@ -86,14 +86,14 @@ export function validateAiEnvironment(env: AiEnvironment): AiConfig {
     throw new Error("Website Analyzer requires provider mode.");
   const timeoutMs = integer(
     env.AI_PROVIDER_TIMEOUT_MS,
-    12000,
+    15000,
     3000,
     30000,
     "AI_PROVIDER_TIMEOUT_MS",
   );
   const maxOutputTokens = integer(
     env.AI_MAX_OUTPUT_TOKENS,
-    700,
+    600,
     128,
     1200,
     "AI_MAX_OUTPUT_TOKENS",

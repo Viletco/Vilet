@@ -7,6 +7,7 @@ import { formatApprovedKnowledge } from "@/lib/ai/knowledge";
 import { AI_SYSTEM_POLICY, preflightGuidance } from "@/lib/ai/policy";
 import { createAiProvider } from "@/lib/ai/provider";
 import { checkAiLimit, hashAiConnection } from "@/lib/ai/rate-limit";
+import { validateAiMessages } from "@/lib/ai/request-contract";
 import type { AiMessage, AiResult } from "@/lib/ai/types";
 
 export async function requestAiGuidance(
@@ -19,28 +20,9 @@ export async function requestAiGuidance(
       message:
         "Vilét AI is not active yet. No message was sent or stored. You can still use the Contact page.",
     };
-  if (
-    !Array.isArray(messages) ||
-    messages.length === 0 ||
-    messages.length > 10 ||
-    messages.some(
-      (message) =>
-        !["user", "assistant"].includes(message.role) ||
-        typeof message.content !== "string" ||
-        message.content.trim().length < 1 ||
-        message.content.length > 2000,
-    )
-  )
-    return {
-      status: "validation-failure",
-      message: "Review the message length and try again.",
-    };
-  const latest = messages.at(-1)!;
-  if (latest.role !== "user")
-    return {
-      status: "validation-failure",
-      message: "A visitor message is required.",
-    };
+  const validation = validateAiMessages(messages);
+  if (!validation.success) return validation.result;
+  const latest = validation.messages.at(-1)!;
   const preflight = preflightGuidance(latest.content);
   if (preflight === "unsafe")
     return {
@@ -65,7 +47,7 @@ export async function requestAiGuidance(
         message: "Vilét AI is not configured. No message was sent or stored.",
       };
     return await provider.generate({
-      messages,
+      messages: validation.messages,
       knowledge: formatApprovedKnowledge(),
       policy: AI_SYSTEM_POLICY,
     });
