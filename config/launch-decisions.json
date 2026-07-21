@@ -192,19 +192,19 @@
     "id": "ai-provider-approval",
     "label": "AI provider approval",
     "category": "owner-decision",
-    "status": "unresolved",
+    "status": "approved",
     "requiredForLaunch": false,
     "owner": "Vilét owner",
-    "selection": null
+    "selection": "OpenAI for private Preview evaluation only; Production remains unapproved"
   },
   {
     "id": "ai-model-approval",
     "label": "AI model approval",
     "category": "owner-decision",
-    "status": "unresolved",
+    "status": "approved",
     "requiredForLaunch": false,
     "owner": "Vilét owner",
-    "selection": null
+    "selection": "gpt-5-mini for private Preview evaluation only"
   },
   {
     "id": "ai-privacy-legal-approval",
@@ -228,28 +228,28 @@
     "id": "ai-indexing-approval",
     "label": "AI route indexing approval",
     "category": "search-seo",
-    "status": "unresolved",
+    "status": "approved",
     "requiredForLaunch": false,
     "owner": "Vilét owner",
-    "selection": null
+    "selection": "Keep /ai noindex, nofollow; public indexing is not approved"
   },
   {
     "id": "ai-rate-limit-policy",
     "label": "AI rate-limit policy",
     "category": "rate-limiting",
-    "status": "unresolved",
+    "status": "approved",
     "requiredForLaunch": false,
     "owner": "Vilét owner",
-    "selection": null
+    "selection": "Private Preview only: memory limit of 20 chat requests per 30 minutes; production policy unresolved"
   },
   {
     "id": "website-analyzer-availability",
     "label": "Website Analyzer public availability",
     "category": "owner-decision",
-    "status": "unresolved",
+    "status": "approved",
     "requiredForLaunch": false,
     "owner": "Vilét owner",
-    "selection": null
+    "selection": "Disabled"
   },
   {
     "id": "website-analyzer-authorization-wording",
@@ -264,36 +264,36 @@
     "id": "ai-insights-collection",
     "label": "AI unanswered-question insights collection",
     "category": "optional-post-launch",
-    "status": "unresolved",
+    "status": "approved",
     "requiredForLaunch": false,
     "owner": "Vilét owner and legal reviewer",
-    "selection": null
+    "selection": "Disabled"
   },
   {
     "id": "ai-session-storage-decision",
     "label": "AI explicit handoff session storage",
     "category": "legal-approval",
-    "status": "unresolved",
+    "status": "approved",
     "requiredForLaunch": false,
     "owner": "Vilét owner and legal reviewer",
-    "selection": null
+    "selection": "Current-page conversation memory plus explicit one-time Contact handoff only"
   },
   {
     "id": "ai-cost-ceiling",
     "label": "AI provider cost ceiling",
     "category": "owner-decision",
-    "status": "unresolved",
+    "status": "approved",
     "requiredForLaunch": false,
     "owner": "Vilét owner",
-    "selection": null
+    "selection": "$5 total private Preview evaluation credit; automatic recharge disabled"
   },
   {
     "id": "ai-emergency-disable-owner",
     "label": "AI emergency-disable owner",
     "category": "owner-decision",
-    "status": "unresolved",
+    "status": "approved",
     "requiredForLaunch": false,
     "owner": "Vilét owner",
-    "selection": null
+    "selection": "Repository owner"
   }
 ]

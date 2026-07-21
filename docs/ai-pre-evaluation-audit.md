@@ -19,12 +19,12 @@ Date: 2026-07-20. Scope: Step 22 implementation before any credentialed request.
 5. Preflight rules covered common prompt/secret attacks but not internal paths, fabricated evidence, false acceptance/delivery, cross-user requests, or high-risk domains. Added explicit rejection categories.
 6. Recommended evaluation timeout/output settings differed from Step 23. Defaults are now 15 seconds and 600 output tokens.
 
-## Remaining blockers
+## Step 24 resolution
 
-- No private Preview-scoped API key was available.
-- The owner has not approved an exact model or spending ceiling.
-- Vercel environment access and Preview/Production separation were not demonstrated in this run.
-- Provider-side retention and legal approval remain unresolved.
-- Live grounding, latency, token, cost, 429, timeout, and invalid-output evaluation therefore cannot be claimed.
+- A dedicated project-scoped service credential was stored only in Vercel Preview.
+- The owner approved `gpt-5-mini` and a `$5` total evaluation ceiling with automatic recharge off.
+- Preview/Production separation was verified in Vercel; no AI variable was added to Production.
+- Live grounding, latency, cost-display, adversarial, memory, handoff, and disabled-Analyzer checks were completed with synthetic data.
+- Provider-side production privacy/legal approval, shared production rate limiting, public indexing, and public launch remain unresolved.
 
-Website Analyzer remains disabled. Its fetch function is not reachable from the public UI.
+Website Analyzer remains disabled. Its fetch function is not reachable from the Preview UI.

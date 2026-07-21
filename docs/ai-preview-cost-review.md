@@ -1,19 +1,20 @@
 # AI preview cost review
 
-No provider request was made in this step, so actual requests, tokens, latency, failures, and cost are all zero. Complete this worksheet only with synthetic prompts after owner model approval and private Preview configuration.
+Private Preview evaluation ran on 2026-07-21 with synthetic prompts only. The owner approved `gpt-5-mini`, a `$5` total evaluation ceiling, and no automatic recharge.
 
-## Model recommendation for approval
+## Approved Preview model
 
-Recommended evaluation candidate: `gpt-5-mini`. OpenAI describes it as a cost-efficient, low-latency model for well-defined tasks, with Responses API and Structured Outputs support. Published token prices at review time were $0.25 per million input tokens and $2.00 per million output tokens. The current flagship family offers stronger models at materially higher published rates; this short, grounded, schema-constrained workload should establish whether the lower-cost candidate is sufficient before considering an upgrade.
+`gpt-5-mini` is approved only for the private Preview evaluation. OpenAI documents Responses API and Structured Outputs support and published prices of $0.25 per million input tokens and $2.00 per million output tokens at review time. Production use remains unapproved.
 
 Sources: [OpenAI GPT-5 mini](https://developers.openai.com/api/docs/models/gpt-5-mini), [OpenAI model comparison](https://developers.openai.com/api/docs/models/compare).
 
-This is a recommendation, not approval. Model availability, account tier, pricing, and provider terms must be rechecked at activation.
-
-## Conservative preview configuration
+## Evaluated configuration
 
 - Timeout: 15,000 ms
 - Maximum output: 600 tokens
+- Reasoning effort: minimal
+- Text verbosity: low
+- Provider response storage: disabled with `store: false`
 - User message: 2,000 characters
 - Conversation: eight messages and 10,000 characters
 - Connection limit: 20 chat requests per 30 minutes
@@ -21,17 +22,17 @@ This is a recommendation, not approval. Model availability, account tier, pricin
 - Analyzer calls: zero
 - Insights/background calls: zero
 
-Illustrative ceiling using 4,000 uncached input tokens and 600 output tokens on the recommended candidate: approximately $0.0022 per request at the cited rates. This is an assumption, not incurred cost or a provider quote.
-
 ## Evaluation worksheet
 
-| Measure                          | Result                       |
-| -------------------------------- | ---------------------------- |
-| Provider requests                | 0 — credential unavailable   |
-| Input/output/total tokens        | 0 / 0 / 0                    |
-| Actual provider cost             | $0                           |
-| Average/highest interaction cost | Not measured                 |
-| Average latency                  | Not measured                 |
-| Timeout/failure count            | 0 / 0 because no request ran |
+| Measure                          | Result                                                                                           |
+| -------------------------------- | ------------------------------------------------------------------------------------------------ |
+| Provider requests                | 2 shown at final dashboard refresh; later successful requests were still pending aggregation     |
+| Input/output/total tokens        | 3,144 input shown; output and final total were not yet reported in the visible dashboard summary |
+| Actual provider cost             | `$0.00` at dashboard display precision                                                           |
+| Average/highest interaction cost | Below dashboard rounding precision; not claimed more precisely                                   |
+| Observed successful latency      | Approximately 3 seconds in browser checks                                                        |
+| Timeout/failure count            | 0 timeouts; 1 initial structured-output failure that failed closed and was corrected in Preview  |
 
-For a credentialed run, record aggregate usage only—test-case ID, latency, token counts, result category, and estimated cost. Never record prompt or response bodies in operational logs. Compare aggregate totals with the provider dashboard and stop immediately at the owner-approved ceiling.
+The account held a one-time `$5.00` credit balance with automatic recharge off. Dashboard reporting was lagging, so usage must be refreshed before any later evaluation resumes.
+
+Record aggregate usage only. Never record prompt or response bodies, credentials, private content, or raw connection identifiers.
