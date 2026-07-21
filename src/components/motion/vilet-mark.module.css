@@ -13,18 +13,18 @@
 .scene::before {
   position: absolute;
   inset: 8%;
-  border: 1px solid color-mix(in srgb, var(--ds-color-accent) 13%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ds-color-accent) 18%, transparent);
   border-radius: inherit;
   background:
     linear-gradient(
       115deg,
       transparent 30%,
-      color-mix(in srgb, var(--ds-color-accent) 8%, transparent),
+      color-mix(in srgb, var(--ds-color-accent) 5%, transparent),
       transparent 67%
     ),
     radial-gradient(
       circle at 50% 48%,
-      color-mix(in srgb, var(--ds-color-accent) 8%, transparent),
+      color-mix(in srgb, var(--ds-color-accent) 6%, transparent),
       transparent 58%
     );
   content: "";
@@ -32,16 +32,16 @@
 
 .ambientGlow {
   position: absolute;
-  width: 58%;
+  width: 54%;
   aspect-ratio: 1;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--ds-color-accent) 24%, transparent);
-  filter: blur(3.5rem);
-  opacity: 0.45;
+  background: color-mix(in srgb, var(--ds-color-accent) 20%, transparent);
+  filter: blur(3rem);
+  opacity: 0.32;
 }
 
 .tilt {
-  width: 58%;
+  width: 66%;
   aspect-ratio: 1;
   transform: rotateX(var(--mark-tilt-x)) rotateY(var(--mark-tilt-y));
   transform-style: preserve-3d;
@@ -53,14 +53,15 @@
   position: relative;
   width: 100%;
   height: 100%;
-  animation: mark-turn 14s linear infinite;
+  animation: mark-motion 8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
   transform-style: preserve-3d;
   will-change: transform;
 }
 
 .ribbon {
   position: absolute;
-  filter: drop-shadow(0 1.25rem 1.5rem rgb(0 0 0 / 28%));
+  filter: drop-shadow(0 1.4rem 1.25rem rgb(0 0 0 / 38%))
+    drop-shadow(0 0 0.65rem rgb(127 85 255 / 14%));
   transform-style: preserve-3d;
 }
 
@@ -74,17 +75,19 @@
 
 .ribbon::before {
   z-index: -1;
-  background: rgb(21 16 39 / 90%);
-  transform: translateZ(-10px);
+  background: linear-gradient(90deg, #22174b, #5637be);
+  transform: translate3d(6px, 7px, -12px);
 }
 
 .ribbon::after {
   background: linear-gradient(
-    115deg,
-    transparent 24%,
-    rgb(255 255 255 / 18%),
-    transparent 58%
+    105deg,
+    transparent 18%,
+    rgb(255 255 255 / 28%) 42%,
+    transparent 64%
   );
+  background-size: 220% 100%;
+  animation: ribbon-sheen 5.5s ease-in-out infinite;
   transform: translateZ(1px);
 }
 
@@ -94,8 +97,15 @@
   width: 48%;
   height: 49%;
   clip-path: polygon(0 0, 53% 0, 100% 62%, 61% 100%);
-  background: linear-gradient(135deg, #fff 4%, #f5f3ff 46%, #d8d2f4 100%);
-  transform: translateZ(8px);
+  border: 1px solid rgb(255 255 255 / 55%);
+  background: linear-gradient(
+    135deg,
+    #fff 0%,
+    #fdfcff 42%,
+    #e8e3ff 76%,
+    #cfc5ff 100%
+  );
+  transform: translateZ(12px);
 }
 
 .ribbonAccent {
@@ -104,32 +114,47 @@
   width: 52%;
   height: 72%;
   clip-path: polygon(55% 0, 100% 0, 37% 100%, 0 75%);
+  border: 1px solid rgb(216 174 255 / 38%);
   background: linear-gradient(
     145deg,
-    #d68cff 0%,
-    #8e45ff 38%,
-    #4424ff 72%,
-    #2b16d9 100%
+    #e1a3ff 0%,
+    #b45cff 28%,
+    #7140ff 58%,
+    #3820f3 100%
   );
-  transform: translateZ(15px);
+  transform: translateZ(19px);
 }
 
-@keyframes mark-turn {
-  from {
-    transform: rotateX(-5deg) rotateY(-14deg);
+@keyframes mark-motion {
+  0%,
+  100% {
+    transform: translateY(4px) rotateX(-3deg) rotateY(-11deg);
   }
-  to {
-    transform: rotateX(-5deg) rotateY(346deg);
+
+  50% {
+    transform: translateY(-7px) rotateX(4deg) rotateY(11deg);
+  }
+}
+
+@keyframes ribbon-sheen {
+  0%,
+  18% {
+    background-position: 120% 0;
+  }
+
+  62%,
+  100% {
+    background-position: -80% 0;
   }
 }
 
 @media (max-width: 47.99rem) {
   .tilt {
-    width: 44%;
+    width: 52%;
   }
 
   .spin {
-    animation-duration: 18s;
+    animation-duration: 9s;
   }
 }
 
@@ -141,6 +166,10 @@
 
   .spin {
     animation: none;
-    transform: rotateX(-4deg) rotateY(-10deg);
+    transform: rotateX(-2deg) rotateY(-6deg);
+  }
+
+  .ribbon::after {
+    animation: none;
   }
 }
