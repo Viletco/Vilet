@@ -6,6 +6,7 @@ import type { ServiceRecord } from "@/content";
 import type { ContactActionState, ContactField } from "@/lib/contact";
 import { Button, Heading, Text } from "@/components/ui";
 import { cn } from "@/lib/cn";
+import { parseContactHandoff } from "@/lib/ai";
 
 const initialState: ContactActionState = { status: "idle" };
 const controlClasses =
@@ -42,6 +43,20 @@ export function ContactForm({
   const statusRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (startedAtRef.current) startedAtRef.current.value = String(Date.now());
+    const handoff = sessionStorage.getItem("vilet-ai-handoff");
+    if (!handoff || !formRef.current) return;
+    sessionStorage.removeItem("vilet-ai-handoff");
+    try {
+      const values = parseContactHandoff(handoff);
+      if (!values) return;
+      for (const name of ["projectSummary", "goals"] as const) {
+        const control = formRef.current.elements.namedItem(name);
+        if (control instanceof HTMLTextAreaElement && values[name])
+          control.value = values[name];
+      }
+    } catch {
+      // Invalid or stale handoff data is discarded without interrupting the form.
+    }
   }, []);
   useEffect(() => {
     if (state.status !== "idle") statusRef.current?.focus();

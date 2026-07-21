@@ -11,3 +11,11 @@ export function proxy(request: NextRequest) {
 
   return response;
 }
+
+// Static assets and metadata do not need hostname-based indexing protection.
+// Preview builds still receive the build-level X-Robots-Tag header.
+export const config = {
+  matcher: [
+    "/((?!_next/static|_next/image|favicon.ico|icon.svg|apple-icon|opengraph-image|twitter-image|manifest.webmanifest|robots.txt|sitemap.xml).*)",
+  ],
+};

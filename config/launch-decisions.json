@@ -1,0 +1,299 @@
+[
+  {
+    "id": "primary-production-hostname",
+    "label": "Primary production hostname",
+    "category": "domain-dns",
+    "status": "unresolved",
+    "requiredForLaunch": true,
+    "owner": "Vilét owner",
+    "selection": null
+  },
+  {
+    "id": "www-redirect-behavior",
+    "label": "www redirect behavior",
+    "category": "domain-dns",
+    "status": "unresolved",
+    "requiredForLaunch": true,
+    "owner": "Vilét owner",
+    "selection": null
+  },
+  {
+    "id": "vercel-production-approval",
+    "label": "Vercel production hosting approval",
+    "category": "infrastructure",
+    "status": "unresolved",
+    "requiredForLaunch": true,
+    "owner": "Vilét owner",
+    "selection": null
+  },
+  {
+    "id": "contact-delivery-provider",
+    "label": "Contact delivery provider",
+    "category": "contact-delivery",
+    "status": "unresolved",
+    "requiredForLaunch": true,
+    "owner": "Vilét owner",
+    "selection": null
+  },
+  {
+    "id": "contact-recipient",
+    "label": "Contact form recipient",
+    "category": "credential",
+    "status": "unresolved",
+    "requiredForLaunch": true,
+    "owner": "Vilét owner",
+    "selection": null
+  },
+  {
+    "id": "contact-sender",
+    "label": "Verified contact form sender",
+    "category": "credential",
+    "status": "unresolved",
+    "requiredForLaunch": true,
+    "owner": "Vilét owner",
+    "selection": null
+  },
+  {
+    "id": "contact-reply-to-behavior",
+    "label": "Contact reply-to behavior",
+    "category": "owner-decision",
+    "status": "unresolved",
+    "requiredForLaunch": true,
+    "owner": "Vilét owner",
+    "selection": null
+  },
+  {
+    "id": "shared-rate-limit-provider",
+    "label": "Shared production rate-limit provider",
+    "category": "rate-limiting",
+    "status": "unresolved",
+    "requiredForLaunch": true,
+    "owner": "Vilét owner",
+    "selection": null
+  },
+  {
+    "id": "privacy-policy-approval",
+    "label": "Privacy policy approval",
+    "category": "legal-approval",
+    "status": "unresolved",
+    "requiredForLaunch": true,
+    "owner": "Vilét owner and legal reviewer",
+    "selection": null
+  },
+  {
+    "id": "terms-page-requirement",
+    "label": "Terms page requirement",
+    "category": "legal-approval",
+    "status": "unresolved",
+    "requiredForLaunch": true,
+    "owner": "Vilét owner and legal reviewer",
+    "selection": null
+  },
+  {
+    "id": "final-favicon-approval",
+    "label": "Final favicon approval",
+    "category": "brand-approval",
+    "status": "unresolved",
+    "requiredForLaunch": true,
+    "owner": "Vilét owner",
+    "selection": null
+  },
+  {
+    "id": "final-social-card-approval",
+    "label": "Final Open Graph and social card approval",
+    "category": "brand-approval",
+    "status": "unresolved",
+    "requiredForLaunch": true,
+    "owner": "Vilét owner",
+    "selection": null
+  },
+  {
+    "id": "footer-contact-destination",
+    "label": "Footer contact destination",
+    "category": "owner-decision",
+    "status": "unresolved",
+    "requiredForLaunch": true,
+    "owner": "Vilét owner",
+    "selection": null
+  },
+  {
+    "id": "social-profile-destinations",
+    "label": "Approved social profile destinations",
+    "category": "optional-post-launch",
+    "status": "unresolved",
+    "requiredForLaunch": false,
+    "owner": "Vilét owner",
+    "selection": null
+  },
+  {
+    "id": "analytics-decision",
+    "label": "Analytics provider decision",
+    "category": "optional-post-launch",
+    "status": "unresolved",
+    "requiredForLaunch": false,
+    "owner": "Vilét owner and legal reviewer",
+    "selection": null
+  },
+  {
+    "id": "search-console-decision",
+    "label": "Google Search Console setup decision",
+    "category": "search-seo",
+    "status": "unresolved",
+    "requiredForLaunch": false,
+    "owner": "Vilét owner",
+    "selection": null
+  },
+  {
+    "id": "portfolio-launch-requirement",
+    "label": "Portfolio evidence required for launch",
+    "category": "portfolio-evidence",
+    "status": "not-required",
+    "requiredForLaunch": false,
+    "owner": "Engineering",
+    "selection": null
+  },
+  {
+    "id": "trust-evidence-launch-requirement",
+    "label": "Client trust evidence required for launch",
+    "category": "trust-evidence",
+    "status": "not-required",
+    "requiredForLaunch": false,
+    "owner": "Engineering",
+    "selection": null
+  },
+  {
+    "id": "final-content-review",
+    "label": "Final approved-content review",
+    "category": "content",
+    "status": "unresolved",
+    "requiredForLaunch": true,
+    "owner": "Vilét owner",
+    "selection": null
+  },
+  {
+    "id": "public-indexing-authorization",
+    "label": "Public indexing authorization",
+    "category": "search-seo",
+    "status": "unresolved",
+    "requiredForLaunch": true,
+    "owner": "Vilét owner",
+    "selection": null
+  },
+  {
+    "id": "production-launch-authorization",
+    "label": "Final production launch authorization",
+    "category": "owner-decision",
+    "status": "unresolved",
+    "requiredForLaunch": true,
+    "owner": "Vilét owner",
+    "selection": null
+  },
+  {
+    "id": "ai-provider-approval",
+    "label": "AI provider approval",
+    "category": "owner-decision",
+    "status": "unresolved",
+    "requiredForLaunch": false,
+    "owner": "Vilét owner",
+    "selection": null
+  },
+  {
+    "id": "ai-model-approval",
+    "label": "AI model approval",
+    "category": "owner-decision",
+    "status": "unresolved",
+    "requiredForLaunch": false,
+    "owner": "Vilét owner",
+    "selection": null
+  },
+  {
+    "id": "ai-privacy-legal-approval",
+    "label": "AI privacy and legal approval",
+    "category": "legal-approval",
+    "status": "unresolved",
+    "requiredForLaunch": false,
+    "owner": "Vilét owner and legal reviewer",
+    "selection": null
+  },
+  {
+    "id": "ai-public-launch-approval",
+    "label": "AI public launch approval",
+    "category": "owner-decision",
+    "status": "unresolved",
+    "requiredForLaunch": false,
+    "owner": "Vilét owner",
+    "selection": null
+  },
+  {
+    "id": "ai-indexing-approval",
+    "label": "AI route indexing approval",
+    "category": "search-seo",
+    "status": "unresolved",
+    "requiredForLaunch": false,
+    "owner": "Vilét owner",
+    "selection": null
+  },
+  {
+    "id": "ai-rate-limit-policy",
+    "label": "AI rate-limit policy",
+    "category": "rate-limiting",
+    "status": "unresolved",
+    "requiredForLaunch": false,
+    "owner": "Vilét owner",
+    "selection": null
+  },
+  {
+    "id": "website-analyzer-availability",
+    "label": "Website Analyzer public availability",
+    "category": "owner-decision",
+    "status": "unresolved",
+    "requiredForLaunch": false,
+    "owner": "Vilét owner",
+    "selection": null
+  },
+  {
+    "id": "website-analyzer-authorization-wording",
+    "label": "Website Analyzer authorization wording",
+    "category": "legal-approval",
+    "status": "unresolved",
+    "requiredForLaunch": false,
+    "owner": "Vilét owner and legal reviewer",
+    "selection": null
+  },
+  {
+    "id": "ai-insights-collection",
+    "label": "AI unanswered-question insights collection",
+    "category": "optional-post-launch",
+    "status": "unresolved",
+    "requiredForLaunch": false,
+    "owner": "Vilét owner and legal reviewer",
+    "selection": null
+  },
+  {
+    "id": "ai-session-storage-decision",
+    "label": "AI explicit handoff session storage",
+    "category": "legal-approval",
+    "status": "unresolved",
+    "requiredForLaunch": false,
+    "owner": "Vilét owner and legal reviewer",
+    "selection": null
+  },
+  {
+    "id": "ai-cost-ceiling",
+    "label": "AI provider cost ceiling",
+    "category": "owner-decision",
+    "status": "unresolved",
+    "requiredForLaunch": false,
+    "owner": "Vilét owner",
+    "selection": null
+  },
+  {
+    "id": "ai-emergency-disable-owner",
+    "label": "AI emergency-disable owner",
+    "category": "owner-decision",
+    "status": "unresolved",
+    "requiredForLaunch": false,
+    "owner": "Vilét owner",
+    "selection": null
+  }
+]

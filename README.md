@@ -14,7 +14,7 @@ The Vilét website uses Next.js with the App Router, TypeScript, Tailwind CSS, a
 
 Requirements:
 
-- A current Node.js LTS release
+- Node.js 20.9 or newer (use a current LTS release)
 - npm
 
 Install dependencies:
@@ -47,6 +47,10 @@ npm run dev
 - `npm run lint` — run ESLint.
 - `npm run format` — format supported files with Prettier.
 - `npm run format:check` — check formatting without modifying files.
+- `npm run typecheck` — run strict TypeScript validation without emitting files.
+- `npm run check:launch` — report unresolved launch decisions and enabled-provider configuration; an unresolved production plan exits nonzero by design.
+- `npm run test:ai` — run lightweight AI configuration, guardrail, workflow, and URL-security tests.
+- `npm run check` — run the complete formatting, lint, type, and production-build gate.
 
 ## Repository conventions
 
@@ -78,5 +82,30 @@ npm run dev
 - [Launch-readiness audit](docs/launch-readiness.md)
 - [Deployment preparation](docs/deployment.md)
 - [Preview deployment preparation](docs/preview-deployment.md)
+- [Vercel preview QA](docs/preview-qa.md)
+- [Production-readiness review](docs/production-readiness.md)
+- [Launch blocker register](docs/launch-blockers.md)
+- [Owner launch decisions](docs/owner-launch-decisions.md)
+- [Environment matrix](docs/environment-matrix.md)
+- [Final launch sequence](docs/final-launch-sequence.md)
+- [Resend activation](docs/resend-activation.md)
+- [Upstash activation](docs/upstash-activation.md)
+- [Domain connection plan](docs/domain-connection-plan.md)
+- [Search Console plan](docs/search-console-plan.md)
+- [Legal approval checklist](docs/legal-approval-checklist.md)
+- [Brand asset approval](docs/brand-asset-approval.md)
+- [Footer and contact plan](docs/footer-contact-plan.md)
 - [Launch checklist](docs/launch-checklist.md)
 - [Initial commit review](docs/initial-commit-review.md)
+- [Vilét AI Consultant](docs/ai-consultant.md)
+- [AI configuration](docs/ai-configuration.md)
+- [AI safety](docs/ai-safety.md)
+- [Website Analyzer](docs/website-analyzer.md)
+- [Project scoping](docs/project-scoping.md)
+- [AI privacy review](docs/ai-privacy-review.md)
+- [AI launch checklist](docs/ai-launch-checklist.md)
+- [AI pre-evaluation audit](docs/ai-pre-evaluation-audit.md)
+- [AI preview cost review](docs/ai-preview-cost-review.md)
+- [AI preview evaluation](docs/ai-preview-evaluation.md)
+- [AI production decision](docs/ai-production-decision.md)
+- [AI operations](docs/ai-operations.md)

@@ -4,4 +4,6 @@
 
 The notice is limited to implemented facts: contact fields, disabled delivery behavior, possible provider involvement after activation, hashed abuse controls, current absence of analytics/advertising cookies, and a non-specific retention explanation. It does not claim regulatory compliance, deletion workflows, encryption guarantees, or a fixed retention period.
 
+It now also records that Vilét AI and website fetching are disabled; no transcript is persistently stored; explicit Contact handoff uses one-time session storage; future provider processing and temporary public-HTML retrieval require approval. See `docs/ai-privacy-review.md`.
+
 Launch remains blocked on an approved privacy contact method, business-owner review, legal review, confirmed Resend/mailbox retention behavior, and a decision about whether Terms are actually needed. No Terms route or footer link was created because the repository lacks sufficient approved business and legal information.

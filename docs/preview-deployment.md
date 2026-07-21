@@ -1,13 +1,13 @@
 # Preview deployment preparation
 
-This repository is prepared for a future Vercel preview, but it has not been imported, connected, or deployed.
+The repository is connected to the Vercel project `vilet`. A protected preview and the temporary public Vercel alias have been verified; the custom production domain remains intentionally unconnected. See `docs/preview-qa.md` for the recorded QA evidence.
 
 ## Import and framework settings
 
-1. In an approved Vercel account, choose **Add New Project** and import the existing `Viletco/Vilet` GitHub repository.
-2. Confirm Vercel detects **Next.js**. Keep the repository root as the root directory.
-3. Use `npm install` as the install command and `npm run build` as the build command. Do not override the standard Next.js output directory.
-4. Keep automatic production-domain assignment separate from preview QA. Do not connect `vilet.co` or change DNS yet.
+1. Keep the existing `Viletco/Vilet` GitHub connection and Next.js framework detection.
+2. Keep the repository root as the root directory, `npm install` as the install command, and `npm run build` as the build command.
+3. Do not override the standard Next.js output directory.
+4. Keep production-domain assignment separate from preview QA. Do not connect `vilet.co` or change DNS until the owner completes the launch decisions.
 
 The repository targets a current Node.js LTS release and commits `package-lock.json`. Vercel previews should build from normal Git branches; `main` should remain the production branch unless the owner selects a different protected workflow.
 
