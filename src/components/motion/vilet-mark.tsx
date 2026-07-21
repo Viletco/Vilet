@@ -1,6 +1,7 @@
 "use client";
 
 import type { PointerEvent } from "react";
+import Image from "next/image";
 
 import styles from "./vilet-mark.module.css";
 
@@ -30,9 +31,17 @@ export function ViletMark() {
     >
       <div className={styles.ambientGlow} />
       <div className={styles.tilt}>
-        <div className={styles.spin}>
-          <div className={`${styles.ribbon} ${styles.ribbonLight}`} />
-          <div className={`${styles.ribbon} ${styles.ribbonAccent}`} />
+        <div className={styles.motion}>
+          <div className={styles.artwork}>
+            <Image
+              src="/brand/vilet-mark.png"
+              alt=""
+              fill
+              priority
+              sizes="(min-width: 1024px) 32vw, 70vw"
+              className={styles.image}
+            />
+          </div>
         </div>
       </div>
     </div>
