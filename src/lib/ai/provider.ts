@@ -25,10 +25,13 @@ class OpenAiProvider implements AiProvider {
         },
         body: JSON.stringify({
           model: this.config.model,
+          store: false,
+          reasoning: { effort: "minimal" },
           instructions: `${input.policy}\nApproved knowledge:\n${input.knowledge}`,
           input: input.messages,
           max_output_tokens: this.config.maxOutputTokens,
           text: {
+            verbosity: "low",
             format: {
               type: "json_schema",
               name: "vilet_guidance",
