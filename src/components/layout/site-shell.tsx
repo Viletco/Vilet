@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 
 import type { SitePath } from "@/content/navigation";
+import { getAiConfig } from "@/lib/ai/config";
 
 import { Footer } from "./footer";
 import { Header } from "./header";
@@ -12,10 +13,12 @@ export interface SiteShellProps {
 }
 
 export function SiteShell({ currentPath, children }: SiteShellProps) {
+  const showAi = getAiConfig().mode === "provider";
+
   return (
     <div className="flex min-h-screen flex-col">
       <SkipLink />
-      <Header currentPath={currentPath} />
+      <Header currentPath={currentPath} showAi={showAi} />
       <main
         id="main-content"
         data-route={currentPath ?? "unmatched"}

@@ -3,7 +3,11 @@
 import { Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
-import { siteNavigation, type SitePath } from "@/content/navigation";
+import {
+  aiNavigationItem,
+  siteNavigation,
+  type SitePath,
+} from "@/content/navigation";
 import { cn } from "@/lib/cn";
 
 import { Button, ButtonLink, TextLink } from "@/components/ui";
@@ -12,15 +16,22 @@ import { Container } from "./container";
 
 export interface MobileNavigationProps {
   currentPath?: SitePath;
+  showAi?: boolean;
 }
 
 const focusableSelector =
   'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
-export function MobileNavigation({ currentPath }: MobileNavigationProps) {
+export function MobileNavigation({
+  currentPath,
+  showAi = false,
+}: MobileNavigationProps) {
   const [open, setOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
+  const navigation = showAi
+    ? [...siteNavigation, aiNavigationItem]
+    : siteNavigation;
 
   useEffect(() => {
     if (!open) return;
@@ -117,7 +128,7 @@ export function MobileNavigation({ currentPath }: MobileNavigationProps) {
           <Container>
             <nav aria-label="Mobile primary navigation">
               <ul className="flex flex-col gap-(--ds-space-sm)">
-                {siteNavigation.map((item) => {
+                {navigation.map((item) => {
                   const current = item.href === currentPath;
 
                   return (
