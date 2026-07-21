@@ -1,0 +1,624 @@
+.visual {
+  position: relative;
+  width: 100%;
+  max-width: 40rem;
+  aspect-ratio: 1.22;
+  margin-inline: auto;
+  isolation: isolate;
+}
+
+.visual::before {
+  position: absolute;
+  inset: 8% 4% 2%;
+  z-index: -2;
+  border-radius: var(--ds-radius-xl);
+  background:
+    linear-gradient(
+      to right,
+      color-mix(in srgb, var(--ds-color-border) 45%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--ds-color-border) 45%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 2.5rem 2.5rem;
+  content: "";
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 22%,
+    black 74%,
+    transparent
+  );
+}
+
+.visual::after {
+  position: absolute;
+  inset: 16% 12% 8%;
+  z-index: -1;
+  border-radius: var(--ds-radius-full);
+  background: color-mix(in srgb, var(--ds-color-accent) 18%, transparent);
+  content: "";
+  filter: blur(4rem);
+  animation: ambient-glow 10s ease-in-out infinite alternate;
+}
+
+.system {
+  position: absolute;
+  inset: 7% 2% 5%;
+  perspective: 75rem;
+}
+
+.primaryPanel,
+.workflowPanel,
+.portalPanel {
+  border: var(--ds-border-width) solid var(--ds-color-border);
+  background: color-mix(
+    in srgb,
+    var(--ds-color-surface-elevated) 95%,
+    transparent
+  );
+  box-shadow: var(--ds-shadow-lg);
+  backdrop-filter: blur(var(--ds-glass-blur));
+}
+
+.primaryPanel {
+  position: absolute;
+  inset: 4% 7% 12% 4%;
+  overflow: hidden;
+  border-radius: var(--ds-radius-lg);
+  animation: panel-drift 9s ease-in-out infinite;
+}
+
+.browserBar {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--ds-space-md);
+  min-height: 2.75rem;
+  padding-inline: var(--ds-space-lg);
+  border-bottom: var(--ds-border-width) solid var(--ds-color-divider);
+  background: var(--ds-color-surface);
+}
+
+.browserDots {
+  display: flex;
+  gap: var(--ds-space-xs);
+}
+
+.browserDots span {
+  width: 0.35rem;
+  aspect-ratio: 1;
+  border-radius: var(--ds-radius-full);
+  background: var(--ds-color-text-muted);
+  opacity: 0.55;
+}
+
+.browserAddress {
+  width: min(72%, 12rem);
+  height: 0.4rem;
+  border-radius: var(--ds-radius-full);
+  background: var(--ds-color-divider);
+}
+
+.connectionStatus,
+.kicker,
+.cardLabel,
+.portalLabel {
+  color: var(--ds-color-text-muted);
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.connectionStatus {
+  color: var(--ds-color-accent);
+}
+
+.productLayout {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr);
+  height: calc(100% - 2.75rem);
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--ds-space-md);
+  padding-block: var(--ds-space-lg);
+  border-right: var(--ds-border-width) solid var(--ds-color-divider);
+  background: color-mix(in srgb, var(--ds-color-surface) 72%, transparent);
+}
+
+.brandMark,
+.portalMark {
+  display: grid;
+  place-items: center;
+  width: 1.4rem;
+  aspect-ratio: 1;
+  border-radius: var(--ds-radius-sm);
+  background: var(--ds-gradient-accent);
+  color: var(--ds-color-background);
+  font-size: 0.65rem;
+  font-weight: 800;
+}
+
+.sidebar > span:not(.brandMark) {
+  width: 0.9rem;
+  height: 0.2rem;
+  border-radius: var(--ds-radius-full);
+  background: var(--ds-color-divider);
+}
+
+.sidebar .sidebarLineStrong {
+  background: var(--ds-color-accent);
+}
+
+.workspace {
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr);
+  gap: var(--ds-space-lg);
+  min-width: 0;
+  padding: var(--ds-space-xl);
+}
+
+.workspaceHeader,
+.activityHeading,
+.panelHeading,
+.portalTopbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.workspaceHeader > div {
+  display: grid;
+  gap: var(--ds-space-sm);
+}
+
+.titleLine,
+.cardLineWide,
+.cardLineShort,
+.portalTitle,
+.portalCopy {
+  display: block;
+  height: 0.38rem;
+  border-radius: var(--ds-radius-full);
+  background: var(--ds-color-text-secondary);
+}
+
+.titleLine {
+  width: 8rem;
+  height: 0.55rem;
+  background: var(--ds-color-text-primary);
+}
+
+.statusPill,
+.liveIndicator {
+  border: var(--ds-border-width) solid
+    color-mix(in srgb, var(--ds-color-accent) 35%, transparent);
+  border-radius: var(--ds-radius-full);
+  background: color-mix(in srgb, var(--ds-color-accent) 10%, transparent);
+  color: var(--ds-color-accent);
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.statusPill {
+  padding: var(--ds-space-sm) var(--ds-space-md);
+}
+
+.systemCards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--ds-space-sm);
+}
+
+.systemCard,
+.activityPanel,
+.portalCard {
+  border: var(--ds-border-width) solid var(--ds-color-divider);
+  border-radius: var(--ds-radius-md);
+  background: color-mix(in srgb, var(--ds-color-card) 88%, transparent);
+}
+
+.systemCard {
+  display: grid;
+  align-content: space-between;
+  gap: var(--ds-space-md);
+  min-height: 4.5rem;
+  padding: var(--ds-space-md);
+}
+
+.cardLineWide {
+  width: 82%;
+  opacity: 0.5;
+}
+
+.cardLineShort {
+  width: 52%;
+  opacity: 0.25;
+}
+
+.signalBars {
+  display: flex;
+  align-items: end;
+  gap: 0.22rem;
+  height: 1.35rem;
+}
+
+.signalBars span {
+  width: 0.26rem;
+  height: 45%;
+  border-radius: var(--ds-radius-full);
+  background: var(--ds-color-accent);
+  opacity: 0.55;
+}
+
+.signalBars span:nth-child(2) {
+  height: 72%;
+}
+
+.signalBars span:nth-child(3) {
+  height: 55%;
+}
+
+.signalBars span:nth-child(4) {
+  height: 92%;
+  opacity: 1;
+}
+
+.progressTrack {
+  height: 0.3rem;
+  overflow: hidden;
+  border-radius: var(--ds-radius-full);
+  background: var(--ds-color-divider);
+}
+
+.progressTrack span {
+  display: block;
+  width: 68%;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--ds-gradient-accent);
+}
+
+.activityPanel {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: var(--ds-space-md);
+  min-height: 0;
+  padding: var(--ds-space-md);
+}
+
+.activityHeading,
+.panelHeading {
+  color: var(--ds-color-text-secondary);
+  font-size: 0.65rem;
+  font-weight: 600;
+}
+
+.liveIndicator {
+  padding: var(--ds-space-xs) var(--ds-space-sm);
+}
+
+.activityGraph {
+  display: flex;
+  align-items: end;
+  gap: var(--ds-space-sm);
+  min-height: 2.25rem;
+  padding-inline: var(--ds-space-sm);
+  border-bottom: var(--ds-border-width) solid var(--ds-color-divider);
+}
+
+.activityGraph span {
+  flex: 1;
+  height: 36%;
+  border-radius: var(--ds-radius-sm) var(--ds-radius-sm) 0 0;
+  background: color-mix(
+    in srgb,
+    var(--ds-color-accent) 28%,
+    var(--ds-color-surface)
+  );
+}
+
+.activityGraph span:nth-child(2) {
+  height: 58%;
+}
+
+.activityGraph span:nth-child(3) {
+  height: 46%;
+}
+
+.activityGraph span:nth-child(4) {
+  height: 76%;
+}
+
+.activityGraph span:nth-child(5) {
+  height: 64%;
+}
+
+.activityGraph span:nth-child(6) {
+  height: 88%;
+  background: var(--ds-color-accent);
+}
+
+.workflowPanel {
+  position: absolute;
+  right: 0;
+  bottom: 2%;
+  z-index: 3;
+  width: 48%;
+  padding: var(--ds-space-lg);
+  border-radius: var(--ds-radius-lg);
+  animation: workflow-drift 8s ease-in-out infinite;
+}
+
+.pulse {
+  width: 0.42rem;
+  aspect-ratio: 1;
+  border-radius: var(--ds-radius-full);
+  background: var(--ds-color-accent);
+  box-shadow: 0 0 0 0
+    color-mix(in srgb, var(--ds-color-accent) 35%, transparent);
+  animation: status-pulse 3s ease-out infinite;
+}
+
+.workflowStages {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--ds-space-md);
+  margin-top: var(--ds-space-lg);
+}
+
+.workflowStage {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: var(--ds-space-sm);
+  color: var(--ds-color-text-muted);
+  font-size: 0.58rem;
+}
+
+.workflowStage:not(:last-child)::after {
+  position: absolute;
+  top: 0.7rem;
+  left: calc(50% + 0.85rem);
+  width: calc(100% - 1.15rem);
+  height: var(--ds-border-width);
+  background: linear-gradient(
+    to right,
+    var(--ds-color-accent),
+    var(--ds-color-divider)
+  );
+  content: "";
+}
+
+.stageNumber {
+  display: grid;
+  z-index: 1;
+  place-items: center;
+  width: 1.4rem;
+  aspect-ratio: 1;
+  border: var(--ds-border-width) solid
+    color-mix(in srgb, var(--ds-color-accent) 45%, transparent);
+  border-radius: var(--ds-radius-full);
+  background: var(--ds-color-surface-elevated);
+  color: var(--ds-color-text-primary);
+  font-size: 0.58rem;
+}
+
+.portalPanel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  display: grid;
+  align-content: start;
+  gap: var(--ds-space-md);
+  width: 27%;
+  min-height: 53%;
+  padding: var(--ds-space-lg);
+  border-radius: var(--ds-radius-lg);
+  animation: portal-drift 10s ease-in-out infinite;
+}
+
+.portalMark {
+  width: 1.15rem;
+  font-size: 0.52rem;
+}
+
+.portalMenu {
+  width: 1rem;
+  height: 0.25rem;
+  border-block: var(--ds-border-width) solid var(--ds-color-text-muted);
+}
+
+.portalTitle {
+  width: 86%;
+  height: 0.48rem;
+  background: var(--ds-color-text-primary);
+}
+
+.portalCopy {
+  width: 67%;
+  opacity: 0.38;
+}
+
+.portalCard {
+  display: grid;
+  gap: var(--ds-space-sm);
+  padding: var(--ds-space-md);
+}
+
+.portalCard span {
+  height: 0.3rem;
+  border-radius: var(--ds-radius-full);
+  background: var(--ds-color-text-muted);
+  opacity: 0.45;
+}
+
+.portalCard span:last-child {
+  width: 62%;
+  opacity: 0.24;
+}
+
+.portalAction {
+  width: 54%;
+  height: 1.1rem;
+  border-radius: var(--ds-radius-sm);
+  background: var(--ds-gradient-accent);
+}
+
+.connectorPrimary,
+.connectorSecondary {
+  position: absolute;
+  z-index: 1;
+  border: var(--ds-border-width) solid
+    color-mix(in srgb, var(--ds-color-accent) 34%, transparent);
+  border-top: 0;
+  border-left: 0;
+  border-radius: 0 0 var(--ds-radius-lg) 0;
+}
+
+.connectorPrimary {
+  right: 18%;
+  bottom: 14%;
+  width: 22%;
+  height: 23%;
+}
+
+.connectorSecondary {
+  bottom: 17%;
+  left: 18%;
+  width: 18%;
+  height: 17%;
+  transform: scaleX(-1);
+}
+
+@keyframes panel-drift {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-0.35rem);
+  }
+}
+
+@keyframes workflow-drift {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-0.5rem);
+  }
+}
+
+@keyframes portal-drift {
+  0%,
+  100% {
+    transform: translateY(-0.2rem);
+  }
+
+  50% {
+    transform: translateY(0.35rem);
+  }
+}
+
+@keyframes status-pulse {
+  70%,
+  100% {
+    box-shadow: 0 0 0 0.45rem transparent;
+  }
+}
+
+@keyframes ambient-glow {
+  to {
+    opacity: 0.58;
+    transform: translateX(4%);
+  }
+}
+
+@media (max-width: 63.99rem) {
+  .visual {
+    max-width: 38rem;
+    aspect-ratio: 1.45;
+  }
+
+  .system {
+    inset: 5% 3% 2%;
+  }
+
+  .primaryPanel {
+    inset: 3% 6% 10% 5%;
+  }
+}
+
+@media (max-width: 35rem) {
+  .visual {
+    aspect-ratio: 1.3;
+  }
+
+  .system {
+    inset: 4% 0 1%;
+  }
+
+  .primaryPanel {
+    inset: 3% 3% 14%;
+  }
+
+  .browserBar {
+    padding-inline: var(--ds-space-md);
+  }
+
+  .connectionStatus,
+  .softwareCard,
+  .portalPanel,
+  .connectorSecondary {
+    display: none;
+  }
+
+  .productLayout {
+    grid-template-columns: 2.4rem minmax(0, 1fr);
+  }
+
+  .workspace {
+    gap: var(--ds-space-md);
+    padding: var(--ds-space-lg);
+  }
+
+  .systemCards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .workflowPanel {
+    right: 2%;
+    width: 62%;
+    padding: var(--ds-space-md);
+  }
+
+  .workflowStages {
+    margin-top: var(--ds-space-md);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .visual::after,
+  .primaryPanel,
+  .workflowPanel,
+  .portalPanel,
+  .pulse {
+    animation: none;
+  }
+}

@@ -8,3 +8,4 @@ export {
   ValuePropositionSection,
   WhyViletSection,
 } from "./homepage-sections";
+export { DigitalProductVisual } from "./digital-product-visual";

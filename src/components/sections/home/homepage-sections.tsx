@@ -21,6 +21,7 @@ import {
   Text,
 } from "@/components/ui";
 import { getIcon } from "@/lib/icon-registry";
+import { DigitalProductVisual } from "./digital-product-visual";
 
 export function HeroSection({ content }: { content: HeroContent }) {
   return (
@@ -69,16 +70,7 @@ export function HeroSection({ content }: { content: HeroContent }) {
               </div>
             )}
           </Stack>
-          {content.visual.kind === "abstract" && (
-            <div
-              aria-hidden="true"
-              className="border-border bg-surface-elevated shadow-glow-soft laptop:aspect-square relative mx-auto aspect-[2/1] w-full max-w-2xl overflow-hidden rounded-lg border opacity-90"
-            >
-              <div className="border-accent/20 absolute inset-(--ds-space-xl) rounded-lg border bg-[linear-gradient(to_right,var(--color-border)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-size-[3rem_3rem]" />
-              <div className="border-accent/30 bg-accent/10 absolute top-1/4 right-1/4 size-1/2 rounded-full border blur-sm" />
-              <div className="border-accent/50 bg-surface shadow-glow-soft absolute inset-1/3 rounded-lg border" />
-            </div>
-          )}
+          {content.visual.kind === "abstract" && <DigitalProductVisual />}
         </div>
       </Container>
     </Section>
