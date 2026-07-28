@@ -3,73 +3,73 @@
     "id": "primary-production-hostname",
     "label": "Primary production hostname",
     "category": "domain-dns",
-    "status": "unresolved",
+    "status": "approved",
     "requiredForLaunch": true,
     "owner": "Vilét owner",
-    "selection": null
+    "selection": "vilet.co"
   },
   {
     "id": "www-redirect-behavior",
     "label": "www redirect behavior",
     "category": "domain-dns",
-    "status": "unresolved",
+    "status": "approved",
     "requiredForLaunch": true,
     "owner": "Vilét owner",
-    "selection": null
+    "selection": "Redirect www.vilet.co permanently to vilet.co"
   },
   {
     "id": "vercel-production-approval",
     "label": "Vercel production hosting approval",
     "category": "infrastructure",
-    "status": "unresolved",
+    "status": "approved",
     "requiredForLaunch": true,
     "owner": "Vilét owner",
-    "selection": null
+    "selection": "Vercel approved as the production host"
   },
   {
     "id": "contact-delivery-provider",
     "label": "Contact delivery provider",
     "category": "contact-delivery",
-    "status": "unresolved",
+    "status": "approved",
     "requiredForLaunch": true,
     "owner": "Vilét owner",
-    "selection": null
+    "selection": "Resend"
   },
   {
     "id": "contact-recipient",
     "label": "Contact form recipient",
     "category": "credential",
-    "status": "unresolved",
+    "status": "approved",
     "requiredForLaunch": true,
     "owner": "Vilét owner",
-    "selection": null
+    "selection": "Approved private recipient; value must be stored only in Vercel"
   },
   {
     "id": "contact-sender",
     "label": "Verified contact form sender",
     "category": "credential",
-    "status": "unresolved",
+    "status": "approved",
     "requiredForLaunch": true,
     "owner": "Vilét owner",
-    "selection": null
+    "selection": "Vilét Website <website@vilet.co>"
   },
   {
     "id": "contact-reply-to-behavior",
     "label": "Contact reply-to behavior",
     "category": "owner-decision",
-    "status": "unresolved",
+    "status": "approved",
     "requiredForLaunch": true,
     "owner": "Vilét owner",
-    "selection": null
+    "selection": "Use the submitter's validated email address"
   },
   {
     "id": "shared-rate-limit-provider",
     "label": "Shared production rate-limit provider",
     "category": "rate-limiting",
-    "status": "unresolved",
+    "status": "approved",
     "requiredForLaunch": true,
     "owner": "Vilét owner",
-    "selection": null
+    "selection": "Upstash Redis"
   },
   {
     "id": "privacy-policy-approval",
@@ -93,28 +93,28 @@
     "id": "final-favicon-approval",
     "label": "Final favicon approval",
     "category": "brand-approval",
-    "status": "unresolved",
+    "status": "approved",
     "requiredForLaunch": true,
     "owner": "Vilét owner",
-    "selection": null
+    "selection": "Keep the current Vilét V favicon"
   },
   {
     "id": "final-social-card-approval",
     "label": "Final Open Graph and social card approval",
     "category": "brand-approval",
-    "status": "unresolved",
+    "status": "approved",
     "requiredForLaunch": true,
     "owner": "Vilét owner",
-    "selection": null
+    "selection": "Keep the current Open Graph and social sharing image"
   },
   {
     "id": "footer-contact-destination",
     "label": "Footer contact destination",
     "category": "owner-decision",
-    "status": "unresolved",
+    "status": "approved",
     "requiredForLaunch": true,
     "owner": "Vilét owner",
-    "selection": null
+    "selection": "/contact"
   },
   {
     "id": "social-profile-destinations",
@@ -165,10 +165,10 @@
     "id": "final-content-review",
     "label": "Final approved-content review",
     "category": "content",
-    "status": "unresolved",
+    "status": "approved",
     "requiredForLaunch": true,
     "owner": "Vilét owner",
-    "selection": null
+    "selection": "Current public website content approved for launch"
   },
   {
     "id": "public-indexing-authorization",
