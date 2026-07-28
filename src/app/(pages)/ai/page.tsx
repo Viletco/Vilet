@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default function AiPage() {
   const config = getAiConfig();
   return (
-    <SiteShell>
+    <SiteShell currentPath="/ai">
       <Section background="hero" aria-labelledby="ai-heading">
         <Container>
           <Stack gap="xl" align="start">

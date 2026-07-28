@@ -5,6 +5,7 @@ export const siteNavigation = [
   { label: "About", href: "/about" },
   { label: "Process", href: "/process" },
   { label: "Contact", href: "/contact" },
+  { label: "Vilét AI", href: "/ai" },
 ] as const;
 
 export type SitePath = (typeof siteNavigation)[number]["href"] | "/privacy";
