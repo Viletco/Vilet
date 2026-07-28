@@ -8,16 +8,15 @@ import { MobileNavigation } from "./mobile-navigation";
 
 export interface HeaderProps {
   currentPath?: SitePath;
-  showAi?: boolean;
 }
 
-export function Header({ currentPath, showAi = false }: HeaderProps) {
+export function Header({ currentPath }: HeaderProps) {
   return (
     <header className="border-divider bg-glass sticky top-0 z-(--ds-z-sticky) h-(--ds-header-height) border-b backdrop-blur-(--ds-glass-blur)">
       <Container className="flex h-full items-center justify-between gap-(--ds-space-xl)">
         <Wordmark linked />
         <div className="flex items-center gap-(--ds-space-xl)">
-          <DesktopNavigation currentPath={currentPath} showAi={showAi} />
+          <DesktopNavigation currentPath={currentPath} />
           <ButtonLink
             href="/contact"
             size="sm"
@@ -25,7 +24,7 @@ export function Header({ currentPath, showAi = false }: HeaderProps) {
           >
             Let&apos;s Talk
           </ButtonLink>
-          <MobileNavigation currentPath={currentPath} showAi={showAi} />
+          <MobileNavigation currentPath={currentPath} />
         </div>
       </Container>
     </header>

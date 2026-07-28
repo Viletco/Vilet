@@ -1,29 +1,17 @@
-import {
-  aiNavigationItem,
-  siteNavigation,
-  type SitePath,
-} from "@/content/navigation";
+import { siteNavigation, type SitePath } from "@/content/navigation";
 import { cn } from "@/lib/cn";
 
 import { TextLink } from "@/components/ui";
 
 export interface DesktopNavigationProps {
   currentPath?: SitePath;
-  showAi?: boolean;
 }
 
-export function DesktopNavigation({
-  currentPath,
-  showAi = false,
-}: DesktopNavigationProps) {
-  const navigation = showAi
-    ? [...siteNavigation, aiNavigationItem]
-    : siteNavigation;
-
+export function DesktopNavigation({ currentPath }: DesktopNavigationProps) {
   return (
     <nav aria-label="Primary navigation" className="laptop:block hidden">
       <ul className="flex items-center gap-(--ds-space-xl)">
-        {navigation.map((item) => {
+        {siteNavigation.map((item) => {
           const current = item.href === currentPath;
 
           return (

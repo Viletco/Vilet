@@ -21,7 +21,7 @@ import {
   Text,
 } from "@/components/ui";
 import { getIcon } from "@/lib/icon-registry";
-import { ViletMark } from "@/components/motion/vilet-mark";
+import { DigitalProductVisual } from "./digital-product-visual";
 
 export function HeroSection({ content }: { content: HeroContent }) {
   return (
@@ -70,14 +70,7 @@ export function HeroSection({ content }: { content: HeroContent }) {
               </div>
             )}
           </Stack>
-          {content.visual.kind === "abstract" && (
-            <div
-              aria-hidden="true"
-              className="border-border bg-surface-elevated shadow-glow-soft laptop:aspect-square relative mx-auto aspect-[2/1] w-full max-w-2xl overflow-hidden rounded-lg border"
-            >
-              <ViletMark />
-            </div>
-          )}
+          {content.visual.kind === "abstract" && <DigitalProductVisual />}
         </div>
       </Container>
     </Section>

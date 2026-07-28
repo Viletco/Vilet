@@ -36,6 +36,14 @@ The homepage remains fluid across all required viewports. The hero stacks before
 
 All homepage sections and FAQ content remain server-rendered. Mobile navigation is still the only homepage client boundary. The hero uses CSS only, no external images or runtime animation were added, icons continue through the registry, and the route remains statically generated.
 
+## Step 25 product-ecosystem visual
+
+The hero's former abstract placeholder has been replaced by `DigitalProductVisual`, an original conceptual composition showing a connected website workspace, automation flow, and client portal. It is intentionally illustrative rather than portfolio evidence: labels are limited to neutral product categories and workflow stages, and the visual contains no clients, projects, metrics, results, testimonials, notifications, or business data.
+
+The component is server-rendered HTML and scoped CSS. It adds no raster asset, remote request, dependency, hydration boundary, or interactive control. Ambient panel drift, glow movement, and the status pulse are CSS-only and stop when `prefers-reduced-motion` is enabled. The composition exposes one concise image description while its internal interface fragments remain outside the normal reading and keyboard order.
+
+Responsive QA keeps the approved copy and CTA order unchanged. Desktop retains the two-column hero; tablet stacks a full composition; narrow mobile removes the portal layer, one secondary system card, and a connector instead of shrinking the entire interface into illegible detail. Featured Work and Trust visibility remain unchanged.
+
 ## Remaining launch blockers
 
 - Featured Work requires approved, published project evidence.
