@@ -1,7 +1,8 @@
 "use client";
 
 import { Menu, X } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 
 import { siteNavigation, type SitePath } from "@/content/navigation";
 import { cn } from "@/lib/cn";
@@ -16,8 +17,14 @@ export interface MobileNavigationProps {
 
 const focusableSelector =
   'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+const subscribeToBrowser = () => () => undefined;
 
 export function MobileNavigation({ currentPath }: MobileNavigationProps) {
+  const mounted = useSyncExternalStore(
+    subscribeToBrowser,
+    () => true,
+    () => false,
+  );
   const [open, setOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
@@ -94,62 +101,66 @@ export function MobileNavigation({ currentPath }: MobileNavigationProps) {
         {open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
       </Button>
 
-      <div
-        data-mobile-navigation-overlay
-        aria-hidden={!open}
-        inert={!open}
-        className={cn(
-          "bg-overlay fixed inset-0 top-(--ds-header-height) z-(--ds-z-overlay) overflow-hidden opacity-0 transition-opacity duration-(--ds-motion-modal) ease-(--ds-ease-standard) motion-reduce:transition-none",
-          open ? "pointer-events-auto opacity-100" : "pointer-events-none",
-        )}
-      >
-        <div
-          ref={panelRef}
-          id="mobile-navigation"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Mobile navigation"
-          className={cn(
-            "border-border bg-background ml-auto h-full w-(--ds-mobile-menu-width) overflow-y-auto border-l py-(--ds-space-2xl) shadow-lg transition-transform duration-(--ds-motion-modal) ease-(--ds-ease-emphasized) motion-reduce:transition-none",
-            open ? "translate-x-0" : "translate-x-full",
-          )}
-        >
-          <Container>
-            <nav aria-label="Mobile primary navigation">
-              <ul className="flex flex-col gap-(--ds-space-sm)">
-                {siteNavigation.map((item) => {
-                  const current = item.href === currentPath;
-
-                  return (
-                    <li key={item.href}>
-                      <TextLink
-                        href={item.href}
-                        variant="navigation"
-                        aria-current={current ? "page" : undefined}
-                        onClick={() => setOpen(false)}
-                        className={cn(
-                          "type-heading-4 block rounded-md px-(--ds-space-md) py-(--ds-space-lg)",
-                          current && "bg-surface text-text-primary",
-                        )}
-                      >
-                        {item.label}
-                      </TextLink>
-                    </li>
-                  );
-                })}
-              </ul>
-            </nav>
-            <ButtonLink
-              href="/contact"
-              fullWidth
-              className="mt-(--ds-space-2xl)"
-              onClick={() => setOpen(false)}
+      {mounted &&
+        createPortal(
+          <div
+            data-mobile-navigation-overlay
+            aria-hidden={!open}
+            inert={!open}
+            className={cn(
+              "bg-overlay fixed inset-0 top-(--ds-header-height) z-(--ds-z-overlay) overflow-hidden opacity-0 transition-opacity duration-(--ds-motion-modal) ease-(--ds-ease-standard) motion-reduce:transition-none",
+              open ? "pointer-events-auto opacity-100" : "pointer-events-none",
+            )}
+          >
+            <div
+              ref={panelRef}
+              id="mobile-navigation"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Mobile navigation"
+              className={cn(
+                "border-border bg-background ml-auto h-full w-(--ds-mobile-menu-width) overflow-y-auto border-l py-(--ds-space-2xl) shadow-lg transition-transform duration-(--ds-motion-modal) ease-(--ds-ease-emphasized) motion-reduce:transition-none",
+                open ? "translate-x-0" : "translate-x-full",
+              )}
             >
-              Let&apos;s Talk
-            </ButtonLink>
-          </Container>
-        </div>
-      </div>
+              <Container>
+                <nav aria-label="Mobile primary navigation">
+                  <ul className="flex flex-col gap-(--ds-space-sm)">
+                    {siteNavigation.map((item) => {
+                      const current = item.href === currentPath;
+
+                      return (
+                        <li key={item.href}>
+                          <TextLink
+                            href={item.href}
+                            variant="navigation"
+                            aria-current={current ? "page" : undefined}
+                            onClick={() => setOpen(false)}
+                            className={cn(
+                              "type-heading-4 block rounded-md px-(--ds-space-md) py-(--ds-space-lg)",
+                              current && "bg-surface text-text-primary",
+                            )}
+                          >
+                            {item.label}
+                          </TextLink>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </nav>
+                <ButtonLink
+                  href="/contact"
+                  fullWidth
+                  className="mt-(--ds-space-2xl)"
+                  onClick={() => setOpen(false)}
+                >
+                  Let&apos;s Talk
+                </ButtonLink>
+              </Container>
+            </div>
+          </div>,
+          document.body,
+        )}
     </div>
   );
 }
