@@ -9,14 +9,15 @@ Vilét AI is optional and disabled. Its unresolved decisions do not block the ex
 ## Business approvals
 
 - [ ] **Owner approval:** production branch and launch date
-- [ ] **Owner approval:** verified sender, recipient, and public privacy contact
-- [ ] **Blocked:** approved legal/business information for any Terms decision
+- [ ] **Owner approval:** verified sender and recipient
+- [x] **External account:** `privacy@vilet.co` forwarding receipt verified on August 2, 2026
+- [x] **Legal:** Privacy Policy and public Terms approved by a qualified attorney on August 2, 2026
 
 ## Content
 
 - [x] Production page copy contains no fabricated proof or destinations
 - [x] Work uses the approved evidence-safe empty state
-- [ ] **Owner approval:** final content review
+- [x] **Owner approval:** final content and design approved on August 2, 2026
 
 ## Contact delivery
 
@@ -29,10 +30,12 @@ Vilét AI is optional and disabled. Its unresolved decisions do not block the ex
 
 ## Legal and privacy
 
-- [x] Factual starter privacy route is noindex
+- [x] Approved Privacy Policy remains noindex until public indexing authorization
+- [x] Approved Terms is linked in the footer but remains noindex and excluded from the sitemap until public indexing authorization
 - [x] No unsupported compliance or retention claims were added
-- [ ] **Owner/legal approval:** privacy notice and contact method
-- [ ] **Owner/legal decision:** whether Terms are required
+- [x] **Owner/legal approval:** privacy notice and contact method
+- [x] **Owner/legal decision:** Terms are required and approved for public navigation
+- [x] **Owner/legal confirmation:** Caiden Sloan, doing business as Vilét
 
 ## Brand assets
 

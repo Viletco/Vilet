@@ -50,7 +50,10 @@ Do not move the entire header or shell behind a client boundary.
 
 ## Footer
 
-`Footer` contains the Vilét wordmark, tagline, shared public navigation, current-year copyright, and the factual privacy-draft link. Email and social destinations remain absent until verified and approved.
+`Footer` contains the Vilét wordmark, tagline, shared public navigation,
+current-year copyright, and the Privacy Policy and Terms links. Both legal pages
+remain noindex until public indexing authorization is recorded.
+Social destinations remain absent until verified and approved.
 
 ## Page layout
 
@@ -78,7 +81,7 @@ Global CSS enables smooth scrolling and sticky-header anchor offsets. The existi
 ## Route strategy
 
 - `(home)` contains `/` and its typed site-shell layout.
-- `(pages)` contains the static Services, Work, About, Process, Contact, and noindex Privacy routes.
+- `(pages)` contains Services, Work, About, Process, Contact, and the approved noindex Privacy and Terms routes.
 - `dev/components` remains outside both public shell groups and resolves to not-found in production.
 
 Unknown routes use the branded, noindex 404 experience. Unknown project slugs also return 404, and the project route generates no paths while the approved collection is empty.

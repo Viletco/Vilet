@@ -8,4 +8,5 @@ export const siteNavigation = [
   { label: "Vilét AI", href: "/ai" },
 ] as const;
 
-export type SitePath = (typeof siteNavigation)[number]["href"] | "/privacy";
+export type SitePath =
+  (typeof siteNavigation)[number]["href"] | "/privacy" | "/terms";

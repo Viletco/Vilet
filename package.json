@@ -15,7 +15,8 @@
     "format:check": "prettier --check .",
     "check:launch": "node scripts/check-launch.mjs",
     "test:ai": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types --test tests/ai/*.test.ts",
-    "check": "npm run format:check && npm run lint && npm run typecheck && npm run build"
+    "test:privacy": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types --test tests/privacy-policy.test.ts",
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm run test:privacy && npm run build"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",

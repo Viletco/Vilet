@@ -30,6 +30,8 @@ Rollback by redeploying the last known-good commit or using Vercel's previous de
 
 The `Viletco/Vilet` repository is connected to the Vercel project `vilet`; see
 `preview-qa.md` for the hosted QA record. Remaining blockers are no approved
-provider credentials or destinations, no production-safe shared rate limiter, no
-final brand approval, no approved privacy contact/legal review, no domain or DNS
-connection, and no published portfolio evidence.
+provider credentials or destinations, no production-safe shared rate limiter,
+pending legal review, no domain or DNS connection, and no published portfolio
+evidence. The legal operator is recorded as Caiden Sloan, doing business as
+Vilét. The `privacy@vilet.co` forwarding path was
+verified by the Vilét owner on August 2, 2026.
