@@ -7,11 +7,19 @@
 - Route-level metadata had no real social asset. File-based Open Graph and Twitter image routes now generate a real 1200×630 asset with system typography.
 - Security headers were absent. Narrow production-aware headers are now configured and documented.
 - `/dev/components` was already noindex and returns not-found in production; it remains excluded from sitemap and robots.
-- The footer had no approved legal destination. It now links only to the factual, noindex privacy draft.
+- The footer links to the approved Privacy Policy and Terms. Both remain noindex,
+  and Terms remains absent from sitemap output, until public indexing is
+  authorized.
 - No complete verified Organization facts exist, so JSON-LD remains disabled.
 
 ## Content, links, and storage
 
-The approved Work empty state remains. There are no published projects, project paths, testimonials, metrics, client logos, trust evidence, social destinations, email links, phone numbers, external images, analytics, tracking scripts, embeds, cookies, localStorage, or sessionStorage usage. No cookie banner is justified for the current implementation.
+The approved Work empty state remains. There are no published projects, project
+paths, testimonials, metrics, client logos, trust evidence, social destinations,
+phone numbers, external images, analytics, tracking scripts, advertising embeds,
+cookies, or localStorage usage. The public privacy email is a non-secret mailto
+link. Explicit AI-to-Contact handoff uses sessionStorage and deletes the value
+when Contact reads it. No cookie banner is justified for the current
+implementation.
 
 The launch asset, privacy notice, contact provider activation, and legal decisions remain provisional or blocked as identified in the launch checklist.

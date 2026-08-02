@@ -12,12 +12,14 @@ Complete this worksheet before authorizing production. Record approved outcomes 
 - [ ] **Sender:** provide a sender on a verified domain privately: __________
 - [ ] **Reply-to:** use the submitter's validated email or a fixed mailbox: __________
 - [ ] **Rate limiting:** approve Upstash Redis for shared production limiting or explicitly accept another reviewed approach: __________
-- [ ] **Privacy:** legal/owner approval recorded: reviewer/date __________
-- [ ] **Terms:** required for launch / not required / deferred by legal: __________
+- [x] **Privacy:** approved without further changes by a qualified attorney on August 2, 2026
+- [x] **Privacy contact:** `privacy@vilet.co` forwarding receipt verified by the Vilét owner on August 2, 2026
+- [x] **Legal operator:** Caiden Sloan, doing business as Vilét; Vilét is not currently a registered business entity
+- [x] **Terms:** required and approved for public footer navigation by a qualified attorney on August 2, 2026
 - [ ] **Favicon:** approve current asset or supply final asset: __________
 - [ ] **Social card:** approve current Open Graph/Twitter image or supply final asset: __________
 - [ ] **Footer contact:** keep `/contact` or provide another approved destination: __________
-- [ ] **Content:** approve all public copy and confirm it contains no unsupported claims: reviewer/date __________
+- [x] **Content:** all visible public copy and design approved by the Vilét owner on August 2, 2026
 - [ ] **Indexing:** authorize public indexing after the canonical domain is live: yes / no
 - [ ] **Launch:** final production authorization: approver/date __________
 

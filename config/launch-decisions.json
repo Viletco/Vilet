@@ -75,19 +75,37 @@
     "id": "privacy-policy-approval",
     "label": "Privacy policy approval",
     "category": "legal-approval",
-    "status": "unresolved",
+    "status": "approved",
     "requiredForLaunch": true,
     "owner": "Vilét owner and legal reviewer",
-    "selection": null
+    "selection": "Approved without further changes by a qualified attorney on August 2, 2026"
+  },
+  {
+    "id": "privacy-contact-operational",
+    "label": "Public privacy mailbox or forwarding verification",
+    "category": "external-account",
+    "status": "approved",
+    "requiredForLaunch": true,
+    "owner": "Vilét owner",
+    "selection": "privacy@vilet.co forwarding receipt verified by the Vilét owner on August 2, 2026"
+  },
+  {
+    "id": "legal-operator-identity",
+    "label": "Legal identity of the website operator",
+    "category": "legal-approval",
+    "status": "approved",
+    "requiredForLaunch": true,
+    "owner": "Vilét owner and legal reviewer",
+    "selection": "Caiden Sloan, doing business as Vilét; Vilét is not currently a registered business entity"
   },
   {
     "id": "terms-page-requirement",
     "label": "Terms page requirement",
     "category": "legal-approval",
-    "status": "unresolved",
+    "status": "approved",
     "requiredForLaunch": true,
     "owner": "Vilét owner and legal reviewer",
-    "selection": null
+    "selection": "Terms required and approved for public footer navigation by a qualified attorney on August 2, 2026"
   },
   {
     "id": "final-favicon-approval",
@@ -168,7 +186,7 @@
     "status": "approved",
     "requiredForLaunch": true,
     "owner": "Vilét owner",
-    "selection": "Current public website content approved for launch"
+    "selection": "All visible website content and design approved by the Vilét owner on August 2, 2026"
   },
   {
     "id": "public-indexing-authorization",

@@ -14,13 +14,13 @@ the same validated server configuration used by those features. This prevents a
 deployment from publishing “disabled” wording when that feature is active. No
 environment value or credential is rendered.
 
-The owner-approved personal recipient is private operational configuration, not
-approval to publish that address for privacy requests. The public policy links
-to `/contact`; legal review must decide whether a directly published privacy
-email is required. See `docs/privacy-policy-review.md` and
-`docs/ai-privacy-review.md`.
+The public privacy contact is centralized in `src/config/legal.ts` as
+`privacy@vilet.co`. This is public, non-secret configuration, but its mailbox or
+forwarding path was verified by the Vilét owner on August 2, 2026. The Contact page is presented as an
+additional privacy-request method only when delivery is enabled. See
+`docs/privacy-policy-review.md` and `docs/ai-privacy-review.md`.
 
 To make the page indexable later, obtain and record owner and legal approval,
-approve the public privacy contact, update the policy if provider behavior has
+verify the public privacy mailbox, update the policy if provider behavior has
 changed, then remove the `robots` noindex directive from
 `src/app/(pages)/privacy/page.tsx` in a separately reviewed change.

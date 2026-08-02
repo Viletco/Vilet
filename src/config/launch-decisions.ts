@@ -47,6 +47,8 @@ const expectedDecisionIds = [
   "contact-reply-to-behavior",
   "shared-rate-limit-provider",
   "privacy-policy-approval",
+  "privacy-contact-operational",
+  "legal-operator-identity",
   "terms-page-requirement",
   "final-favicon-approval",
   "final-social-card-approval",

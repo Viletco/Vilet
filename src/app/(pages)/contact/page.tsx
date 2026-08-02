@@ -5,6 +5,7 @@ import { Container, Grid, Section, Stack } from "@/components/layout";
 import { Card, Eyebrow, Heading, SectionHeading, Text } from "@/components/ui";
 import { getPublishedServices, services } from "@/content";
 import { defaultOpenGraphImages } from "@/lib/metadata";
+import { getContactConfig } from "@/lib/contact/config";
 
 import { submitContact } from "./actions";
 
@@ -48,6 +49,8 @@ const nextSteps = [
 ] as const;
 
 export default function ContactPage() {
+  const deliveryEnabled = getContactConfig().delivery.mode === "resend";
+
   return (
     <>
       <Section background="hero" aria-labelledby="contact-heading">
@@ -86,9 +89,9 @@ export default function ContactPage() {
                   Delivery status
                 </Heading>
                 <Text className="mt-(--ds-space-sm)">
-                  The form currently validates submissions without sending or
-                  storing them. Delivery will be enabled only after an approved
-                  provider is connected.
+                  {deliveryEnabled
+                    ? "The form is enabled. A successful submission is delivered through the configured email provider, and the form reports whether delivery succeeded."
+                    : "The form validates submissions without sending them. It reports that delivery is unavailable and does not claim that an inquiry was delivered."}
                 </Text>
               </Card>
             </Stack>
