@@ -88,7 +88,7 @@ export function MobileNavigation({ currentPath }: MobileNavigationProps) {
   }, [open]);
 
   return (
-    <div className="laptop:hidden">
+    <div className="desktop:hidden">
       <Button
         ref={triggerRef}
         variant="ghost"
@@ -127,7 +127,9 @@ export function MobileNavigation({ currentPath }: MobileNavigationProps) {
                 <nav aria-label="Mobile primary navigation">
                   <ul className="flex flex-col gap-(--ds-space-sm)">
                     {siteNavigation.map((item) => {
-                      const current = item.href === currentPath;
+                      const current =
+                        item.href === currentPath ||
+                        currentPath?.startsWith(`${item.href}/`);
 
                       return (
                         <li key={item.href}>

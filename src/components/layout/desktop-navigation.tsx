@@ -9,10 +9,15 @@ export interface DesktopNavigationProps {
 
 export function DesktopNavigation({ currentPath }: DesktopNavigationProps) {
   return (
-    <nav aria-label="Primary navigation" className="laptop:block hidden">
-      <ul className="flex items-center gap-(--ds-space-xl)">
+    <nav
+      aria-label="Primary navigation"
+      className="desktop:block hidden justify-self-center"
+    >
+      <ul className="flex items-center gap-(--ds-space-lg)">
         {siteNavigation.map((item) => {
-          const current = item.href === currentPath;
+          const current =
+            item.href === currentPath ||
+            currentPath?.startsWith(`${item.href}/`);
 
           return (
             <li key={item.href}>

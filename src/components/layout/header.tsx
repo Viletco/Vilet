@@ -14,14 +14,16 @@ export function Header({ currentPath }: HeaderProps) {
   return (
     <header className="pointer-events-none sticky top-0 z-(--ds-z-sticky) h-(--ds-header-height) pt-(--ds-space-md)">
       <Container>
-        <div className="border-border bg-glass pointer-events-auto flex h-16 items-center justify-between gap-(--ds-space-xl) rounded-xl border px-(--ds-space-lg) shadow-md backdrop-blur-(--ds-glass-blur)">
-          <Wordmark linked />
-          <div className="flex items-center gap-(--ds-space-xl)">
-            <DesktopNavigation currentPath={currentPath} />
+        <div className="border-border bg-glass desktop:grid desktop:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] desktop:gap-(--ds-space-xl) pointer-events-auto flex h-16 items-center justify-between rounded-xl border px-(--ds-space-lg) shadow-md backdrop-blur-(--ds-glass-blur)">
+          <div className="flex min-w-0 justify-start">
+            <Wordmark linked />
+          </div>
+          <DesktopNavigation currentPath={currentPath} />
+          <div className="flex min-w-0 items-center justify-end">
             <ButtonLink
               href="/contact"
               size="sm"
-              className="laptop:inline-flex hidden"
+              className="desktop:inline-flex hidden"
             >
               Discuss a project
             </ButtonLink>
