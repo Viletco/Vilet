@@ -19,6 +19,26 @@ function DemoChrome({ label }: { label: string }) {
   );
 }
 
+function MetricSparkline({ index }: { index: number }) {
+  const patterns = [
+    [35, 48, 42, 66, 58, 82],
+    [48, 42, 55, 52, 69, 76],
+    [30, 38, 54, 46, 68, 88],
+    [74, 76, 75, 78, 77, 79],
+  ] as const;
+  return (
+    <span aria-hidden="true" className="ml-auto flex h-7 items-end gap-0.5">
+      {patterns[index % patterns.length].map((height, barIndex) => (
+        <span
+          key={`${height}-${barIndex}`}
+          className="bg-accent/50 last:bg-accent w-1 rounded-t-sm"
+          style={{ height: `${height}%` }}
+        />
+      ))}
+    </span>
+  );
+}
+
 function TrendChart({ detailed = false }: { detailed?: boolean }) {
   const { chart } = illustrativeBusinessData;
   return (
@@ -102,7 +122,7 @@ function InsightPanel() {
     ["Recommended next action", insight.action],
   ] as const;
   return (
-    <div className="border-accent/30 background-card-glow bg-card rounded-lg border p-(--ds-space-lg)">
+    <div className="border-accent/30 background-card-glow bg-card rounded-md border p-(--ds-space-lg)">
       <div className="flex items-center justify-between gap-(--ds-space-md)">
         <span className="type-caption text-accent uppercase">
           Vilét interpretation
@@ -128,6 +148,82 @@ function InsightPanel() {
   );
 }
 
+function ChannelPerformance() {
+  return (
+    <div className="border-divider bg-surface rounded-md border p-(--ds-space-lg)">
+      <div className="flex items-center justify-between gap-(--ds-space-md)">
+        <p className="type-body-sm font-semibold">Channel performance</p>
+        <span className="type-caption text-text-muted">Share of sessions</span>
+      </div>
+      <ul className="mt-(--ds-space-lg) space-y-(--ds-space-md)">
+        {illustrativeBusinessData.channels.map((channel) => (
+          <li key={channel.label}>
+            <div className="type-caption flex items-center justify-between gap-(--ds-space-md)">
+              <span className="text-text-secondary">{channel.label}</span>
+              <span>
+                <span className="text-text-primary">{channel.value}</span>{" "}
+                <span
+                  className={
+                    channel.change.startsWith("−")
+                      ? "text-warning"
+                      : "text-success"
+                  }
+                >
+                  {channel.change}
+                </span>
+              </span>
+            </div>
+            <div className="bg-divider mt-(--ds-space-sm) h-1 overflow-hidden rounded-full">
+              <div
+                className="bg-accent h-full rounded-full"
+                style={{ width: channel.width }}
+              />
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function SignalList() {
+  return (
+    <div className="border-divider bg-surface rounded-md border p-(--ds-space-lg)">
+      <div className="flex items-center justify-between gap-(--ds-space-md)">
+        <p className="type-body-sm font-semibold">Issues and opportunities</p>
+        <span className="type-caption text-text-muted">Sample signals</span>
+      </div>
+      <ul className="mt-(--ds-space-md)">
+        {illustrativeBusinessData.signals.map((signal) => (
+          <li
+            key={signal.label}
+            className="border-divider grid grid-cols-[1fr_auto] gap-(--ds-space-md) border-b py-(--ds-space-md) last:border-0"
+          >
+            <div>
+              <p className="type-body-sm text-text-primary">{signal.label}</p>
+              <p className="type-caption text-text-muted mt-(--ds-space-xs)">
+                {signal.detail}
+              </p>
+            </div>
+            <span
+              className={cn(
+                "type-caption self-start rounded-full border px-(--ds-space-sm) py-(--ds-space-xs)",
+                signal.status === "Healthy"
+                  ? "border-success/40 text-success"
+                  : signal.status === "Review"
+                    ? "border-warning/40 text-warning"
+                    : "border-accent/40 text-accent",
+              )}
+            >
+              {signal.status}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 function OverviewDemo({ detailed = false }: { detailed?: boolean }) {
   const data = illustrativeBusinessData;
   return (
@@ -143,21 +239,26 @@ function OverviewDemo({ detailed = false }: { detailed?: boolean }) {
           {data.period}
         </span>
       </div>
-      <dl className="tablet:grid-cols-4 bg-divider mt-(--ds-space-xl) grid grid-cols-2 gap-px overflow-hidden rounded-md">
-        {data.metrics.map((metric) => (
-          <div key={metric.label} className="bg-surface p-(--ds-space-lg)">
+      <dl className="tablet:grid-cols-4 bg-divider mt-(--ds-space-lg) grid grid-cols-2 gap-px overflow-hidden rounded-md">
+        {data.metrics.map((metric, index) => (
+          <div key={metric.label} className="bg-surface p-(--ds-space-md)">
             <dt className="type-caption text-text-muted">{metric.label}</dt>
-            <dd className="type-heading-4 mt-(--ds-space-sm)">
-              {metric.value}
-            </dd>
-            <dd
-              className={cn(
-                "type-caption mt-(--ds-space-xs)",
-                metric.direction === "up" ? "text-success" : "text-text-muted",
-              )}
-            >
-              {metric.change}
-            </dd>
+            <div className="mt-(--ds-space-sm) flex items-end gap-(--ds-space-sm)">
+              <div>
+                <dd className="type-heading-4">{metric.value}</dd>
+                <dd
+                  className={cn(
+                    "type-caption mt-(--ds-space-xs)",
+                    metric.direction === "up"
+                      ? "text-success"
+                      : "text-text-muted",
+                  )}
+                >
+                  {metric.change}
+                </dd>
+              </div>
+              <MetricSparkline index={index} />
+            </div>
           </div>
         ))}
       </dl>
@@ -167,14 +268,30 @@ function OverviewDemo({ detailed = false }: { detailed?: boolean }) {
           detailed && "laptop:grid-cols-[1.35fr_0.65fr]",
         )}
       >
-        <div className="border-divider bg-surface rounded-lg border p-(--ds-space-lg)">
-          <div className="mb-(--ds-space-lg) flex items-center justify-between">
-            <p className="type-body-sm font-semibold">Revenue trend</p>
-            <span className="type-caption text-success">+12.4%</span>
+        <div className="border-divider bg-surface rounded-md border p-(--ds-space-lg)">
+          <div className="mb-(--ds-space-md) flex items-center justify-between gap-(--ds-space-md)">
+            <div>
+              <p className="type-body-sm font-semibold">Revenue performance</p>
+              <p className="type-caption text-text-muted mt-(--ds-space-xs)">
+                Current period vs previous period
+              </p>
+            </div>
+            <span className="type-caption border-success/30 bg-success/10 text-success rounded-full border px-(--ds-space-sm) py-(--ds-space-xs)">
+              +12.4%
+            </span>
           </div>
           <TrendChart detailed={detailed} />
         </div>
         <InsightPanel />
+      </div>
+      <div
+        className={cn(
+          "mt-(--ds-space-xl) grid gap-(--ds-space-xl)",
+          detailed && "laptop:grid-cols-2",
+        )}
+      >
+        <ChannelPerformance />
+        {detailed && <SignalList />}
       </div>
     </>
   );
@@ -193,16 +310,19 @@ function OperationsDemo() {
         </div>
         <span className="type-caption text-success">Systems normal</span>
       </div>
-      <dl className="tablet:grid-cols-3 bg-divider mt-(--ds-space-xl) grid gap-px overflow-hidden rounded-md">
+      <dl className="tablet:grid-cols-3 bg-divider mt-(--ds-space-lg) grid gap-px overflow-hidden rounded-md">
         {data.summary.map((item) => (
-          <div key={item.label} className="bg-surface p-(--ds-space-lg)">
+          <div key={item.label} className="bg-surface p-(--ds-space-md)">
             <dt className="type-caption text-text-muted">{item.label}</dt>
             <dd className="type-heading-4 mt-(--ds-space-sm)">{item.value}</dd>
+            <dd className="type-caption text-text-muted mt-(--ds-space-xs)">
+              {item.detail}
+            </dd>
           </div>
         ))}
       </dl>
       <div className="laptop:grid-cols-[1.1fr_0.9fr] mt-(--ds-space-xl) grid gap-(--ds-space-xl)">
-        <div className="border-divider bg-surface rounded-lg border p-(--ds-space-lg)">
+        <div className="border-divider bg-surface rounded-md border p-(--ds-space-lg)">
           <p className="type-body-sm font-semibold">Automated lead workflow</p>
           <ol className="mt-(--ds-space-lg) grid gap-(--ds-space-sm)">
             {data.stages.map((stage, index) => (
@@ -230,20 +350,27 @@ function OperationsDemo() {
             ))}
           </ol>
         </div>
-        <div className="border-divider bg-surface rounded-lg border p-(--ds-space-lg)">
-          <p className="type-body-sm font-semibold">Recent activity</p>
-          <ul className="mt-(--ds-space-lg) space-y-(--ds-space-lg)">
+        <div className="border-divider bg-surface rounded-md border p-(--ds-space-lg)">
+          <div className="flex items-center justify-between">
+            <p className="type-body-sm font-semibold">Opportunity queue</p>
+            <span className="type-caption text-text-muted">Updated now</span>
+          </div>
+          <ul className="mt-(--ds-space-md)">
             {data.activity.map((item) => (
-              <li key={item.name}>
+              <li
+                key={item.name}
+                className="border-divider border-b py-(--ds-space-md) first:pt-0 last:border-0 last:pb-0"
+              >
                 <div className="flex justify-between gap-(--ds-space-md)">
                   <span className="type-body-sm">{item.name}</span>
-                  <span className="type-caption text-accent">
+                  <span className="type-caption border-accent/30 text-accent rounded-full border px-(--ds-space-sm) py-(--ds-space-xs)">
                     {item.status}
                   </span>
                 </div>
-                <p className="type-caption text-text-muted mt-(--ds-space-xs)">
-                  Owner · {item.owner}
-                </p>
+                <div className="type-caption text-text-muted mt-(--ds-space-xs) flex justify-between gap-(--ds-space-md)">
+                  <span>Owner · {item.owner}</span>
+                  <span>{item.updated}</span>
+                </div>
               </li>
             ))}
           </ul>

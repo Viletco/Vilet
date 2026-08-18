@@ -22,9 +22,32 @@ export const illustrativeBusinessData = {
     labels: ["May 6", "May 13", "May 20", "May 27", "Jun 3", "Jun 10"],
   },
   channels: [
-    { label: "Organic search", value: "38%", width: "78%" },
-    { label: "Direct", value: "27%", width: "56%" },
-    { label: "Paid search", value: "21%", width: "44%" },
+    { label: "Organic search", value: "38%", change: "+8.2%", width: "78%" },
+    { label: "Direct", value: "27%", change: "+2.1%", width: "56%" },
+    { label: "Paid search", value: "21%", change: "−3.4%", width: "44%" },
+    { label: "Referral", value: "14%", change: "+1.7%", width: "30%" },
+  ],
+  signals: [
+    {
+      label: "Organic traffic",
+      detail: "Growth across high-intent pages",
+      status: "Opportunity",
+    },
+    {
+      label: "Checkout conversion",
+      detail: "Below the previous 30-day period",
+      status: "Review",
+    },
+    {
+      label: "Paid acquisition",
+      detail: "Cost per qualified lead increased",
+      status: "Watch",
+    },
+    {
+      label: "Website uptime",
+      detail: "No incidents detected in sample period",
+      status: "Healthy",
+    },
   ],
   insight: {
     changed:
@@ -38,9 +61,9 @@ export const illustrativeWorkflowData = {
   disclosure: "Example interface · Sample workflow",
   title: "Lead operations",
   summary: [
-    { label: "Open opportunities", value: "18" },
-    { label: "Automation runs", value: "1,284" },
-    { label: "Pipeline", value: "$142k" },
+    { label: "Open opportunities", value: "18", detail: "6 need review" },
+    { label: "Automation runs", value: "1,284", detail: "99.2% successful" },
+    { label: "Pipeline", value: "$142k", detail: "+9.8% this period" },
   ],
   stages: [
     { label: "New lead", status: "complete" },
@@ -50,8 +73,29 @@ export const illustrativeWorkflowData = {
     { label: "Update CRM", status: "queued" },
   ],
   activity: [
-    { name: "Website inquiry", owner: "Jordan", status: "Qualified" },
-    { name: "Software consultation", owner: "Avery", status: "Discovery" },
-    { name: "Workflow review", owner: "Morgan", status: "New" },
+    {
+      name: "Website inquiry",
+      owner: "Jordan",
+      status: "Qualified",
+      updated: "8m ago",
+    },
+    {
+      name: "Software consultation",
+      owner: "Avery",
+      status: "Discovery",
+      updated: "24m ago",
+    },
+    {
+      name: "Workflow review",
+      owner: "Morgan",
+      status: "New",
+      updated: "1h ago",
+    },
+    {
+      name: "Portal requirements",
+      owner: "Jordan",
+      status: "Proposal",
+      updated: "3h ago",
+    },
   ],
 } as const;
