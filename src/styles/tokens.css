@@ -84,7 +84,7 @@
   --ds-section-space: clamp(4rem, 9vw, 8rem);
   --ds-grid-gap: clamp(1rem, 2vw, 1.5rem);
   --ds-page-padding: 1.25rem;
-  --ds-header-height: 4.5rem;
+  --ds-header-height: 5.5rem;
   --ds-mobile-menu-width: min(88vw, 24rem);
 
   /* Radius scale */

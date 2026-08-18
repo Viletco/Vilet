@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ServiceDetail } from "@/components/sections/services";
+import { ProductDemo } from "@/components/sections/product-demo";
 import { Container, Grid, Section, Stack } from "@/components/layout";
 import {
   ButtonLink,
@@ -117,6 +118,23 @@ export default function ServicesPage() {
               </li>
             ))}
           </Grid>
+        </Container>
+      </Section>
+      <Section
+        background="surface"
+        divider
+        aria-labelledby="studio-demo-heading"
+      >
+        <Container>
+          <Stack gap="3xl">
+            <SectionHeading
+              titleId="studio-demo-heading"
+              eyebrow="Systems Studio can build"
+              title="Software that makes the workflow visible."
+              description="This illustrative interface shows how a focused internal system can connect lead handling, automation, ownership, and reporting. It is a demonstration—not a client dashboard or live product."
+            />
+            <ProductDemo variant="operations" />
+          </Stack>
         </Container>
       </Section>
       {visibleServices.map((service, index) => (

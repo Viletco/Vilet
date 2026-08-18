@@ -12,19 +12,21 @@ export interface HeaderProps {
 
 export function Header({ currentPath }: HeaderProps) {
   return (
-    <header className="border-divider bg-glass sticky top-0 z-(--ds-z-sticky) h-(--ds-header-height) border-b backdrop-blur-(--ds-glass-blur)">
-      <Container className="flex h-full items-center justify-between gap-(--ds-space-xl)">
-        <Wordmark linked />
-        <div className="flex items-center gap-(--ds-space-xl)">
-          <DesktopNavigation currentPath={currentPath} />
-          <ButtonLink
-            href="/contact"
-            size="sm"
-            className="laptop:inline-flex hidden"
-          >
-            Let&apos;s Talk
-          </ButtonLink>
-          <MobileNavigation currentPath={currentPath} />
+    <header className="pointer-events-none sticky top-0 z-(--ds-z-sticky) h-(--ds-header-height) pt-(--ds-space-md)">
+      <Container>
+        <div className="border-border bg-glass pointer-events-auto flex h-16 items-center justify-between gap-(--ds-space-xl) rounded-xl border px-(--ds-space-lg) shadow-md backdrop-blur-(--ds-glass-blur)">
+          <Wordmark linked />
+          <div className="flex items-center gap-(--ds-space-xl)">
+            <DesktopNavigation currentPath={currentPath} />
+            <ButtonLink
+              href="/contact"
+              size="sm"
+              className="laptop:inline-flex hidden"
+            >
+              Start a project
+            </ButtonLink>
+            <MobileNavigation currentPath={currentPath} />
+          </div>
         </div>
       </Container>
     </header>

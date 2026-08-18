@@ -10,6 +10,7 @@ import {
   Text,
 } from "@/components/ui";
 import { companyDivisions } from "@/content";
+import { ProductDemo } from "@/components/sections/product-demo";
 import { defaultOpenGraphImages } from "@/lib/metadata";
 
 const insights = companyDivisions.find((item) => item.slug === "insights")!;
@@ -76,6 +77,28 @@ export default function InsightsPage() {
               data, explain meaningful changes, and surface practical next
               actions.
             </Text>
+          </Stack>
+        </Container>
+      </Section>
+      <Section spacing="compact" aria-labelledby="insights-concept-heading">
+        <Container>
+          <Stack gap="2xl">
+            <div className="flex flex-wrap items-end justify-between gap-(--ds-space-lg)">
+              <div>
+                <Eyebrow variant="accent">Product concept</Eyebrow>
+                <Heading
+                  id="insights-concept-heading"
+                  level={2}
+                  variant="heading-2"
+                  className="mt-(--ds-space-md) max-w-4xl"
+                >
+                  See the business, understand the signal, decide what comes
+                  next.
+                </Heading>
+              </div>
+              <Badge variant="outline">Illustrative data</Badge>
+            </div>
+            <ProductDemo variant="insights" />
           </Stack>
         </Container>
       </Section>
