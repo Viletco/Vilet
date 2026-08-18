@@ -85,7 +85,7 @@ export default function ServicesPage() {
             </Text>
             <Stack direction="responsive" gap="md">
               <ButtonLink href="/contact" size="lg">
-                Start a project
+                Discuss a project
               </ButtonLink>
               <ButtonLink href="/process" size="lg" variant="outline">
                 See how we work
@@ -245,7 +245,7 @@ export default function ServicesPage() {
               </Text>
               <Stack direction="responsive" gap="md">
                 <ButtonLink href="/contact" size="lg">
-                  Start your project
+                  Discuss your project
                 </ButtonLink>
                 <ButtonLink href="/process" size="lg" variant="outline">
                   View the process

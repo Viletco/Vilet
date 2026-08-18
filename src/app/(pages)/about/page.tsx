@@ -49,7 +49,7 @@ export default function AboutPage() {
             </Text>
             <Stack direction="responsive" gap="md">
               <ButtonLink href="/contact" size="lg">
-                Start a project
+                Discuss a project
               </ButtonLink>
               <ButtonLink href="/process" size="lg" variant="outline">
                 See the process
@@ -219,7 +219,7 @@ export default function AboutPage() {
               </Text>
               <Stack direction="responsive" gap="md">
                 <ButtonLink href="/contact" size="lg">
-                  Start a project
+                  Discuss a project
                 </ButtonLink>
                 <ButtonLink href="/services" size="lg" variant="outline">
                   Explore Studio

@@ -23,7 +23,7 @@ export function Header({ currentPath }: HeaderProps) {
               size="sm"
               className="laptop:inline-flex hidden"
             >
-              Start a project
+              Discuss a project
             </ButtonLink>
             <MobileNavigation currentPath={currentPath} />
           </div>

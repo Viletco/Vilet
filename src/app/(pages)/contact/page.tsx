@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { ContactForm } from "@/components/forms/contact-form";
-import { Container, Grid, Section, Stack } from "@/components/layout";
+import { Container, Section, Stack } from "@/components/layout";
 import { Card, Eyebrow, Heading, SectionHeading, Text } from "@/components/ui";
 import { getPublishedServices, services } from "@/content";
 import { defaultOpenGraphImages } from "@/lib/metadata";
@@ -86,14 +86,39 @@ export default function ContactPage() {
               />
               <Card variant="elevated">
                 <Heading level={3} variant="heading-4">
-                  Delivery status
+                  A low-pressure first step
                 </Heading>
-                <Text className="mt-(--ds-space-sm)">
-                  {deliveryEnabled
-                    ? "The form is enabled. A successful submission is delivered through the configured email provider, and the form reports whether delivery succeeded."
-                    : "The form validates submissions without sending them. It reports that delivery is unavailable and does not claim that an inquiry was delivered."}
-                </Text>
+                <ol className="type-body-sm text-text-secondary mt-(--ds-space-lg) space-y-(--ds-space-md)">
+                  {nextSteps.map((step, index) => (
+                    <li
+                      key={step.title}
+                      className="grid grid-cols-[auto_1fr] gap-(--ds-space-md)"
+                    >
+                      <span className="text-accent font-semibold">
+                        {index + 1}
+                      </span>
+                      <span>
+                        <strong className="text-text-primary block">
+                          {step.title}
+                        </strong>
+                        {step.body}
+                      </span>
+                    </li>
+                  ))}
+                </ol>
               </Card>
+              {deliveryEnabled ? null : (
+                <Card>
+                  <Heading level={3} variant="heading-4">
+                    Delivery status
+                  </Heading>
+                  <Text className="mt-(--ds-space-sm)">
+                    The form validates submissions without sending them. It
+                    reports that delivery is unavailable and does not claim that
+                    an inquiry was delivered.
+                  </Text>
+                </Card>
+              )}
             </Stack>
             <ContactForm
               action={submitContact}
@@ -122,39 +147,6 @@ export default function ContactPage() {
               ))}
             </ul>
           </div>
-        </Container>
-      </Section>
-
-      <Section aria-labelledby="response-heading">
-        <Container>
-          <Stack gap="3xl">
-            <SectionHeading
-              titleId="response-heading"
-              eyebrow="What happens next"
-              title="A thoughtful first response."
-              description="The initial review is intended to understand the request, identify unanswered questions, and decide whether a conversation is the right next step."
-            />
-            <Grid as="ol" columns={3}>
-              {nextSteps.map((step, index) => (
-                <li
-                  key={step.title}
-                  className="border-divider border-t pt-(--ds-space-xl)"
-                >
-                  <Eyebrow variant="accent">
-                    {String(index + 1).padStart(2, "0")}
-                  </Eyebrow>
-                  <Heading
-                    level={3}
-                    variant="heading-4"
-                    className="mt-(--ds-space-md)"
-                  >
-                    {step.title}
-                  </Heading>
-                  <Text className="mt-(--ds-space-md)">{step.body}</Text>
-                </li>
-              ))}
-            </Grid>
-          </Stack>
         </Container>
       </Section>
 

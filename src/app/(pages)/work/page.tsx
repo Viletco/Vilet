@@ -45,10 +45,10 @@ export default function WorkPage() {
             </Text>
             <Stack direction="responsive" gap="md">
               <ButtonLink href="/contact" size="lg">
-                Start a project
+                Discuss a project
               </ButtonLink>
               <ButtonLink href="/services" size="lg" variant="outline">
-                Explore our services
+                Explore Studio
               </ButtonLink>
             </Stack>
           </Stack>

@@ -1,10 +1,6 @@
 import type { Metadata } from "next";
 
-import {
-  CompanyArchitectureSection,
-  PartnerPreviewSection,
-  VisionSection,
-} from "@/components/sections/company";
+import { CompanyArchitectureSection } from "@/components/sections/company";
 
 import {
   FaqSection,
@@ -12,7 +8,6 @@ import {
   HeroSection,
   ProcessSection,
   ServicesSection,
-  TechnicalApproachSection,
   ValuePropositionSection,
   WhyViletSection,
 } from "@/components/sections/home";
@@ -51,14 +46,11 @@ export default function Home() {
   return (
     <>
       <HeroSection content={homepageContent.hero} />
-      <ValuePropositionSection content={homepageContent.valueProposition} />
-      <CompanyArchitectureSection />
       <ServicesSection content={homepageContent.services} />
+      <ValuePropositionSection content={homepageContent.valueProposition} />
       <ProcessSection content={homepageContent.process} />
-      <TechnicalApproachSection content={homepageContent.technicalApproach} />
       <WhyViletSection content={homepageContent.whyVilet} />
-      <PartnerPreviewSection />
-      <VisionSection />
+      <CompanyArchitectureSection />
       {homepageSectionVisibility.faq && (
         <FaqSection content={homepageContent.faq} />
       )}

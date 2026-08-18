@@ -18,8 +18,8 @@ const homepageContentDraft = {
     supportingCopy:
       "Vilét combines product thinking, software, automation, and digital infrastructure to help modern businesses operate clearly and build new opportunities.",
     primaryCta: {
-      label: "Start a project",
-      accessibleLabel: "Start a project with Vilét",
+      label: "Discuss a project",
+      accessibleLabel: "Discuss a project with Vilét",
       link: { kind: "internal", href: "/contact" },
     },
     secondaryCta: {
@@ -74,7 +74,7 @@ const homepageContentDraft = {
     items: [
       {
         id: "service-web-design-development",
-        title: "Web design and development",
+        title: "Websites and digital experiences",
         summary:
           "Premium, responsive websites built around clear messaging, strong usability, and the actions customers need to take.",
         icon: "globe",
@@ -95,7 +95,7 @@ const homepageContentDraft = {
       },
       {
         id: "service-ai-business-automation",
-        title: "AI and business automation",
+        title: "Automation and integrations",
         summary:
           "Practical automation that reduces repetitive work, connects tools, and helps teams move information more efficiently.",
         icon: "workflow",
@@ -116,7 +116,7 @@ const homepageContentDraft = {
       },
       {
         id: "service-custom-software",
-        title: "Custom software",
+        title: "Custom software and internal tools",
         summary:
           "Purpose-built applications and digital tools for businesses whose needs have outgrown off-the-shelf solutions.",
         icon: "code",
@@ -137,7 +137,7 @@ const homepageContentDraft = {
       },
       {
         id: "service-ongoing-digital-support",
-        title: "Ongoing digital support",
+        title: "Ongoing technical support",
         summary:
           "Continued technical support, refinement, and optimization after launch so the system stays useful and current.",
         icon: "settings",
@@ -427,8 +427,8 @@ const homepageContentDraft = {
     headline: "Ready to build what’s next?",
     body: "Tell Vilét what you are building, what is not working, or where your business needs a stronger digital foundation.",
     primaryButton: {
-      label: "Start your project",
-      accessibleLabel: "Start your project with Vilét",
+      label: "Discuss your project",
+      accessibleLabel: "Discuss your project with Vilét",
       link: { kind: "internal", href: "/contact" },
     },
     secondaryButton: {

@@ -266,7 +266,7 @@ export function CaseStudyLayout({
               Build what’s next with Vilét.
             </Heading>
             <ButtonLink href="/contact" size="lg">
-              Start a project
+              Discuss a project
             </ButtonLink>
           </Stack>
         </Container>

@@ -105,7 +105,7 @@ export default function ProcessPage() {
             </Text>
             <Stack direction="responsive" gap="md">
               <ButtonLink href="/contact" size="lg">
-                Start a project
+                Discuss a project
               </ButtonLink>
               <ButtonLink href="/services" size="lg" variant="outline">
                 Explore services
@@ -283,7 +283,7 @@ export default function ProcessPage() {
               </Text>
               <Stack direction="responsive" gap="md">
                 <ButtonLink href="/contact" size="lg">
-                  Start your project
+                  Discuss your project
                 </ButtonLink>
                 <ButtonLink href="/services" size="lg" variant="outline">
                   Explore services

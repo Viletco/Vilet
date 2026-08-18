@@ -16,11 +16,16 @@ export function Footer() {
         <div className="tablet:grid-cols-[1.5fr_1fr] grid gap-(--ds-space-3xl)">
           <Stack gap="md" align="start">
             <Wordmark />
-            <Text>Building what&apos;s next.</Text>
+            <Text className="max-w-md">
+              {globalSettings.businessDescription}
+            </Text>
+            <Text variant="body-sm" muted>
+              Building what&apos;s next.
+            </Text>
           </Stack>
 
           <nav aria-label="Footer navigation">
-            <Stack as="ul" gap="md" align="start">
+            <ul className="grid grid-cols-2 gap-x-(--ds-space-xl) gap-y-(--ds-space-md)">
               {footerNavigation.map((item) => (
                 <li key={item.href}>
                   <TextLink href={item.href} variant="navigation">
@@ -28,7 +33,7 @@ export function Footer() {
                   </TextLink>
                 </li>
               ))}
-            </Stack>
+            </ul>
           </nav>
         </div>
 
