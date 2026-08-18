@@ -14,10 +14,13 @@ export async function requestMagicLink(formData: FormData) {
     redirect("/login?configuration=unavailable");
   const client = await createPlatformServerClient();
   if (!client) redirect("/login?configuration=unavailable");
+  const appUrl = process.env.VERCEL_URL
+    ? new URL(`https://${process.env.VERCEL_URL}`)
+    : config.appUrl;
   const { error } = await client.auth.signInWithOtp({
     email,
     options: {
-      emailRedirectTo: new URL("/auth/callback", config.appUrl).href,
+      emailRedirectTo: new URL("/auth/callback", appUrl).href,
       shouldCreateUser: false,
     },
   });
