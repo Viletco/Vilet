@@ -3,12 +3,14 @@ import type { AboutContent } from "./types";
 export const aboutContent = {
   hero: {
     eyebrow: "About",
-    title: "Building thoughtful digital products with long-term value.",
-    body: "Vilét helps businesses solve meaningful digital problems through modern websites, software, automation, and carefully designed systems. Every project is approached with clarity, collaboration, and long-term thinking rather than unnecessary complexity.",
+    title:
+      "A technology company built around useful systems and long-term value.",
+    body: "Vilét builds digital products, software, automation, and infrastructure for modern businesses. Vilét Studio delivers client work today while new product directions, beginning with Vilét Insights, are developed deliberately for the future.",
   },
   philosophy: {
-    title: "Technology should make businesses easier to run.",
-    body: "The best digital products are not defined by how many features they include, but by how clearly they solve the right problem. Vilét focuses on creating systems that are understandable, maintainable, accessible, and intentionally designed for long-term growth.",
+    title:
+      "Build technology that helps people do better work and create new opportunities.",
+    body: "The best systems solve a clear problem, remain understandable, and improve with the business. Vilét is founder-led and intentionally focused: ambitious about the future without overstating what is available today.",
   },
   principles: [
     "Excellence over average",
@@ -56,8 +58,8 @@ export const aboutContent = {
     },
   ],
   workingTogether: {
-    title: "Thoughtful work benefits from clear collaboration.",
-    body: "Vilét works well with businesses that value clear communication, considered planning, iterative improvement, and a digital relationship that can continue beyond the initial launch.",
+    title: "Vilét Studio works through direct, clear collaboration.",
+    body: "Studio is the part of Vilét businesses can hire today. It works well with teams that value considered planning, iterative improvement, and a technical relationship that can continue beyond launch.",
     indicators: [
       "A meaningful business or customer problem to solve",
       "A clear project owner or decision-maker",
@@ -74,7 +76,7 @@ export const aboutContent = {
     "project-timeline",
   ],
   finalCta: {
-    title: "Let's build something that lasts.",
-    body: "Whether you're starting from scratch or improving an existing digital product, Vilét is ready to help define the right next step.",
+    title: "Build the next useful system.",
+    body: "Whether the need is customer-facing, operational, or the beginning of a new product, Vilét Studio can help define a practical next step.",
   },
 } as const satisfies AboutContent;

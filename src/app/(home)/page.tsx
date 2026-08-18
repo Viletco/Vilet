@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 
 import {
+  CompanyArchitectureSection,
+  PartnerPreviewSection,
+  VisionSection,
+} from "@/components/sections/company";
+
+import {
   FaqSection,
   FinalCtaSection,
   HeroSection,
@@ -46,10 +52,13 @@ export default function Home() {
     <>
       <HeroSection content={homepageContent.hero} />
       <ValuePropositionSection content={homepageContent.valueProposition} />
+      <CompanyArchitectureSection />
       <ServicesSection content={homepageContent.services} />
       <ProcessSection content={homepageContent.process} />
       <TechnicalApproachSection content={homepageContent.technicalApproach} />
       <WhyViletSection content={homepageContent.whyVilet} />
+      <PartnerPreviewSection />
+      <VisionSection />
       {homepageSectionVisibility.faq && (
         <FaqSection content={homepageContent.faq} />
       )}

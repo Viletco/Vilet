@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Vilét",
     short_name: "Vilét",
     description:
-      "Vilét is an independent digital studio creating premium websites, AI automation, and custom software.",
+      "Vilét is a technology company building digital products, software, automation, and systems for modern businesses.",
     start_url: "/",
     display: "browser",
     background_color: "#09090b",

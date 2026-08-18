@@ -3,13 +3,30 @@ import type { Metadata, Viewport } from "next";
 import "@/styles/globals.css";
 import { defaultOpenGraphImages, defaultTwitterImages } from "@/lib/metadata";
 
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Vilét",
+  url: "https://vilet.co",
+  description:
+    "A technology company building digital products, software, automation, and systems for modern businesses.",
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Vilét",
+  url: "https://vilet.co",
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://vilet.co"),
   title: {
     default: "Vilét — Building what's next.",
     template: "%s | Vilét",
   },
-  description: "Official website for Vilét. Building what's next.",
+  description:
+    "Vilét is a technology company building digital products, software, automation, and systems for modern businesses.",
   applicationName: "Vilét",
   openGraph: {
     type: "website",
@@ -17,13 +34,15 @@ export const metadata: Metadata = {
     url: "https://vilet.co",
     siteName: "Vilét",
     title: "Vilét — Building what's next.",
-    description: "Official website for Vilét. Building what's next.",
+    description:
+      "Vilét is a technology company building digital products, software, automation, and systems for modern businesses.",
     images: defaultOpenGraphImages,
   },
   twitter: {
     card: "summary",
     title: "Vilét — Building what's next.",
-    description: "Official website for Vilét. Building what's next.",
+    description:
+      "Vilét is a technology company building digital products, software, automation, and systems for modern businesses.",
     images: defaultTwitterImages,
   },
   icons: {
@@ -47,6 +66,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([organizationSchema, websiteSchema]),
+          }}
+        />
         <script
           id="shell-behavior"
           dangerouslySetInnerHTML={{

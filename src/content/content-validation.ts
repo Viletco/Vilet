@@ -1,5 +1,5 @@
 import { isIconName } from "./icons";
-import { siteNavigation } from "./navigation";
+import { footerNavigation } from "./navigation";
 import type {
   CallToActionContent,
   ContentImage,
@@ -118,7 +118,7 @@ function isValidHttpsUrl(value: string) {
 
 function validateInternalHref(href: string) {
   const [pathname, hash] = href.split("#", 2);
-  const knownRoute = siteNavigation.some((item) => item.href === pathname);
+  const knownRoute = footerNavigation.some((item) => item.href === pathname);
   const caseStudyRoute = /^\/work\/[a-z0-9]+(?:-[a-z0-9]+)*$/.test(pathname);
   const validHash =
     hash === undefined || /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(hash);

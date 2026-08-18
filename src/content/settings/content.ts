@@ -8,7 +8,7 @@ export const globalSettings = {
   domain: "vilet.co",
   tagline: "Building what's next.",
   businessDescription:
-    "Vilét is a premium digital studio that builds modern websites, AI automation, custom software, and digital products.",
+    "Vilét is a technology company building digital products, software, automation, and systems for modern businesses.",
   contactLinks: [],
   socialProfiles: [],
   defaultSeo: homepageContent.seo,

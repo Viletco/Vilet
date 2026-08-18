@@ -13,20 +13,20 @@ const homepageContentDraft = {
   status: "approved",
   hero: {
     status: "approved",
-    eyebrow: "Independent digital studio",
-    headline: "Digital experiences built to move businesses forward.",
+    eyebrow: "Technology company",
+    headline: "Digital products and systems built for what comes next.",
     supportingCopy:
-      "Vilét designs and develops premium websites, intelligent automation, and custom software for businesses ready to operate at a higher level.",
+      "Vilét combines product thinking, software, automation, and digital infrastructure to help modern businesses operate clearly and build new opportunities.",
     primaryCta: {
       label: "Start a project",
       accessibleLabel: "Start a project with Vilét",
       link: { kind: "internal", href: "/contact" },
     },
     secondaryCta: {
-      label: "Explore our services",
+      label: "Explore Studio",
       link: { kind: "internal", href: "/services" },
     },
-    note: "Strategy, design, and development under one roof.",
+    note: "Client services today. Original products for the future.",
     visual: {
       kind: "abstract",
       pattern: "system-grid",
@@ -40,8 +40,8 @@ const homepageContentDraft = {
   valueProposition: {
     status: "approved",
     eyebrow: "What we build",
-    headline: "More than a better-looking website.",
-    body: "Vilét combines strategy, design, development, and automation to create digital systems that look polished, work reliably, and support the way a business grows.",
+    headline: "Technology should make the business work better.",
+    body: "Vilét designs customer experiences, software, automation, and connected systems that reduce friction, improve visibility, and create a stronger foundation for growth.",
     pillars: [
       {
         id: "value-business-first",
@@ -68,9 +68,9 @@ const homepageContentDraft = {
   },
   services: {
     status: "approved",
-    eyebrow: "Capabilities",
-    headline: "From first impression to daily operation.",
-    body: "Vilét creates focused digital solutions across design, development, automation, and software.",
+    eyebrow: "Vilét Studio",
+    headline: "From customer experience to daily operation.",
+    body: "Studio brings strategy, design, engineering, and automation together—from public websites to the internal systems a business depends on.",
     items: [
       {
         id: "service-web-design-development",
@@ -282,9 +282,9 @@ const homepageContentDraft = {
   },
   whyVilet: {
     status: "approved",
-    eyebrow: "Why Vilét",
-    headline: "Direct collaboration without sacrificing quality.",
-    body: "Vilét provides the care and attention of an independent studio with the systems, standards, and technical depth expected from a modern digital partner.",
+    eyebrow: "How Vilét operates",
+    headline: "Focused collaboration with product-level standards.",
+    body: "Vilét is founder-led and intentionally focused, combining direct involvement with the systems, technical depth, and long-term thinking required for dependable work.",
     items: [
       {
         id: "differentiator-focused-attention",
@@ -439,15 +439,15 @@ const homepageContentDraft = {
   },
   seo: {
     status: "approved",
-    title: "Vilét | Web Design, Automation and Custom Software",
+    title: "Vilét | Digital Products, Software and Systems",
     description:
-      "Vilét is an independent digital studio creating premium websites, AI automation, and custom software for ambitious businesses.",
+      "Vilét is a technology company building digital products, software, automation, and systems for modern businesses.",
     keywords: [],
     canonical: "https://vilet.co",
     openGraph: {
-      title: "Vilét | Web Design, Automation and Custom Software",
+      title: "Vilét | Digital Products, Software and Systems",
       description:
-        "Vilét is an independent digital studio creating premium websites, AI automation, and custom software for ambitious businesses.",
+        "Vilét is a technology company building digital products, software, automation, and systems for modern businesses.",
       type: "website",
       url: "https://vilet.co",
       siteName: "Vilét",
@@ -455,9 +455,9 @@ const homepageContentDraft = {
     },
     twitter: {
       card: "summary",
-      title: "Vilét | Web Design, Automation and Custom Software",
+      title: "Vilét | Digital Products, Software and Systems",
       description:
-        "Vilét is an independent digital studio creating premium websites, AI automation, and custom software for ambitious businesses.",
+        "Vilét is a technology company building digital products, software, automation, and systems for modern businesses.",
       images: [],
     },
     robots: {

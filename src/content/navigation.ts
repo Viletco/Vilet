@@ -1,12 +1,18 @@
 export const siteNavigation = [
-  { label: "Home", href: "/" },
-  { label: "Services", href: "/services" },
+  { label: "Studio", href: "/services" },
   { label: "Work", href: "/work" },
+  { label: "Insights", href: "/insights" },
   { label: "About", href: "/about" },
-  { label: "Process", href: "/process" },
+  { label: "Partners", href: "/partners" },
   { label: "Contact", href: "/contact" },
   { label: "Vilét AI", href: "/ai" },
 ] as const;
 
+export const footerNavigation = [
+  { label: "Home", href: "/" },
+  ...siteNavigation,
+  { label: "Process", href: "/process" },
+] as const;
+
 export type SitePath =
-  (typeof siteNavigation)[number]["href"] | "/privacy" | "/terms";
+  (typeof footerNavigation)[number]["href"] | "/privacy" | "/terms";

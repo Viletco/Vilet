@@ -1,6 +1,7 @@
 import "server-only";
 import {
   aboutContent,
+  companyDivisions,
   faqs,
   getPublishedProjects,
   globalSettings,
@@ -28,6 +29,14 @@ export function formatApprovedKnowledge() {
       description: globalSettings.businessDescription,
       tagline: globalSettings.tagline,
     },
+    companyDivisions: companyDivisions.map(
+      ({ name, statusLabel, shortDescription, capabilities }) => ({
+        name,
+        status: statusLabel,
+        description: shortDescription,
+        capabilities,
+      }),
+    ),
     services: publishedServices,
     process: processRecords.map(({ title, summary, output }) => ({
       title,

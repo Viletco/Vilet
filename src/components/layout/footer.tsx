@@ -1,5 +1,5 @@
 import { globalSettings } from "@/content";
-import { siteNavigation } from "@/content/navigation";
+import { footerNavigation } from "@/content/navigation";
 
 import { Text, TextLink, Wordmark } from "@/components/ui";
 
@@ -21,7 +21,7 @@ export function Footer() {
 
           <nav aria-label="Footer navigation">
             <Stack as="ul" gap="md" align="start">
-              {siteNavigation.map((item) => (
+              {footerNavigation.map((item) => (
                 <li key={item.href}>
                   <TextLink href={item.href} variant="navigation">
                     {item.label}

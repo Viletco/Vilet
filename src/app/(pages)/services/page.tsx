@@ -20,15 +20,15 @@ import {
 import { defaultOpenGraphImages } from "@/lib/metadata";
 
 export const metadata: Metadata = {
-  title: "Services",
+  title: "Studio",
   description:
-    "Explore Vilét services for web design and development, AI automation, custom software, and ongoing digital support.",
+    "Explore Vilét Studio services for digital experiences, custom software, automation, integrations, and ongoing technical support.",
   alternates: { canonical: "https://vilet.co/services" },
   robots: { index: true, follow: true },
   openGraph: {
-    title: "Services | Vilét",
+    title: "Vilét Studio | Digital products, software and automation",
     description:
-      "Explore Vilét services for web design and development, AI automation, custom software, and ongoing digital support.",
+      "Client services for digital experiences, custom software, automation, integrations, and ongoing technical support.",
     url: "https://vilet.co/services",
     type: "website",
     images: defaultOpenGraphImages,
@@ -68,19 +68,19 @@ export default function ServicesPage() {
       <Section background="hero" aria-labelledby="services-page-heading">
         <Container>
           <Stack gap="xl" align="start">
-            <Eyebrow marker>Services</Eyebrow>
+            <Eyebrow marker>Vilét Studio</Eyebrow>
             <Heading
               id="services-page-heading"
               level={1}
               variant="display-lg"
               className="max-w-5xl"
             >
-              Digital solutions built around how your business works.
+              Build the digital systems your business depends on.
             </Heading>
             <Text variant="body-lg" className="max-w-(--ds-container-reading)">
-              Vilét combines strategy, design, development, and automation to
-              create focused digital systems that improve how businesses present
-              themselves, serve customers, and operate behind the scenes.
+              Vilét Studio combines product thinking, design, engineering, and
+              automation to improve customer experiences, reduce manual work,
+              connect operations, and create infrastructure that can evolve.
             </Text>
             <Stack direction="responsive" gap="md">
               <ButtonLink href="/contact" size="lg">
@@ -96,7 +96,7 @@ export default function ServicesPage() {
       <Section spacing="compact" aria-labelledby="service-overview-heading">
         <Container>
           <Heading id="service-overview-heading" level={2} variant="heading-3">
-            Service overview
+            Studio capabilities
           </Heading>
           <Grid as="ol" columns={4} className="mt-(--ds-space-2xl)">
             {visibleServices.map((service, index) => (

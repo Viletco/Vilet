@@ -7,7 +7,9 @@ const publicRoutes = [
   "",
   "/services",
   "/work",
+  "/insights",
   "/about",
+  "/partners",
   "/process",
   "/contact",
 ];

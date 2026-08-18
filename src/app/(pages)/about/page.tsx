@@ -15,13 +15,13 @@ import { defaultOpenGraphImages } from "@/lib/metadata";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Learn about Vilét's philosophy, approach, and commitment to thoughtful digital design, software, and automation.",
+    "Learn how Vilét is building a technology company around client services, useful products, and systems that create opportunities.",
   alternates: { canonical: "https://vilet.co/about" },
   robots: { index: true, follow: true },
   openGraph: {
     title: "About | Vilét",
     description:
-      "Learn about Vilét's philosophy, approach, and commitment to thoughtful digital design, software, and automation.",
+      "Vilét is a founder-led technology company building useful digital systems, client services, and future products.",
     url: "https://vilet.co/about",
     type: "website",
     images: defaultOpenGraphImages,
@@ -222,7 +222,7 @@ export default function AboutPage() {
                   Start a project
                 </ButtonLink>
                 <ButtonLink href="/services" size="lg" variant="outline">
-                  Explore services
+                  Explore Studio
                 </ButtonLink>
               </Stack>
             </Stack>

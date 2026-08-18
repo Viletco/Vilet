@@ -1,6 +1,6 @@
 # Vilét
 
-Official website repository for **Vilét**, a premium digital studio building modern websites, AI automation, custom software, and digital products.
+Official website repository for **Vilét**, a technology company building digital products, software, automation, and systems for modern businesses.
 
 **Tagline:** Building what's next.
 
@@ -8,7 +8,7 @@ Official website repository for **Vilét**, a premium digital studio building mo
 
 ## Project overview
 
-The Vilét website uses Next.js with the App Router, TypeScript, Tailwind CSS, and ESLint. The repository contains production core pages, a typed content architecture, provider-gated Resend and Upstash contact infrastructure, technical SEO routes, launch-safe provisional assets, and reusable design-system components.
+The Vilét website uses Next.js with the App Router, TypeScript, Tailwind CSS, and ESLint. Vilét is the parent brand, Vilét Studio is its currently available client-services division, and Vilét Insights is an accurately labeled product direction in development. The repository contains typed content architecture, provider-gated Resend and Upstash contact infrastructure, technical SEO routes, launch safeguards, and reusable design-system components.
 
 ## Installation
 
@@ -64,6 +64,7 @@ npm run dev
 
 ## Documentation
 
+- [Company and product architecture](docs/company-architecture.md)
 - [Repository audit](docs/repository-audit.md)
 - [Design system](docs/design-system.md)
 - [Component library](docs/components.md)
