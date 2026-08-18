@@ -63,8 +63,12 @@ export function HeroSection({ content }: { content: HeroContent }) {
               </ButtonLink>
             </Stack>
             {content.note && (
-              <div className="border-divider border-l pl-(--ds-space-md)">
-                <Text variant="body-sm" muted>
+              <div>
+                <Text
+                  variant="caption"
+                  muted
+                  className="font-mono tracking-[0.18em] uppercase"
+                >
                   {content.note}
                 </Text>
               </div>
@@ -85,23 +89,26 @@ export function ValuePropositionSection({
   return (
     <Section aria-labelledby="value-heading">
       <Container>
-        <div className="laptop:grid-cols-[0.9fr_1.1fr] grid gap-(--ds-space-4xl)">
+        <Stack gap="3xl">
           <SectionHeading
             titleId="value-heading"
             eyebrow={content.eyebrow}
             title={content.headline}
             description={content.body}
           />
-          <Stack as="ol" gap="none">
+          <ol className="border-border bg-card tablet:grid-cols-2 grid overflow-hidden rounded-xl border">
             {content.pillars.map((item, index) => (
               <li
                 key={item.id}
-                className="border-divider grid grid-cols-[auto_1fr] gap-(--ds-space-lg) border-t py-(--ds-space-xl)"
+                className="border-divider p-(--ds-space-xl) odd:border-r nth-[n+3]:border-t"
               >
-                <Eyebrow variant="accent">
-                  {String(index + 1).padStart(2, "0")}
-                </Eyebrow>
-                <Stack gap="sm">
+                <div className="border-divider flex items-center gap-(--ds-space-md) border-b pb-(--ds-space-sm)">
+                  <Eyebrow variant="accent">
+                    {String(index + 1).padStart(2, "0")}
+                  </Eyebrow>
+                  <span className="bg-divider h-px flex-1" />
+                </div>
+                <Stack gap="sm" className="mt-(--ds-space-lg)">
                   <Heading level={3} variant="heading-4">
                     {item.title}
                   </Heading>
@@ -109,8 +116,8 @@ export function ValuePropositionSection({
                 </Stack>
               </li>
             ))}
-          </Stack>
-        </div>
+          </ol>
+        </Stack>
       </Container>
     </Section>
   );

@@ -6,18 +6,17 @@ import { cn } from "@/lib/cn";
 import type { PolymorphicProps } from "./component-types";
 import { focusRing, interactiveTransition } from "./interactive-styles";
 
-const cardVariants = cva("rounded-lg bg-card", {
+const cardVariants = cva("rounded-xl bg-card", {
   variants: {
     variant: {
       default: "border-border",
-      elevated: "border-border bg-surface-elevated shadow-md",
+      elevated: "border-border bg-surface-elevated",
       glass: "glass",
       interactive: cn(
         "border-border hover:border-text-muted hover:bg-surface-elevated focus-within:border-focus-ring",
         interactiveTransition,
       ),
-      highlight:
-        "background-card-glow border-accent/50 bg-card shadow-glow-soft",
+      highlight: "border-border bg-surface-elevated",
     },
     padding: {
       none: "p-0",

@@ -99,11 +99,15 @@ export default function ServicesPage() {
           <Heading id="service-overview-heading" level={2} variant="heading-3">
             Studio capabilities
           </Heading>
-          <Grid as="ol" columns={4} className="mt-(--ds-space-2xl)">
+          <Grid
+            as="ol"
+            columns={4}
+            className="border-border bg-card mt-(--ds-space-2xl) gap-0 overflow-hidden rounded-xl border"
+          >
             {visibleServices.map((service, index) => (
               <li
                 key={service.id}
-                className="border-divider border-t pt-(--ds-space-lg)"
+                className="border-divider p-(--ds-space-lg) not-last:border-r"
               >
                 <Eyebrow variant="accent" className="flex">
                   {String(index + 1).padStart(2, "0")}

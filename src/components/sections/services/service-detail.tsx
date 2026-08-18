@@ -1,14 +1,6 @@
 import type { ServiceRecord } from "@/content";
-import { createElement } from "react";
-import { Container, Grid, Section, Stack } from "@/components/layout";
-import {
-  ButtonLink,
-  Eyebrow,
-  Heading,
-  IconWrapper,
-  Text,
-} from "@/components/ui";
-import { getIcon } from "@/lib/icon-registry";
+import { Container, Section, Stack } from "@/components/layout";
+import { ArrowLink, Eyebrow, Heading, Text } from "@/components/ui";
 
 export function ServiceDetail({
   service,
@@ -19,7 +11,6 @@ export function ServiceDetail({
   readonly number: number;
   readonly surface?: boolean;
 }) {
-  const icon = createElement(getIcon(service.icon));
   return (
     <Section
       id={service.slug}
@@ -28,13 +19,12 @@ export function ServiceDetail({
       aria-labelledby={`${service.slug}-heading`}
     >
       <Container>
-        <div className="laptop:grid-cols-[0.85fr_1.15fr] grid gap-(--ds-space-4xl)">
+        <div className="laptop:grid-cols-[1.25fr_0.75fr_0.75fr] grid gap-(--ds-space-3xl)">
           <Stack gap="xl" align="start">
-            <div className="flex items-center gap-(--ds-space-md)">
+            <div className="border-divider flex w-full items-center gap-(--ds-space-md) border-b pb-(--ds-space-sm)">
               <Eyebrow variant="accent">
                 {String(number).padStart(2, "0")}
               </Eyebrow>
-              <IconWrapper variant="accent">{icon}</IconWrapper>
             </div>
             <Heading
               id={`${service.slug}-heading`}
@@ -43,41 +33,34 @@ export function ServiceDetail({
             >
               {service.title}
             </Heading>
-            <Text variant="body-lg">{service.shortSummary}</Text>
-            <ButtonLink href="/contact" variant="outline">
-              Discuss this service
-            </ButtonLink>
-          </Stack>
-          <Stack gap="2xl">
             <Text variant="body-lg" strong>
               {service.detailedSummary}
             </Text>
-            <Grid columns={2}>
-              <div>
-                <Heading level={3} variant="heading-4">
-                  Best suited for
-                </Heading>
-                <ul className="type-body text-text-secondary mt-(--ds-space-lg) list-disc space-y-(--ds-space-sm) pl-(--ds-space-xl)">
-                  {service.bestSuitedFor.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <Heading level={3} variant="heading-4">
-                  Typical engagement areas
-                </Heading>
-                <ul className="type-body text-text-secondary mt-(--ds-space-lg) list-disc space-y-(--ds-space-sm) pl-(--ds-space-xl)">
-                  {service.typicalEngagementAreas.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-            </Grid>
-            <div className="border-accent/40 border-l pl-(--ds-space-lg)">
-              <Text strong>{service.outcomeStatement}</Text>
-            </div>
+            <Text>{service.shortSummary}</Text>
+            <ArrowLink href="/contact">Discuss this service</ArrowLink>
           </Stack>
+          <div>
+            <Eyebrow>Best suited for</Eyebrow>
+            <ul className="type-body text-text-secondary mt-(--ds-space-lg) space-y-(--ds-space-sm)">
+              {service.bestSuitedFor.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <Eyebrow>Typical engagement areas</Eyebrow>
+            <ul className="type-body text-text-secondary mt-(--ds-space-lg) space-y-(--ds-space-sm)">
+              {service.typicalEngagementAreas.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+            <Text
+              strong
+              className="border-divider mt-(--ds-space-xl) border-t pt-(--ds-space-lg)"
+            >
+              {service.outcomeStatement}
+            </Text>
+          </div>
         </div>
       </Container>
     </Section>

@@ -13,7 +13,7 @@ export function DesktopNavigation({ currentPath }: DesktopNavigationProps) {
       aria-label="Primary navigation"
       className="desktop:block hidden justify-self-center"
     >
-      <ul className="flex items-center gap-(--ds-space-lg)">
+      <ul className="flex items-center gap-(--ds-space-xl)">
         {siteNavigation.map((item) => {
           const current =
             item.href === currentPath ||
@@ -25,7 +25,10 @@ export function DesktopNavigation({ currentPath }: DesktopNavigationProps) {
                 href={item.href}
                 variant="navigation"
                 aria-current={current ? "page" : undefined}
-                className={cn(current && "text-text-primary")}
+                className={cn(
+                  "py-(--ds-space-sm)",
+                  current && "text-text-primary font-semibold",
+                )}
               >
                 {item.label}
               </TextLink>

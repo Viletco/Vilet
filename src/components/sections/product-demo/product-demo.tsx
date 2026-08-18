@@ -9,13 +9,77 @@ type DemoVariant = "overview" | "insights" | "operations";
 function DemoChrome({ label }: { label: string }) {
   return (
     <div className="border-divider flex min-h-11 items-center justify-between border-b px-(--ds-space-lg)">
-      <div className="flex items-center gap-(--ds-space-sm)" aria-hidden="true">
-        <span className="bg-text-muted/40 size-1.5 rounded-full" />
-        <span className="bg-text-muted/30 size-1.5 rounded-full" />
-        <span className="bg-text-muted/20 size-1.5 rounded-full" />
-      </div>
-      <span className="type-caption text-text-muted uppercase">{label}</span>
+      <span className="type-caption text-text-secondary flex items-center gap-(--ds-space-sm) font-mono tracking-[0.16em] uppercase">
+        <span className="bg-accent size-2 rounded-full" />
+        Vilét Insights
+      </span>
+      <span className="type-caption border-warning/40 bg-warning/10 text-warning rounded-md border px-(--ds-space-sm) py-(--ds-space-xs) font-mono uppercase">
+        {label}
+      </span>
     </div>
+  );
+}
+
+function CompactInsightsDemo() {
+  const metrics = [
+    ...illustrativeBusinessData.metrics,
+    { label: "Visitors", value: "12,480", change: "+8.2%", direction: "up" },
+    { label: "Orders", value: "284", change: "+6.1%", direction: "up" },
+    { label: "ROAS", value: "4.2×", change: "+0.3", direction: "up" },
+    { label: "AOV", value: "$172", change: "+5.9%", direction: "up" },
+  ] as const;
+
+  return (
+    <>
+      <dl className="tablet:grid-cols-4 bg-divider grid grid-cols-2 gap-px">
+        {metrics.map((metric) => (
+          <div key={metric.label} className="bg-surface p-(--ds-space-lg)">
+            <dt className="type-caption text-text-muted font-mono tracking-[0.14em] uppercase">
+              {metric.label}
+            </dt>
+            <dd className="type-heading-4 mt-(--ds-space-sm)">
+              {metric.value}
+            </dd>
+            <dd
+              className={cn(
+                "type-caption mt-(--ds-space-xs)",
+                metric.direction === "up" ? "text-success" : "text-warning",
+              )}
+            >
+              ↗ {metric.change}
+            </dd>
+          </div>
+        ))}
+      </dl>
+      <div className="tablet:grid-cols-2 border-divider grid border-y">
+        {["Traffic", "Sales"].map((label, index) => (
+          <div
+            key={label}
+            className="border-divider p-(--ds-space-lg) first:border-r"
+          >
+            <p className="type-caption text-text-muted font-mono tracking-[0.14em] uppercase">
+              {label}
+            </p>
+            <div className={cn(index === 1 && "translate-y-1")}>
+              <TrendChart />
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="p-(--ds-space-lg)">
+        <p className="type-caption text-text-muted font-mono tracking-[0.14em] uppercase">
+          ✣ AI recommendation
+        </p>
+        <p className="type-body-sm text-text-primary mt-(--ds-space-md)">
+          Traffic increased <span className="text-accent">8.2%</span> this week,
+          but mobile conversion softened. Review the mobile journey before
+          increasing acquisition spend.
+        </p>
+        <p className="type-caption text-text-muted mt-(--ds-space-md) font-mono">
+          Illustrative connected analytics data · Demonstration only
+        </p>
+      </div>
+    </>
   );
 }
 
@@ -400,11 +464,18 @@ export function ProductDemo({
       )}
     >
       <DemoChrome label={label} />
-      <div className="tablet:p-(--ds-space-2xl) p-(--ds-space-lg)">
+      <div
+        className={cn(
+          variant !== "insights" &&
+            "tablet:p-(--ds-space-2xl) p-(--ds-space-lg)",
+        )}
+      >
         {variant === "operations" ? (
           <OperationsDemo />
+        ) : variant === "insights" ? (
+          <CompactInsightsDemo />
         ) : (
-          <OverviewDemo detailed={variant === "insights"} />
+          <OverviewDemo />
         )}
       </div>
     </section>

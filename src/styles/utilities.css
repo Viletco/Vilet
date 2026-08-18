@@ -39,6 +39,10 @@
 
 .background-hero {
   background: var(--ds-gradient-hero);
+  background-size:
+    56px 56px,
+    56px 56px,
+    auto;
 }
 
 .background-card-glow {

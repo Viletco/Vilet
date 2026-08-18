@@ -60,6 +60,12 @@ export function Wordmark({
         className,
       )}
     >
+      <span
+        aria-hidden="true"
+        className="border-border bg-surface text-accent mr-(--ds-space-sm) grid size-7 place-items-center rounded-md border font-mono text-xs font-semibold"
+      >
+        V
+      </span>
       {wordmark}
     </Link>
   );

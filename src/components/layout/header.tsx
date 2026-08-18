@@ -12,9 +12,9 @@ export interface HeaderProps {
 
 export function Header({ currentPath }: HeaderProps) {
   return (
-    <header className="pointer-events-none sticky top-0 z-(--ds-z-sticky) h-(--ds-header-height) pt-(--ds-space-md)">
-      <Container>
-        <div className="border-border bg-glass desktop:grid desktop:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] desktop:gap-(--ds-space-xl) pointer-events-auto flex h-16 items-center justify-between rounded-xl border px-(--ds-space-lg) shadow-md backdrop-blur-(--ds-glass-blur)">
+    <header className="border-divider bg-background/95 sticky top-0 z-(--ds-z-sticky) h-(--ds-header-height) border-b backdrop-blur-(--ds-glass-blur)">
+      <Container className="h-full">
+        <div className="desktop:grid desktop:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] desktop:gap-(--ds-space-xl) flex h-full items-center justify-between">
           <div className="flex min-w-0 justify-start">
             <Wordmark linked />
           </div>

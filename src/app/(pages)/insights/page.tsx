@@ -58,48 +58,27 @@ export default function InsightsPage() {
     <>
       <Section background="hero" aria-labelledby="insights-heading">
         <Container>
-          <Stack gap="xl" align="start">
-            <Badge variant="accent" dot>
-              {insights.statusLabel}
-            </Badge>
-            <Eyebrow marker>Vilét Insights</Eyebrow>
-            <Heading
-              id="insights-heading"
-              level={1}
-              variant="display-lg"
-              className="max-w-5xl"
-            >
-              A clearer way to understand what is happening across your
-              business.
-            </Heading>
-            <Text variant="body-lg" className="max-w-(--ds-container-reading)">
-              Vilét Insights is being developed to connect scattered business
-              data, explain meaningful changes, and surface practical next
-              actions.
-            </Text>
-          </Stack>
-        </Container>
-      </Section>
-      <Section spacing="compact" aria-labelledby="insights-concept-heading">
-        <Container>
-          <Stack gap="2xl">
-            <div className="flex flex-wrap items-end justify-between gap-(--ds-space-lg)">
-              <div>
-                <Eyebrow variant="accent">Product concept</Eyebrow>
-                <Heading
-                  id="insights-concept-heading"
-                  level={2}
-                  variant="heading-2"
-                  className="mt-(--ds-space-md) max-w-4xl"
-                >
-                  See the business, understand the signal, decide what comes
-                  next.
-                </Heading>
-              </div>
-              <Badge variant="outline">Illustrative data</Badge>
-            </div>
+          <div className="laptop:grid-cols-[1.08fr_0.92fr] grid items-center gap-(--ds-space-4xl)">
+            <Stack gap="xl" align="start">
+              <Badge variant="accent" dot>
+                {insights.statusLabel}
+              </Badge>
+              <Eyebrow>Vilét Insights</Eyebrow>
+              <Heading id="insights-heading" level={1} variant="display-lg">
+                A clearer way to understand what is happening across your
+                business.
+              </Heading>
+              <Text
+                variant="body-lg"
+                className="max-w-(--ds-container-reading)"
+              >
+                Vilét Insights is being developed to connect scattered business
+                data, explain meaningful changes, and surface practical next
+                actions.
+              </Text>
+            </Stack>
             <ProductDemo variant="insights" />
-          </Stack>
+          </div>
         </Container>
       </Section>
       <Section aria-labelledby="insights-problem-heading">

@@ -42,17 +42,17 @@
 
 :root {
   /* Semantic color system */
-  --ds-color-background: #09090b;
-  --ds-color-surface: #111114;
-  --ds-color-surface-elevated: #18181c;
-  --ds-color-card: #141418;
-  --ds-color-border: #2a2930;
-  --ds-color-divider: #211f27;
-  --ds-color-text-primary: #f7f7f8;
-  --ds-color-text-secondary: #b5b3bd;
-  --ds-color-text-muted: #777580;
-  --ds-color-accent: #8b7cf6;
-  --ds-color-accent-hover: #a69af8;
+  --ds-color-background: #08090b;
+  --ds-color-surface: #0d0e11;
+  --ds-color-surface-elevated: #111216;
+  --ds-color-card: #101115;
+  --ds-color-border: #27282e;
+  --ds-color-divider: #202126;
+  --ds-color-text-primary: #f5f5f7;
+  --ds-color-text-secondary: #b6b4c0;
+  --ds-color-text-muted: #777582;
+  --ds-color-accent: #8957ff;
+  --ds-color-accent-hover: #9d75ff;
   --ds-color-success: #57ad83;
   --ds-color-warning: #d5a64c;
   --ds-color-danger: #d96b75;
@@ -79,12 +79,12 @@
   --ds-space-5xl: 6rem;
 
   /* Layout and container rhythm */
-  --ds-container-content: 80rem;
-  --ds-container-reading: 45rem;
-  --ds-section-space: clamp(4rem, 9vw, 8rem);
+  --ds-container-content: 78rem;
+  --ds-container-reading: 42rem;
+  --ds-section-space: clamp(4.5rem, 7vw, 6.5rem);
   --ds-grid-gap: clamp(1rem, 2vw, 1.5rem);
   --ds-page-padding: 1.25rem;
-  --ds-header-height: 5.5rem;
+  --ds-header-height: 3.75rem;
   --ds-mobile-menu-width: min(88vw, 24rem);
 
   /* Radius scale */
@@ -109,8 +109,9 @@
 
   /* Subtle gradient treatments */
   --ds-gradient-hero:
-    radial-gradient(circle at 50% 0%, rgb(139 124 246 / 12%), transparent 42%),
-    linear-gradient(180deg, #0d0c12 0%, var(--ds-color-background) 72%);
+    linear-gradient(rgb(255 255 255 / 2.5%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 255 255 / 2.5%) 1px, transparent 1px),
+    radial-gradient(circle at 67% 15%, rgb(137 87 255 / 12%), transparent 38%);
   --ds-gradient-accent: linear-gradient(
     135deg,
     #c2bafc 0%,
