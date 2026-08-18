@@ -1,0 +1,18 @@
+{
+  "name": "@vilet/auth",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./middleware": "./src/middleware.ts"
+  },
+  "dependencies": {
+    "@supabase/ssr": "0.7.0",
+    "@vilet/authorization": "0.1.0",
+    "@vilet/database": "0.1.0",
+    "@vilet/shared-config": "0.1.0",
+    "next": "^16.2.10",
+    "server-only": "^0.0.1"
+  }
+}

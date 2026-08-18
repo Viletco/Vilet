@@ -6,7 +6,6 @@
     "skipLibCheck": true,
     "strict": true,
     "noEmit": true,
-    "allowImportingTsExtensions": true,
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "bundler",
@@ -14,10 +13,7 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "incremental": true,
-    "plugins": [{ "name": "next" }],
-    "paths": {
-      "@/*": ["./src/*"]
-    }
+    "plugins": [{ "name": "next" }]
   },
   "include": [
     "next-env.d.ts",
@@ -26,5 +22,5 @@
     "**/*.ts",
     "**/*.tsx"
   ],
-  "exclude": ["node_modules", "apps/platform", "packages", "tests/platform"]
+  "exclude": ["node_modules"]
 }

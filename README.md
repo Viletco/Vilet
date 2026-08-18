@@ -8,7 +8,7 @@ Official website repository for **Vilét**, a technology company building digita
 
 ## Project overview
 
-The Vilét website uses Next.js with the App Router, TypeScript, Tailwind CSS, and ESLint. Vilét is the parent brand, Vilét Studio is its currently available client-services division, and Vilét Insights is an accurately labeled product direction in development. The repository contains typed content architecture, provider-gated Resend and Upstash contact infrastructure, technical SEO routes, launch safeguards, and reusable design-system components.
+The repository is an additive npm workspace. The existing root Next.js application remains the public Vilét website, while `apps/platform` contains the private `app.vilet.co` account foundation. Shared packages provide server-only authentication, authorization, database, and platform configuration boundaries.
 
 ## Installation
 
@@ -39,10 +39,20 @@ Start the development server and open `http://localhost:3000`:
 npm run dev
 ```
 
+Start the platform application separately at `http://localhost:3001`:
+
+```bash
+npm run dev --workspace @vilet/platform
+```
+
+Authentication safely defaults to disabled until a Supabase project is configured. See `docs/platform-architecture.md` before enabling it.
+
 ## npm scripts
 
 - `npm run dev` — start the development server.
 - `npm run build` — create a production build.
+- `npm run build:platform` — create the independent platform production build.
+- `npm run build:all` — build marketing and platform applications.
 - `npm run start` — serve the production build.
 - `npm run lint` — run ESLint.
 - `npm run format` — format supported files with Prettier.
@@ -50,6 +60,7 @@ npm run dev
 - `npm run typecheck` — run strict TypeScript validation without emitting files.
 - `npm run check:launch` — report unresolved launch decisions and enabled-provider configuration; an unresolved production plan exits nonzero by design.
 - `npm run test:ai` — run lightweight AI configuration, guardrail, workflow, and URL-security tests.
+- `npm run test:platform` — run platform environment, authorization, and tenant-policy tests.
 - `npm run check` — run the complete formatting, lint, type, and production-build gate.
 
 ## Repository conventions
@@ -110,3 +121,4 @@ npm run dev
 - [AI preview evaluation](docs/ai-preview-evaluation.md)
 - [AI production decision](docs/ai-production-decision.md)
 - [AI operations](docs/ai-operations.md)
+- [Vilét Platform architecture](docs/platform-architecture.md)
