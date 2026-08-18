@@ -61,6 +61,8 @@ Authentication safely defaults to disabled until a Supabase project is configure
 - `npm run check:launch` — report unresolved launch decisions and enabled-provider configuration; an unresolved production plan exits nonzero by design.
 - `npm run test:ai` — run lightweight AI configuration, guardrail, workflow, and URL-security tests.
 - `npm run test:platform` — run platform environment, authorization, and tenant-policy tests.
+- `npm run verify:platform:connectivity` — verify configured staging connectivity and anonymous RLS denial without printing credentials.
+- `npm run verify:platform:rls` — create isolated temporary fixtures, run the live tenant-isolation suite, and remove the fixtures.
 - `npm run check` — run the complete formatting, lint, type, and production-build gate.
 
 ## Repository conventions

@@ -49,6 +49,7 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  agentRules: false,
   transpilePackages: [
     "@vilet/auth",
     "@vilet/authorization",

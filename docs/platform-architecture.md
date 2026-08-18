@@ -88,11 +88,36 @@ To enable Supabase locally, set `PLATFORM_AUTH_MODE=supabase` and provide the ap
 
 The SQL test has not been claimed as executed without a configured Supabase CLI/database.
 
+## Staging activation state
+
+As of August 18, 2026, Phase A is connected to a dedicated free Supabase staging project. This environment must not contain production or customer data.
+
+- Project name: `Vilet`
+- Project reference: `lzohhfmfdqivnjqqwmqu`
+- API origin: `https://lzohhfmfdqivnjqqwmqu.supabase.co`
+- Region: Canada Central (`ca-central-1`)
+- Phase A migration: applied and schema-verified
+- Membership-policy hardening migration: applied
+- Local site URL: `http://localhost:3001`
+- Local callback: `http://localhost:3001/auth/callback`
+- Passwordless email delivery: verified with an approved staging identity
+- Callback, session persistence, authenticated-login redirect, and logout: live-verified
+
+The read-only schema assertions verified eight Phase A tables, RLS on all eight tables, thirteen RLS policies, three private authorization helpers, and thirteen seeded capabilities. The live RLS suite passed all 24 assertions using two temporary identities and organizations; all temporary fixtures were removed after the run.
+
+The activation review identified and fixed an organization-role escalation path. Migration `202608180002_harden_membership_role_policies.sql` prevents admins from promoting themselves or granting owner/admin roles while preserving owner authority and lower-role administration.
+
+The pgTAP smoke file remains unexecuted because no authenticated Supabase CLI or disposable local Supabase runtime is configured. Its schema checks are superseded for this staging activation by the read-only schema assertions and the stronger live JWT/RLS suite, but it remains available for future local database CI.
+
+Secrets exist only in the ignored `apps/platform/.env.local` file. They are not documented, committed, printed by verification scripts, or exposed through public environment variable names.
+
 ## Vercel deployment
 
 Create a second Vercel project from the same Git repository with root directory `apps/platform`. Assign `app.vilet.co` only after the application builds with scoped environment variables. Platform pages always emit `noindex, nofollow` and do not expose a sitemap.
 
 Use separate preview/staging credentials. Do not connect arbitrary preview deployments to production customer data.
+
+Deployment activation is not yet complete. No separate Vercel platform project, protected preview, or `app.vilet.co` DNS record has been configured at this point. The existing marketing project and `vilet.co` domain remain unchanged.
 
 ## Security assumptions
 
@@ -106,4 +131,4 @@ Use separate preview/staging credentials. Do not connect arbitrary preview deplo
 
 ## Next phase
 
-Phase B creates the internal Vilét organization and an idempotent, audited administrator bootstrap. Do not implement Growth, Insights product features, external subscriptions, or public login integration before that phase is approved.
+Phase B creates the internal Vilét organization and an idempotent, audited administrator bootstrap. Begin it only after the Phase A infrastructure changes are committed and the decision to activate a protected Vercel platform preview is complete. Do not implement Growth, Insights product features, external subscriptions, or public login integration before that phase is approved.

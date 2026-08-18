@@ -25,6 +25,8 @@
     "test:ai": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types --test tests/ai/*.test.ts",
     "test:privacy": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types --test tests/privacy-policy.test.ts",
     "test:platform": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types --test tests/platform/*.test.ts",
+    "verify:platform:connectivity": "node scripts/verify-platform-connectivity.mjs",
+    "verify:platform:rls": "node scripts/verify-live-rls.mjs",
     "check": "npm run format:check && npm run lint && npm run typecheck && npm run test:privacy && npm run build"
   },
   "dependencies": {
