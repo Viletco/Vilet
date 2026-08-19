@@ -113,11 +113,13 @@ Secrets exist only in the ignored `apps/platform/.env.local` file. They are not 
 
 ## Vercel deployment
 
-Create a second Vercel project from the same Git repository with root directory `apps/platform`. Assign `app.vilet.co` only after the application builds with scoped environment variables. Platform pages always emit `noindex, nofollow` and do not expose a sitemap.
+As of August 19, 2026, the platform is deployed to the separate `vilet-platform-preview` Vercel project with root directory `apps/platform`. Its Preview environment uses only the dedicated Supabase staging project. Vercel Authentication protects production deployment URLs and every preview, and Git-fork protection is enabled.
 
-Use separate preview/staging credentials. Do not connect arbitrary preview deployments to production customer data.
+The verified preview is `https://vilet-platform-preview-dx9u9vkf2-swzyfrmdarocs-projects.vercel.app`. Its matching `/auth/callback` URL is allowlisted in Supabase. Live verification confirmed Vercel protection, passwordless-link initiation and delivery, callback exchange, session establishment, refresh persistence, logout, and post-logout denial of the protected root route. The staging identity correctly reaches the controlled no-membership state because Phase B has not created an organization or membership.
 
-Deployment activation is not yet complete. No separate Vercel platform project, protected preview, or `app.vilet.co` DNS record has been configured at this point. The existing marketing project and `vilet.co` domain remain unchanged.
+Platform responses include the configured CSP, HSTS, cross-origin policies, permissions policy, referrer policy, `X-Content-Type-Options`, and `X-Robots-Tag: noindex, nofollow`. `robots.txt` disallows all crawling. The service-role credential was absent from browser assets, and dependency and tracked-secret scans passed. Session cookies use `Path=/`, `SameSite=Lax`, and `Secure` on HTTPS; no cookie domain is configured, so the platform does not create a shared `.vilet.co` authentication cookie.
+
+`app.vilet.co` is intentionally unconfigured. The existing marketing project and `vilet.co` deployment were not changed during Phase A activation.
 
 ## Security assumptions
 
