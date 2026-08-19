@@ -180,6 +180,8 @@ Before attaching `app.vilet.co`, complete these manual infrastructure steps with
 4. Keep preview deployment protection enabled. At production launch, remove the Vercel Authentication wall only from the production platform surface so the Vilét login page is reachable; application authentication continues to protect organization routes.
 5. Verify HTTPS, login, callback, owner Overview, authenticated `/login`, refresh persistence, logout, headers, robots, and public asset secret isolation on the custom hostname.
 
-The custom domain must not be attached until the real owner session has visually passed on the latest protected Phase D preview. The platform remains `noindex, nofollow` after public login access is enabled.
+The platform remains `noindex, nofollow` after public login access is enabled.
 
-The protected Phase D platform preview is `https://vilet-platform-preview-q0xvyxh7b-swzyfrmdarocs-projects.vercel.app`. Vercel reported the deployment ready after a successful production build. An unauthenticated request received the expected Vercel Authentication redirect, secure host-only SSO nonce cookie, HSTS, frame denial, and `X-Robots-Tag: noindex`. Its exact callback URL must be added to the staging Supabase allowlist before the deferred owner-session check can run.
+The protected Phase D platform preview is `https://vilet-platform-preview-q0xvyxh7b-swzyfrmdarocs-projects.vercel.app`. Vercel reported the deployment ready after a successful production build. An unauthenticated request received the expected Vercel Authentication redirect, secure host-only SSO nonce cookie, HSTS, frame denial, and `X-Robots-Tag: noindex`.
+
+The real Vilét owner session was visually verified on this preview after its exact callback URL was allowlisted. The magic link established the session, root resolved to `/o/vilet`, the active internal organization and Owner role appeared, all thirteen entitled product capabilities produced the expected navigation, and Platform admin was recognized. Refresh preserved the session, authenticated `/login` returned to `/o/vilet`, and Log out returned to the Vilét sign-in page.
