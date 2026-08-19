@@ -14,16 +14,19 @@ export default async function GeneralSettings({
         title="Organization."
         description="Verified organization information. Changes are not enabled in this phase."
       />
-      <dl className="mt-10 divide-y divide-[var(--border)] rounded-2xl border border-[var(--border)] bg-[var(--surface)]">
+      <dl className="divide-border/50 border-border bg-card/40 mt-8 divide-y rounded-2xl border">
         {[
           ["Name", context.organizationName],
           ["Slug", context.organizationSlug],
           ["Type", context.organizationKind],
           ["Status", context.organizationStatus],
         ].map(([label, value]) => (
-          <div key={label} className="grid gap-2 p-5 sm:grid-cols-[12rem_1fr]">
-            <dt className="text-sm text-[var(--quiet)]">{label}</dt>
-            <dd className="capitalize">{value}</dd>
+          <div
+            key={label}
+            className="grid gap-1 p-4 sm:grid-cols-[12rem_1fr] sm:gap-3"
+          >
+            <dt className="text-muted-foreground text-[12px]">{label}</dt>
+            <dd className="text-[13px] capitalize">{value}</dd>
           </div>
         ))}
       </dl>

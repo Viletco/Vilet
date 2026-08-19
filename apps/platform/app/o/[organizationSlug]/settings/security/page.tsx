@@ -15,14 +15,14 @@ export default async function SecuritySettings({
         title="Security."
         description="Current authentication state for this private Vilét Platform session."
       />
-      <dl className="mt-10 divide-y divide-[var(--border)] rounded-2xl border border-[var(--border)] bg-[var(--surface)]">
-        <div className="grid gap-2 p-5 sm:grid-cols-[12rem_1fr]">
-          <dt className="text-sm text-[var(--quiet)]">Authentication</dt>
-          <dd>Passwordless Supabase session</dd>
+      <dl className="divide-border/50 border-border bg-card/40 mt-8 divide-y rounded-2xl border">
+        <div className="grid gap-1 p-4 sm:grid-cols-[12rem_1fr] sm:gap-3">
+          <dt className="text-muted-foreground text-[12px]">Authentication</dt>
+          <dd className="text-[13px]">Passwordless Supabase session</dd>
         </div>
-        <div className="grid gap-2 p-5 sm:grid-cols-[12rem_1fr]">
-          <dt className="text-sm text-[var(--quiet)]">Account</dt>
-          <dd>{user?.email ?? "Authenticated user"}</dd>
+        <div className="grid gap-1 p-4 sm:grid-cols-[12rem_1fr] sm:gap-3">
+          <dt className="text-muted-foreground text-[12px]">Account</dt>
+          <dd className="text-[13px]">{user?.email ?? "Authenticated user"}</dd>
         </div>
       </dl>
     </>

@@ -13,39 +13,39 @@ export default async function LoginPage({
   const unavailable =
     config.authMode === "disabled" || query.configuration === "unavailable";
   return (
-    <main className="grid min-h-screen place-items-center px-5 py-12">
-      <section className="w-full max-w-md rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-8 shadow-2xl">
+    <main className="grid min-h-screen place-items-center bg-[radial-gradient(ellipse_at_top,hsl(262_64%_66%/0.08),transparent_55%)] px-5 py-12">
+      <section className="animate-scale-in border-border bg-card/50 w-full max-w-md rounded-2xl border p-7 shadow-2xl shadow-black/30 backdrop-blur-sm">
         <a
           href="https://vilet.co"
           className="inline-flex items-center gap-2 rounded-md font-semibold"
           aria-label="Vilét website"
         >
-          <span className="grid size-8 place-items-center rounded-lg border border-[var(--border)] font-mono text-sm text-[var(--accent)]">
+          <span className="border-border text-primary grid size-8 place-items-center rounded-lg border bg-white/[0.02] text-[11px] font-semibold">
             V
           </span>
           Vilét
         </a>
-        <p className="mt-10 font-mono text-xs tracking-[0.18em] text-[var(--accent)] uppercase">
+        <p className="text-primary/80 mt-9 text-[11px] font-semibold tracking-[0.1em] uppercase">
           Vilét account
         </p>
-        <h1 className="mt-3 text-3xl font-semibold tracking-[-0.04em]">
+        <h1 className="mt-2 text-[26px] font-semibold tracking-tight">
           Sign in to Vilét.
         </h1>
-        <p className="mt-4 leading-7 text-[var(--muted)]">
+        <p className="text-muted-foreground mt-3 text-[13.5px] leading-6">
           Enter your account email to open the Vilét application. We&apos;ll
           send a secure, single-use sign-in link—no password required.
         </p>
         {unavailable ? (
-          <div className="mt-7 rounded-xl border border-[var(--border)] p-4 text-sm leading-6 text-[var(--muted)]">
-            <strong className="block text-[var(--text)]">
+          <div className="border-border text-muted-foreground mt-6 rounded-xl border bg-white/[0.02] p-4 text-[13px] leading-6">
+            <strong className="text-foreground block">
               Sign-in is temporarily unavailable.
             </strong>
             Please try again later or contact Vilét if you need help accessing
             your account.
           </div>
         ) : (
-          <form action={requestMagicLink} className="mt-7">
-            <label htmlFor="email" className="text-sm font-medium">
+          <form action={requestMagicLink} className="mt-6">
+            <label htmlFor="email" className="text-[12.5px] font-medium">
               Email address
             </label>
             <input
@@ -54,11 +54,11 @@ export default async function LoginPage({
               type="email"
               autoComplete="email"
               required
-              className="mt-2 h-12 w-full rounded-lg border border-[var(--border)] bg-[var(--background)] px-4 text-[var(--text)]"
+              className="border-input bg-background text-foreground mt-2 h-11 w-full rounded-lg border px-3 text-[13px]"
             />
             <button
               type="submit"
-              className="mt-4 h-12 w-full rounded-lg bg-[var(--accent)] px-5 font-semibold text-white"
+              className="bg-primary text-primary-foreground mt-3 h-11 w-full rounded-lg px-5 text-[12.5px] font-semibold transition hover:brightness-110"
             >
               Send secure login link
             </button>
