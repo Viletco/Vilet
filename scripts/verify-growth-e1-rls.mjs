@@ -190,6 +190,24 @@ try {
   if (prospectError) throw prospectError;
   assert(Boolean(prospect?.id), "Entitled user creates own-tenant prospect");
 
+  const duplicateDomain = await clientA
+    .from("growth_prospects")
+    .insert({
+      organization_id: organizationA.id,
+      business_name: "Tenant A Duplicate Domain",
+      business_name_normalized: "tenant a duplicate domain",
+      domain_normalized: `tenant-a-${suffix}.example`,
+      website_url: `https://tenant-a-${suffix}.example`,
+      source_type: "manual",
+      created_by_user_id: userA.id,
+      updated_by_user_id: userA.id,
+    })
+    .select("id");
+  assert(
+    denied(duplicateDomain),
+    "Active same-tenant domain duplicate is rejected",
+  );
+
   const [sources, activities] = await Promise.all([
     clientA.from("growth_sources").select("id").eq("prospect_id", prospect.id),
     clientA
@@ -318,6 +336,18 @@ try {
   assert(
     firstImport.data.batch_id === secondImport.data.batch_id,
     "Repeated CSV commit is idempotent",
+  );
+  const duplicateImport = await clientA.rpc("commit_growth_csv_import", {
+    target_organization_id: organizationA.id,
+    import_filename: "growth-e1-duplicate.csv",
+    import_idempotency_key: crypto.randomUUID(),
+    import_rows: rpcRows,
+  });
+  if (duplicateImport.error) throw duplicateImport.error;
+  assert(
+    duplicateImport.data.accepted_count === 0 &&
+      duplicateImport.data.duplicate_count === 1,
+    "New import batch counts an existing row as a duplicate",
   );
   const crossImport = await clientB
     .from("growth_import_batches")

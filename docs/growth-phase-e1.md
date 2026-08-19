@@ -115,7 +115,7 @@ npm run verify:growth:e1:rls -- --environment=staging --project-ref=<staging-ref
 
 The verifier refuses production, validates its configured project hostname, creates temporary isolated users/organizations, exercises capability and cross-tenant denials, and removes fixtures in `finally` cleanup.
 
-The August 19, 2026 staging run passed 21 live checks covering capability denials, cross-tenant prospect/note/activity/import isolation, assignment and duplicate-target boundaries, pipeline mutation, value and next-action updates, notes, archive/restore, CSV idempotency, revoked access, and suspended membership behavior.
+The August 19, 2026 staging run passed 23 live checks covering capability denials, cross-tenant prospect/note/activity/import isolation, assignment and duplicate-target boundaries, active-domain uniqueness, pipeline mutation, value and next-action updates, notes, archive/restore, CSV idempotency and duplicate counting, revoked access, and suspended membership behavior.
 
 Production requires a separate explicit approval to apply the migration and deploy the platform. Never point Preview at production or apply this migration to production as part of Preview QA.
 
