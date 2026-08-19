@@ -4,6 +4,7 @@ import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 
 import { getPlatformConfig } from "./config";
+import { applyPlatformSessionCookiePolicy } from "./session-cookies";
 
 export async function createPlatformServerClient() {
   const config = getPlatformConfig();
@@ -20,8 +21,8 @@ export async function createPlatformServerClient() {
       getAll: () => cookieStore.getAll(),
       setAll(values) {
         try {
-          values.forEach(({ name, value, options }) =>
-            cookieStore.set(name, value, options),
+          applyPlatformSessionCookiePolicy(values).forEach(
+            ({ name, value, options }) => cookieStore.set(name, value, options),
           );
         } catch {
           // Server Components cannot write cookies. The platform proxy refreshes sessions.
