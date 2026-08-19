@@ -33,7 +33,7 @@ Production authentication was owner-verified end to end on 2026-08-19 at `app.vi
 ## Environment separation and mutation safety
 
 - [x] Preview is protected by Vercel Authentication
-- [ ] Reconfirm the hidden Preview Supabase URL targets staging `lzohhfmfdqivnjqqwmqu`
+- [x] Preview CSP independently confirms staging Supabase `lzohhfmfdqivnjqqwmqu`
 - [x] Production is public at the application boundary and uses production
 - [x] Privileged credential files are limited to `.env.local` and `.env.production.local`
 - [x] Bootstrap requires environment, matching project ref, dry-run/apply intent, and exact production confirmation
@@ -41,7 +41,9 @@ Production authentication was owner-verified end to end on 2026-08-19 at `app.vi
 - [x] Staging test identities cannot be created in production
 - [x] Connectivity checks require environment/project consistency
 - [x] Service-role credential is absent from Vercel Production and browser bundles
-- [ ] Remove the unnecessary `SUPABASE_SERVICE_ROLE_KEY` from the Vercel Preview environment and redeploy Preview
+- [x] Unnecessary `SUPABASE_SERVICE_ROLE_KEY` removed from Vercel Preview and Preview redeployed
+
+Final Preview isolation was verified on 2026-08-19 using deployment `https://vilet-platform-preview-2albdokp1-swzyfrmdarocs-projects.vercel.app`. Vercel Authentication remains active, the protected application CSP targets only staging Supabase, browser assets contain neither the privileged credential nor the production project reference, and Production remains publicly reachable at the Vilét login layer with its production-only Supabase CSP.
 
 ## Security and quality
 
