@@ -16,19 +16,21 @@ Status date: 2026-08-19. This is the canonical launch gate for `app.vilet.co`. E
 ## Authentication
 
 - [x] Production login form loads
-- [ ] **PENDING — production magic-link delivery after provider rate limit resets**
-- [ ] Production `/auth/callback` exchanges the code
-- [ ] Authenticated user reaches `/o/vilet`
-- [ ] Owner membership is visible
-- [ ] Independent platform-administrator access is visible
-- [ ] Session persists across refresh and navigation
-- [ ] Authenticated `/login` returns to the organization
-- [ ] `/logout` ends the application session
-- [ ] Protected routes are denied after logout
+- [x] Production magic-link delivery succeeds
+- [x] Production `/auth/callback` exchanges the code
+- [x] Authenticated user reaches `/o/vilet`
+- [x] Owner membership is visible
+- [x] Independent platform-administrator access is visible
+- [x] Session persists across refresh, browser close, and normal revisit
+- [x] Authenticated `/login` returns to the organization
+- [x] `/logout` ends the application session
+- [x] Protected routes are denied after logout
 - [ ] Confirm host-only cookie isolation; no shared `.vilet.co` auth cookie
 - [x] Manually verify the new 90-day persistent-cookie policy in protected Preview by closing and reopening the same browser on the exact same deployment hostname
 
-The 90-day persistence policy was implemented on the QA branch and manually verified on 2026-08-19 using the protected staging Preview `https://vilet-platform-preview-d9qrswsyn-swzyfrmdarocs-projects.vercel.app`. The owner completed magic-link authentication, closed the browser, reopened the same browser and deployment hostname, and returned authenticated without another magic link. The owner then approved a selective Production rollout of only these session changes; post-deployment Production verification remains required.
+The 90-day persistence policy was implemented on the QA branch and manually verified on 2026-08-19 using the protected staging Preview `https://vilet-platform-preview-d9qrswsyn-swzyfrmdarocs-projects.vercel.app`. The owner completed magic-link authentication, closed the browser, reopened the same browser and deployment hostname, and returned authenticated without another magic link. The owner then approved a selective Production rollout of only these session changes.
+
+The selective Production release revision `9b02ea7` was deployed as Vercel deployment `dpl_DWhtPYoBBCy1DK6HnS3KNHDKgrP6` and aliased to `app.vilet.co` on 2026-08-19. The owner completed a new Production magic-link login, confirmed browser-close persistence on the stable hostname, explicitly logged out, and confirmed protected access remained denied afterward. Live headers continued to target only production Supabase `detqlxrismxlbgsgeafx`; HSTS, CSP, noindex, and disallow-all robots remained active. Production environment variables and browser assets contained no Hunter or staging configuration.
 
 ## Environment separation and mutation safety
 
@@ -47,9 +49,9 @@ The 90-day persistence policy was implemented on the QA branch and manually veri
 - [x] Privilege-escalation and entitlement protections verified live
 - [x] Owner bootstrap verified idempotent and transactional
 - [x] Temporary security fixtures removed
-- [ ] Run final repository secret scan immediately before promotion
-- [ ] Scan production browser bundles for privileged credentials
-- [ ] Review dependency audit immediately before promotion
+- [x] Run final repository secret scan immediately before promotion
+- [x] Scan production browser bundles for privileged credentials
+- [x] Review dependency audit immediately before promotion
 - [ ] Verify safe structured auth events in Vercel logs during the final login test
 
 ## Visual QA
