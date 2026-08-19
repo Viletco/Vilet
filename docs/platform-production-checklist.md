@@ -27,11 +27,11 @@ Status date: 2026-08-19. This is the canonical launch gate for `app.vilet.co`. E
 - [x] `/logout` ends the application session
 - [x] Protected routes are denied after logout
 - [ ] Confirm host-only cookie isolation; no shared `.vilet.co` auth cookie
-- [ ] Manually verify the new 90-day persistent-cookie policy in protected Preview by closing and reopening the same browser on the exact same deployment hostname
+- [x] Manually verify the new 90-day persistent-cookie policy in protected Preview by closing and reopening the same browser on the exact same deployment hostname
 
 Production authentication was owner-verified end to end on 2026-08-19 at `app.vilet.co`. The remaining cookie item is a separate browser-security inspection, not an authentication-flow failure.
 
-The 90-day persistence policy was implemented on the QA branch on 2026-08-19 and remains staging-only until the same-host browser-close/reopen test passes in protected Preview. Production must not receive this change before that manual approval.
+The 90-day persistence policy was implemented on the QA branch and manually verified on 2026-08-19 using the protected staging Preview `https://vilet-platform-preview-d9qrswsyn-swzyfrmdarocs-projects.vercel.app`. The owner completed magic-link authentication, closed the browser, reopened the same browser and deployment hostname, and returned authenticated without another magic link. Production has not received this change and still requires a separate approval.
 
 ## Environment separation and mutation safety
 
