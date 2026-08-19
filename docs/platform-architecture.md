@@ -162,6 +162,8 @@ Platform responses include the configured CSP, HSTS, cross-origin policies, perm
 
 Phase C adds a server-rendered organization application shell and truthful product shells for Overview, Studio, Growth, Insights, Vilét AI, Billing, Support, and Settings. Navigation is derived from live capabilities, while each protected route independently rechecks its capability or role. The interface contains no sample projects, performance metrics, customer records, subscriptions, or other fabricated business data.
 
+The Phase C QA deployment is `https://vilet-platform-preview-aq1maxzr1-swzyfrmdarocs-projects.vercel.app`. Vercel reported the deployment ready after a successful production build, and an unauthenticated request received the expected Vercel Authentication redirect with `X-Robots-Tag: noindex`. The live owner-session UI remains deferred for the reason below.
+
 Growth remains an internal product shell, Insights remains a beta shell without connected data, and Billing has no payment processor. Organization management controls, integrations, subscriptions, and operational product functionality remain deferred.
 
 The Phase B owner-session observation on the latest preview remains a pre-production verification item because the staging project's built-in email provider reached its temporary rate limit. The previously verified Phase A authentication lifecycle and all live Phase B database/RLS assertions remain valid.
