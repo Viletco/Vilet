@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { createPlatformServerClient } from "@vilet/auth";
 import { PageHeader } from "../../../../components/page-frame";
 import { PartnerNav, partnerCard } from "../../../../components/partner-nav";
 import {
@@ -13,7 +14,32 @@ export default async function PartnerPage({
   params: Promise<{ organizationSlug: string }>;
 }) {
   const { organizationSlug } = await params;
-  await requireSalesPartner(organizationSlug);
+  const { context, partner } = await requireSalesPartner(organizationSlug);
+  const client = await createPlatformServerClient();
+  const [
+    { data: progress = [] },
+    { data: leads = [] },
+    { data: commissions = [] },
+  ] = client
+    ? await Promise.all([
+        client
+          .from("sales_training_progress")
+          .select("module_key,completed_at")
+          .eq("organization_id", context.organizationId)
+          .eq("partner_id", partner.id),
+        client.rpc("list_partner_own_leads", {
+          target_organization_id: context.organizationId,
+        }),
+        client
+          .from("commission_ledger")
+          .select("status,amount_minor,currency")
+          .eq("organization_id", context.organizationId)
+          .eq("partner_id", partner.id),
+      ])
+    : [{ data: [] }, { data: [] }, { data: [] }];
+  const modulesComplete = new Set(
+    progress?.filter((row) => row.completed_at).map((row) => row.module_key),
+  ).size;
   const base = `/o/${organizationSlug}/partner`;
   return (
     <>
@@ -24,7 +50,21 @@ export default async function PartnerPage({
         description="Learn Vilét's approved positioning, qualify opportunities responsibly, and track only the leads and commissions you are authorized to see."
         status="internal"
       />
-      <section className="mt-8 grid gap-3 md:grid-cols-3">
+      <section className="mt-8 grid gap-3 sm:grid-cols-3">
+        {[
+          ["Training", `${modulesComplete}/${trainingModules.length} modules`],
+          ["Leads", `${leads?.length ?? 0} submitted`],
+          ["Commission records", `${commissions?.length ?? 0} real events`],
+        ].map(([label, value]) => (
+          <div className={partnerCard} key={label}>
+            <p className="text-muted-foreground text-[10px] uppercase">
+              {label}
+            </p>
+            <p className="mt-2 text-xl font-semibold">{value}</p>
+          </div>
+        ))}
+      </section>
+      <section className="mt-4 grid gap-3 md:grid-cols-3">
         <Link href={`${base}/training`} className={partnerCard}>
           <p className="text-primary text-[11px] uppercase">Start here</p>
           <h2 className="mt-2 font-semibold">Sales training</h2>
@@ -64,9 +104,8 @@ export default async function PartnerPage({
         </dl>
       </section>
       <p className="text-muted-foreground mt-5 text-xs">
-        Training catalog: {trainingModules.length} modules. Progress and metrics
-        remain truthful empty states until the staging migration is applied and
-        a partner record is provisioned.
+        Lifecycle status: {partner.status}. Training completion is provisional
+        and does not claim owner certification.
       </p>
     </>
   );

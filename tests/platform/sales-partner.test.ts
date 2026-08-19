@@ -14,6 +14,15 @@ const triggerSecurity = readFileSync(
   "supabase/migrations/202608190008_secure_partner_tenant_trigger.sql",
   "utf8",
 );
+const operations = readFileSync(
+  "supabase/migrations/202608190009_partner_operations.sql",
+  "utf8",
+);
+const partnerActions = readFileSync(
+  "apps/platform/app/o/[organizationSlug]/partner/actions.ts",
+  "utf8",
+);
+const assistant = readFileSync("apps/platform/lib/sales-assistant.ts", "utf8");
 const knowledge = readFileSync(
   "apps/platform/lib/partner-knowledge.ts",
   "utf8",
@@ -120,4 +129,32 @@ test("canonical content marks product status and unknown policy", () => {
   assert.match(knowledge, /No commission percentage/u);
   assert.match(knowledge, /forbiddenClaims/u);
   assert.match(knowledge, /FACT\/EVIDENCE/u);
+});
+
+test("partner operations add invitation, assessment, and notification boundaries", () => {
+  for (const table of [
+    "sales_partner_invitations",
+    "sales_assessment_attempts",
+    "partner_notifications",
+  ]) {
+    assert.match(operations, new RegExp(`create table public\\.${table}`));
+    assert.match(
+      operations,
+      new RegExp(`alter table public\\.${table} enable row level security`),
+    );
+  }
+  assert.match(operations, /token_hash bytea not null/u);
+  assert.match(operations, /intended_role not in \('owner','admin'\)/u);
+  assert.match(operations, /assessment_insert_own/u);
+  assert.match(operations, /notification_mark_read_own/u);
+});
+
+test("partner workflows remain server-authorized and provider-neutral", () => {
+  assert.match(partnerActions, /requireSalesPartner/u);
+  assert.match(partnerActions, /submit_partner_lead/u);
+  assert.match(partnerActions, /sales_training_progress/u);
+  assert.match(assistant, /interface SalesAssistantProvider/u);
+  assert.match(assistant, /deterministic-staging/u);
+  assert.match(assistant, /This requires Vilét owner approval/u);
+  assert.doesNotMatch(assistant, /OPENAI|ANTHROPIC|HUNTER_API_KEY/u);
 });
