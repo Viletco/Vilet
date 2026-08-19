@@ -181,3 +181,5 @@ Before attaching `app.vilet.co`, complete these manual infrastructure steps with
 5. Verify HTTPS, login, callback, owner Overview, authenticated `/login`, refresh persistence, logout, headers, robots, and public asset secret isolation on the custom hostname.
 
 The custom domain must not be attached until the real owner session has visually passed on the latest protected Phase D preview. The platform remains `noindex, nofollow` after public login access is enabled.
+
+The protected Phase D platform preview is `https://vilet-platform-preview-q0xvyxh7b-swzyfrmdarocs-projects.vercel.app`. Vercel reported the deployment ready after a successful production build. An unauthenticated request received the expected Vercel Authentication redirect, secure host-only SSO nonce cookie, HSTS, frame denial, and `X-Robots-Tag: noindex`. Its exact callback URL must be added to the staging Supabase allowlist before the deferred owner-session check can run.
