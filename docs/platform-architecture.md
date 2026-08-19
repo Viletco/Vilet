@@ -24,6 +24,10 @@ Browser code must not import `@vilet/database/admin` or server helpers from `@vi
 
 Supabase Auth is the selected provider. Passwordless email is the only Phase A login method. Session cookies are created for the platform host and are not configured for `.vilet.co`. The platform proxy refreshes sessions; security decisions use `auth.getUser()` on the server rather than trusting unverified cookie claims.
 
+Platform session cookies use an explicit sliding 90-day browser lifetime. The callback applies the policy when the PKCE code is exchanged, and the proxy renews the same lifetime whenever Supabase rotates the refresh token. Supabase remains the session authority: access JWTs stay short-lived, refresh-token rotation remains enabled, and `Max-Age=0` deletion writes are preserved for logout, expired sessions, revoked sessions, and stale cookie chunks. No custom token or parallel session store is used.
+
+Cookie scope is intentionally host-only. A session created on `app.vilet.co` does not authenticate `vilet.co`, and a session created on one generated Vercel Preview hostname does not follow the user to a newer generated Preview hostname. Reauthentication after switching Preview deployment URLs is expected and is not a refresh-session failure.
+
 Safe local mode is `PLATFORM_AUTH_MODE=disabled`. It sends no authentication request and exposes no fake user. Supabase mode fails configuration validation unless the URL and publishable key are present.
 
 The service-role key is optional for ordinary application builds and required only by reviewed privileged operations. It must never be sent to the browser.
@@ -105,7 +109,9 @@ To enable Supabase locally, set `PLATFORM_AUTH_MODE=supabase` and provide the ap
 4. Configure the site URL as `https://app.vilet.co` in production.
 5. Add `https://app.vilet.co/auth/callback` as an allowed redirect URL.
 6. Configure approved SMTP delivery for passwordless email.
-7. Run the SQL integration suite against a disposable local database before production.
+7. Keep refresh-token replay protection enabled, retain the recommended 10-second reuse interval, and keep access-token JWT expiry at one hour.
+8. On a plan that supports server-side session limits, use a 90-day time box or a 60-day inactivity timeout only after a separate security decision; do not lengthen the access JWT to obtain device persistence.
+9. Run the SQL integration suite against a disposable local database before production.
 
 The SQL test has not been claimed as executed without a configured Supabase CLI/database.
 

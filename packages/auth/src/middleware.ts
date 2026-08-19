@@ -1,6 +1,7 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 import { validatePlatformEnvironment } from "@vilet/shared-config";
+import { applyPlatformSessionCookiePolicy } from "./session-cookies";
 
 export async function refreshPlatformSession(request: NextRequest) {
   const config = validatePlatformEnvironment({
@@ -27,8 +28,9 @@ export async function refreshPlatformSession(request: NextRequest) {
         setAll(values) {
           values.forEach(({ name, value }) => request.cookies.set(name, value));
           response = NextResponse.next({ request });
-          values.forEach(({ name, value, options }) =>
-            response.cookies.set(name, value, options),
+          applyPlatformSessionCookiePolicy(values).forEach(
+            ({ name, value, options }) =>
+              response.cookies.set(name, value, options),
           );
         },
       },
