@@ -167,3 +167,5 @@ Track funnel and business outcomes, not vanity volume: unique prospects, duplica
 Production authentication and Preview environment isolation passed on 2026-08-19. Phase E1 is cleared to begin when explicitly requested; it has not begun automatically.
 
 Build **Phase E1 only**: multi-tenant Growth prospect/pipeline foundation with migrations and RLS, typed data access, deterministic normalization and deduplication, manual prospect CRUD, CSV preview/commit with idempotency, review decisions, stage/assignment/value/next-action management, meaningful activity records, the five E1 routes, and full tenant/authorization/transaction/UI tests. Do not implement AI, automated discovery, enrichment, contact storage, email, campaigns, or outreach.
+
+The later, separately authorized Automatic Lead Engine MVP is documented in [growth-lead-engine-mvp.md](growth-lead-engine-mvp.md). Its staging-first implementation does not retroactively expand E1 and remains disabled until its migration and provider configuration are explicitly activated in Preview.

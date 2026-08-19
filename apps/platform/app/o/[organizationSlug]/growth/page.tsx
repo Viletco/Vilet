@@ -33,6 +33,11 @@ export default async function GrowthPage({
         description="A focused workspace for reviewing businesses, managing next actions, and moving real opportunities forward."
         status="internal"
       />
+      <div className="mt-6">
+        <Link className={primaryButton} href={`${base}/find`}>
+          Find prospects
+        </Link>
+      </div>
       {overview.active === 0 ? (
         <div className="mt-10">
           <GrowthEmpty

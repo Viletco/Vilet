@@ -162,6 +162,118 @@ export interface Database {
           occurred_at: string;
         };
       };
+      growth_discovery_runs: {
+        Row: {
+          id: string;
+          organization_id: string;
+          created_by_user_id: string;
+          provider: string;
+          industry: string;
+          location: string;
+          keywords: string | null;
+          requested_limit: number;
+          found_count: number;
+          created_count: number;
+          duplicate_count: number;
+          qualified_count: number;
+          needs_contact_count: number;
+          failed_count: number;
+          status: string;
+          safe_failure_code: string | null;
+          created_at: string;
+          completed_at: string | null;
+        };
+      };
+      growth_research: {
+        Row: {
+          id: string;
+          organization_id: string;
+          prospect_id: string;
+          provider: string;
+          evidence: Json;
+          inference: string;
+          recommendation: string;
+          evidence_version: string;
+          generated_at: string;
+        };
+      };
+      growth_scores: {
+        Row: {
+          id: string;
+          organization_id: string;
+          prospect_id: string;
+          fit: number;
+          need: number;
+          potential_value: number;
+          reachability: number;
+          confidence: number;
+          priority_score: number;
+          explanation: string;
+          scoring_version: string;
+          generated_at: string;
+        };
+      };
+      growth_contacts: {
+        Row: {
+          id: string;
+          organization_id: string;
+          prospect_id: string;
+          name: string | null;
+          title: string | null;
+          email: string;
+          email_normalized: string;
+          source_type: string;
+          source_reference: string | null;
+          verification_status: string;
+          confidence: number | null;
+          enriched_at: string;
+          created_at: string;
+          updated_at: string;
+        };
+      };
+      growth_suppressions: {
+        Row: {
+          id: string;
+          organization_id: string;
+          email_normalized: string | null;
+          domain_normalized: string | null;
+          prospect_id: string | null;
+          reason: string;
+          source: string;
+          created_by_user_id: string | null;
+          created_at: string;
+        };
+      };
+      growth_outreach_messages: {
+        Row: {
+          id: string;
+          organization_id: string;
+          prospect_id: string;
+          contact_id: string;
+          subject: string;
+          body: string;
+          status:
+            | "draft"
+            | "review"
+            | "approved"
+            | "sending"
+            | "sent"
+            | "failed"
+            | "suppressed"
+            | "cancelled";
+          generation_version: string;
+          evidence_references: Json;
+          idempotency_key: string;
+          created_by_user_id: string;
+          approved_by_user_id: string | null;
+          approved_at: string | null;
+          provider_message_id: string | null;
+          sent_at: string | null;
+          safe_failure_code: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+      };
     };
     Views: Record<string, never>;
     Functions: Record<string, never>;

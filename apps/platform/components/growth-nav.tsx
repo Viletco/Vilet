@@ -7,6 +7,8 @@ export function GrowthNav({ slug }: { slug: string; current: string }) {
     { label: "Prospects", href: `${base}/prospects` },
     { label: "Review", href: `${base}/review` },
     { label: "Pipeline", href: `${base}/pipeline` },
+    { label: "Find prospects", href: `${base}/find` },
+    { label: "Outreach", href: `${base}/outreach` },
   ] as const;
   return (
     <TabNavigation label="Growth navigation" items={links} className="mb-8" />
