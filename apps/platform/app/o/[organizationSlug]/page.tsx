@@ -1,5 +1,10 @@
 import Link from "next/link";
 import { requireOrganizationMembership } from "@vilet/auth";
+import { PageHeader, StatusBadge } from "../../../components/page-frame";
+import {
+  destinationHref,
+  visibleDestinations,
+} from "../../../lib/platform-products";
 
 export default async function OrganizationPage({
   params,
@@ -8,50 +13,54 @@ export default async function OrganizationPage({
 }) {
   const { organizationSlug } = await params;
   const context = await requireOrganizationMembership(organizationSlug);
+  const products = visibleDestinations(context).filter(
+    ({ key }) => !["overview", "settings"].includes(key),
+  );
   return (
-    <main className="mx-auto min-h-screen max-w-6xl px-5 py-12">
-      <header className="flex items-center justify-between border-b border-[var(--border)] pb-5">
-        <Link href="/" className="font-semibold">
-          Vilét
-        </Link>
-        <form action="/logout" method="post">
-          <button className="text-sm text-[var(--muted)]">Log out</button>
-        </form>
-      </header>
-      <section className="py-16">
-        <p className="font-mono text-xs tracking-[0.18em] text-[var(--accent)] uppercase">
-          Organization overview
-        </p>
-        <h1 className="mt-4 text-4xl font-semibold tracking-[-0.04em]">
-          {context.organizationName}
-        </h1>
-        <p className="mt-4 max-w-2xl leading-7 text-[var(--muted)]">
-          The account foundation is active. Product areas will be introduced
-          only when their functionality and entitlements are ready.
-        </p>
-        <dl className="mt-10 grid gap-px overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--surface)] sm:grid-cols-4">
-          <div className="p-5">
-            <dt className="text-xs text-[var(--quiet)] uppercase">Role</dt>
-            <dd className="mt-2 capitalize">{context.role}</dd>
-          </div>
-          <div className="p-5">
-            <dt className="text-xs text-[var(--quiet)] uppercase">
-              Membership
+    <>
+      <PageHeader
+        eyebrow="Organization overview"
+        title={context.organizationName}
+        description="Your active Vilét products and account access, shown from the capabilities assigned to this organization."
+      />
+      <dl className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--border)] sm:grid-cols-3">
+        {[
+          ["Organization", context.organizationStatus],
+          ["Membership", context.membershipStatus],
+          ["Role", context.role],
+        ].map(([label, value]) => (
+          <div key={label} className="bg-[var(--surface)] p-5">
+            <dt className="text-xs tracking-[0.1em] text-[var(--quiet)] uppercase">
+              {label}
             </dt>
-            <dd className="mt-2 capitalize">{context.membershipStatus}</dd>
+            <dd className="mt-2 capitalize">{value}</dd>
           </div>
-          <div className="p-5">
-            <dt className="text-xs text-[var(--quiet)] uppercase">
-              Capabilities
-            </dt>
-            <dd className="mt-2">{context.capabilities.size}</dd>
-          </div>
-          <div className="p-5">
-            <dt className="text-xs text-[var(--quiet)] uppercase">Account</dt>
-            <dd className="mt-2 capitalize">{context.organizationKind}</dd>
-          </div>
-        </dl>
+        ))}
+      </dl>
+      <section className="mt-14">
+        <h2 className="text-2xl font-semibold tracking-[-0.035em]">
+          Product access
+        </h2>
+        <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {products.map((product) => (
+            <Link
+              key={product.key}
+              href={destinationHref(organizationSlug, product)}
+              className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6 transition hover:border-[var(--accent-border)] hover:bg-[var(--elevated)]"
+            >
+              <div className="flex items-center justify-between gap-4">
+                <h3 className="font-medium">{product.label}</h3>
+                {product.status !== "available" && (
+                  <StatusBadge status={product.status} />
+                )}
+              </div>
+              <p className="mt-3 text-sm leading-6 text-[var(--muted)]">
+                {product.description}
+              </p>
+            </Link>
+          ))}
+        </div>
       </section>
-    </main>
+    </>
   );
 }
