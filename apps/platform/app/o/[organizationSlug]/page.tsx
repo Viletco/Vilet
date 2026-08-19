@@ -23,13 +23,13 @@ export default async function OrganizationPage({
           Organization overview
         </p>
         <h1 className="mt-4 text-4xl font-semibold tracking-[-0.04em]">
-          {context.organizationSlug}
+          {context.organizationName}
         </h1>
         <p className="mt-4 max-w-2xl leading-7 text-[var(--muted)]">
           The account foundation is active. Product areas will be introduced
           only when their functionality and entitlements are ready.
         </p>
-        <dl className="mt-10 grid gap-px overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--surface)] sm:grid-cols-3">
+        <dl className="mt-10 grid gap-px overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--surface)] sm:grid-cols-4">
           <div className="p-5">
             <dt className="text-xs text-[var(--quiet)] uppercase">Role</dt>
             <dd className="mt-2 capitalize">{context.role}</dd>
@@ -45,6 +45,10 @@ export default async function OrganizationPage({
               Capabilities
             </dt>
             <dd className="mt-2">{context.capabilities.size}</dd>
+          </div>
+          <div className="p-5">
+            <dt className="text-xs text-[var(--quiet)] uppercase">Account</dt>
+            <dd className="mt-2 capitalize">{context.organizationKind}</dd>
           </div>
         </dl>
       </section>

@@ -29,6 +29,9 @@ export interface OrganizationContext {
   readonly userId: string;
   readonly organizationId: string;
   readonly organizationSlug: string;
+  readonly organizationName: string;
+  readonly organizationKind: "internal" | "customer";
+  readonly organizationStatus: "active" | "suspended" | "archived";
   readonly role: OrganizationRole;
   readonly membershipStatus: MembershipStatus;
   readonly capabilities: ReadonlySet<string>;

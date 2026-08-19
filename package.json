@@ -27,6 +27,8 @@
     "test:platform": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types --test tests/platform/*.test.ts",
     "verify:platform:connectivity": "node scripts/verify-platform-connectivity.mjs",
     "verify:platform:rls": "node scripts/verify-live-rls.mjs",
+    "platform:bootstrap-owner": "node scripts/bootstrap-vilet-owner.mjs",
+    "verify:platform:phase-b": "node scripts/verify-phase-b-live.mjs",
     "check": "npm run format:check && npm run lint && npm run typecheck && npm run test:privacy && npm run build"
   },
   "dependencies": {

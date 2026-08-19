@@ -18,6 +18,9 @@ function context(
     userId: "user-a",
     organizationId: "organization-a",
     organizationSlug: "organization-a",
+    organizationName: "Organization A",
+    organizationKind: "customer",
+    organizationStatus: "active",
     role: "member",
     membershipStatus: "active",
     capabilities: new Set(["studio.access"]),
@@ -100,4 +103,16 @@ test("ordinary organization owners cannot grant platform administration", () => 
 test("capabilities cannot be self-granted by changing organization context", () => {
   const member = context({ capabilities: new Set() });
   assert.equal(hasCapability(member, "growth.access"), false);
+});
+
+test("internal organization kind does not grant roles, capabilities, or platform administration", () => {
+  const internal = context({
+    organizationKind: "internal",
+    role: "viewer",
+    capabilities: new Set(),
+    platformAdministrator: false,
+  });
+  assert.equal(hasOrganizationRole(internal, ["owner"]), false);
+  assert.equal(hasCapability(internal, "studio.access"), false);
+  assert.equal(canGrantPlatformAdministration(internal), false);
 });

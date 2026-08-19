@@ -55,10 +55,11 @@ export async function getActiveMemberships(userId: string) {
   const { data, error } = await client
     .from("organization_memberships")
     .select(
-      "id, organization_id, user_id, role, status, joined_at, created_at, updated_at, organizations(id, slug, name, kind, status, created_at, updated_at)",
+      "id, organization_id, user_id, role, status, joined_at, created_at, updated_at, organizations!inner(id, slug, name, kind, status, created_at, updated_at)",
     )
     .eq("user_id", userId)
     .eq("status", "active")
+    .eq("organizations.status", "active")
     .returns<ActiveMembership[]>();
   if (error)
     throw new Error("Active organization memberships could not be loaded.");
@@ -74,20 +75,29 @@ export async function requireOrganizationMembership(
 
   const { data: membership } = await client
     .from("organization_memberships")
-    .select("organization_id, role, status, organizations!inner(slug)")
+    .select(
+      "organization_id, role, status, organizations!inner(slug, name, kind, status)",
+    )
     .eq("user_id", user.id)
     .eq("status", "active")
     .eq("organizations.slug", organizationSlug)
+    .eq("organizations.status", "active")
     .returns<
       {
         organization_id: string;
         role: OrganizationRole;
         status: "active";
-        organizations: { slug: string } | null;
+        organizations: {
+          slug: string;
+          name: string;
+          kind: "internal" | "customer";
+          status: "active" | "suspended" | "archived";
+        } | null;
       }[]
     >()
     .maybeSingle();
   if (!membership) notFound();
+  if (!membership.organizations) notFound();
 
   const [{ data: grants }, { data: administrator }] = await Promise.all([
     client
@@ -111,6 +121,9 @@ export async function requireOrganizationMembership(
     userId: user.id,
     organizationId: membership.organization_id,
     organizationSlug,
+    organizationName: membership.organizations.name,
+    organizationKind: membership.organizations.kind,
+    organizationStatus: membership.organizations.status,
     role: membership.role,
     membershipStatus: membership.status,
     capabilities: new Set((grants ?? []).map((grant) => grant.capability_key)),

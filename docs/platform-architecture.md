@@ -42,6 +42,27 @@ Authentication identity remains in `auth.users`. Application data uses profiles,
 
 Entitlements are active only when their start time has passed, they are not revoked, and their optional end time has not passed. Future billing maps plans to these grants rather than embedding plan checks in application pages.
 
+### Internal organization
+
+The first-party Vilét organization uses the immutable slug `vilet`, the display name `Vilét`, `kind=internal`, and `status=active`. Internal kind is classification only: it grants no membership, role, capability, or platform-administrator authority. Authorization continues to require explicit active membership, an allowed organization role, active entitlements, and—where required—a separate platform-administrator record.
+
+Vilét receives non-expiring `source_type=internal` entitlement grants for the canonical Studio, Growth, Insights, AI, Billing, and Support capabilities. These grants represent first-party operation and do not create or imply a Stripe subscription.
+
+### Owner bootstrap
+
+The security-critical owner bootstrap is an explicit CLI backed by the transactional, service-role-only `bootstrap_vilet_owner` database function. It verifies the target provider user, locks concurrent executions, resolves the organization by its unique slug, fails on conflicting protected state, verifies the capability catalog, and writes audit events only for resources actually created. Ordinary authenticated and anonymous roles cannot execute the function. No web route exposes the bootstrap and no personal email or provider user ID is stored in source control.
+
+The command defaults to a read-only dry run. Staging execution requires an explicit environment and Supabase project reference:
+
+```bash
+npm run platform:bootstrap-owner -- --environment=staging --project-ref=<project-ref> --user-id=<provider-user-id>
+npm run platform:bootstrap-owner -- --environment=staging --project-ref=<project-ref> --user-id=<provider-user-id> --apply
+```
+
+The ignored local environment may provide `VILET_SUPABASE_PROJECT_REF` and `VILET_BOOTSTRAP_ADMIN_USER_ID` instead of the matching CLI arguments. Production reuse requires the same source code but additionally requires `--environment=production`, `--apply`, and `--confirm-production=<project-ref>`. The confirmation must exactly match the configured Supabase hostname. The CLI never prints credentials or the target provider ID.
+
+An organization owner is not automatically a platform administrator. The independent platform-administrator grant exists because cross-organization operations require a separate, tightly controlled authority boundary. Organization owners and admins cannot create this grant through RLS.
+
 ## Authorization and tenant isolation
 
 Layouts provide navigation protection, but every Server Action and Route Handler must independently call the appropriate authorization helper. Future tenant APIs must accept a verified `OrganizationContext` and scope queries by its `organizationId`.
@@ -90,7 +111,7 @@ The SQL test has not been claimed as executed without a configured Supabase CLI/
 
 ## Staging activation state
 
-As of August 18, 2026, Phase A is connected to a dedicated free Supabase staging project. This environment must not contain production or customer data.
+As of August 19, 2026, Phases A and B are connected to a dedicated free Supabase staging project. This environment must not contain production or customer data.
 
 - Project name: `Vilet`
 - Project reference: `lzohhfmfdqivnjqqwmqu`
@@ -102,8 +123,14 @@ As of August 18, 2026, Phase A is connected to a dedicated free Supabase staging
 - Local callback: `http://localhost:3001/auth/callback`
 - Passwordless email delivery: verified with an approved staging identity
 - Callback, session persistence, authenticated-login redirect, and logout: live-verified
+- Internal organization: `Vilét` (`vilet`, internal, active)
+- Primary membership: active owner
+- Platform administrator: active and independently verified
+- Internal entitlements: all 13 canonical capabilities active
+- Owner bootstrap: applied once and rerun with zero changes
+- Bootstrap audit trail: 17 events with no duplicate events on rerun
 
-The read-only schema assertions verified eight Phase A tables, RLS on all eight tables, thirteen RLS policies, three private authorization helpers, and thirteen seeded capabilities. The live RLS suite passed all 24 assertions using two temporary identities and organizations; all temporary fixtures were removed after the run.
+The read-only schema assertions verified eight Phase A tables, RLS on all eight tables, thirteen RLS policies, three private authorization helpers, and thirteen seeded capabilities. The live RLS suite passed all 24 assertions using two temporary identities and organizations. The Phase B live suite additionally verified owner state, internal entitlements, independent platform administration, audit idempotency, bootstrap denial, cross-tenant slug denial, internal-entitlement denial, and suspension behavior. All temporary fixtures were removed after each run.
 
 The activation review identified and fixed an organization-role escalation path. Migration `202608180002_harden_membership_role_policies.sql` prevents admins from promoting themselves or granting owner/admin roles while preserving owner authority and lower-role administration.
 
@@ -133,4 +160,4 @@ Platform responses include the configured CSP, HSTS, cross-origin policies, perm
 
 ## Next phase
 
-Phase B creates the internal Vilét organization and an idempotent, audited administrator bootstrap. Begin it only after the Phase A infrastructure changes are committed and the decision to activate a protected Vercel platform preview is complete. Do not implement Growth, Insights product features, external subscriptions, or public login integration before that phase is approved.
+Phase C may introduce the Vilét application dashboard and product shells after the committed Phase B preview is verified with the owner account. Do not implement Growth or Insights product functionality, external subscriptions, or public login integration before those later phases are approved.

@@ -47,6 +47,12 @@ npm run dev --workspace @vilet/platform
 
 Authentication safely defaults to disabled until a Supabase project is configured. See `docs/platform-architecture.md` before enabling it.
 
+The internal-owner bootstrap is an explicit, dry-run-first administrative command. It is never exposed as an application route:
+
+```bash
+npm run platform:bootstrap-owner -- --environment=staging --project-ref=<project-ref> --user-id=<provider-user-id>
+```
+
 ## npm scripts
 
 - `npm run dev` — start the development server.
