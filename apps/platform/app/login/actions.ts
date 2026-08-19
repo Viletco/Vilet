@@ -2,6 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { createPlatformServerClient, getPlatformConfig } from "@vilet/auth";
+import { resolvePlatformAppUrl } from "@vilet/shared-config";
 
 export async function requestMagicLink(formData: FormData) {
   const email = String(formData.get("email") ?? "")
@@ -14,9 +15,10 @@ export async function requestMagicLink(formData: FormData) {
     redirect("/login?configuration=unavailable");
   const client = await createPlatformServerClient();
   if (!client) redirect("/login?configuration=unavailable");
-  const appUrl = process.env.VERCEL_URL
-    ? new URL(`https://${process.env.VERCEL_URL}`)
-    : config.appUrl;
+  const appUrl = resolvePlatformAppUrl(config.appUrl, {
+    vercelEnv: process.env.VERCEL_ENV,
+    vercelUrl: process.env.VERCEL_URL,
+  });
   const { error } = await client.auth.signInWithOtp({
     email,
     options: {

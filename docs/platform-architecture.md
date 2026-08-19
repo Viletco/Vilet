@@ -167,3 +167,17 @@ The Phase C QA deployment is `https://vilet-platform-preview-aq1maxzr1-swzyfrmda
 Growth remains an internal product shell, Insights remains a beta shell without connected data, and Billing has no payment processor. Organization management controls, integrations, subscriptions, and operational product functionality remain deferred.
 
 The Phase B owner-session observation on the latest preview remains a pre-production verification item because the staging project's built-in email provider reached its temporary rate limit. The previously verified Phase A authentication lifecycle and all live Phase B database/RLS assertions remain valid.
+
+## Phase D account integration and domain readiness
+
+The marketing site remains an anonymous surface and links directly to `https://app.vilet.co/login`; it does not load Supabase, inspect platform cookies, or proxy authenticated APIs. Platform cookies remain host-scoped because no `Domain` attribute is configured. The authenticated application provides a direct organization-home brand link plus Settings, Visit vilet.co, and Log out actions.
+
+Before attaching `app.vilet.co`, complete these manual infrastructure steps without removing local or preview callbacks:
+
+1. In Supabase Authentication URL Configuration, set the production Site URL to `https://app.vilet.co` and add the exact redirect URL `https://app.vilet.co/auth/callback`. Do not use wildcard redirects.
+2. In the `vilet-platform-preview` Vercel project's Production environment, set `NEXT_PUBLIC_APP_URL=https://app.vilet.co` and retain the reviewed platform-only Supabase variables.
+3. Add `app.vilet.co` to the platform Vercel project only, then create the DNS record Vercel specifies. Do not attach it to the marketing project or alter the apex domain.
+4. Keep preview deployment protection enabled. At production launch, remove the Vercel Authentication wall only from the production platform surface so the Vilét login page is reachable; application authentication continues to protect organization routes.
+5. Verify HTTPS, login, callback, owner Overview, authenticated `/login`, refresh persistence, logout, headers, robots, and public asset secret isolation on the custom hostname.
+
+The custom domain must not be attached until the real owner session has visually passed on the latest protected Phase D preview. The platform remains `noindex, nofollow` after public login access is enabled.

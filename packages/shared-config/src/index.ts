@@ -75,3 +75,15 @@ export function validatePlatformEnvironment(
     serviceRoleKey: environment.SUPABASE_SERVICE_ROLE_KEY?.trim() || undefined,
   };
 }
+
+export function resolvePlatformAppUrl(
+  configuredAppUrl: URL,
+  deployment: { readonly vercelEnv?: string; readonly vercelUrl?: string },
+) {
+  if (deployment.vercelEnv !== "preview" || !deployment.vercelUrl)
+    return configuredAppUrl;
+  const previewUrl = parseUrl(`https://${deployment.vercelUrl}`, "VERCEL_URL");
+  if (!previewUrl.hostname.endsWith(".vercel.app"))
+    throw new Error("VERCEL_URL must be a Vercel preview hostname.");
+  return previewUrl;
+}

@@ -79,6 +79,12 @@ export function AppShell({
               </button>
             </form>
           </div>
+          <div className="mt-2 flex gap-4 text-xs text-[var(--quiet)]">
+            <Link href={`/o/${context.organizationSlug}/settings/general`}>
+              Settings
+            </Link>
+            <a href="https://vilet.co">Visit vilet.co</a>
+          </div>
         </div>
       </aside>
       <div className="min-w-0">
@@ -98,6 +104,12 @@ export function AppShell({
                 {context.organizationName}
               </p>
               <Navigation context={context} />
+              <a
+                href="https://vilet.co"
+                className="mt-3 flex min-h-11 items-center rounded-lg border-t border-[var(--border)] px-3 pt-3 text-sm text-[var(--muted)]"
+              >
+                Visit vilet.co
+              </a>
               <form
                 action="/logout"
                 method="post"

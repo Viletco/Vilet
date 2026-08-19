@@ -4,7 +4,11 @@ import { Menu, X } from "lucide-react";
 import { createPortal } from "react-dom";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 
-import { siteNavigation, type SitePath } from "@/content/navigation";
+import {
+  platformLoginUrl,
+  siteNavigation,
+  type SitePath,
+} from "@/content/navigation";
 import { cn } from "@/lib/cn";
 
 import { Button, ButtonLink, TextLink } from "@/components/ui";
@@ -150,13 +154,21 @@ export function MobileNavigation({ currentPath }: MobileNavigationProps) {
                     })}
                   </ul>
                 </nav>
+                <TextLink
+                  href={platformLoginUrl}
+                  variant="navigation"
+                  onClick={() => setOpen(false)}
+                  className="border-border mt-(--ds-space-xl) block min-h-12 rounded-md border px-(--ds-space-md) py-(--ds-space-md) text-center"
+                >
+                  Log In
+                </TextLink>
                 <ButtonLink
                   href="/contact"
                   fullWidth
-                  className="mt-(--ds-space-2xl)"
+                  className="mt-(--ds-space-md)"
                   onClick={() => setOpen(false)}
                 >
-                  Let&apos;s Talk
+                  Discuss a project
                 </ButtonLink>
               </Container>
             </div>

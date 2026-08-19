@@ -26,23 +26,22 @@ export default async function LoginPage({
           Vilét
         </a>
         <p className="mt-10 font-mono text-xs tracking-[0.18em] text-[var(--accent)] uppercase">
-          Private platform
+          Vilét account
         </p>
         <h1 className="mt-3 text-3xl font-semibold tracking-[-0.04em]">
-          Log in to Vilét.
+          Sign in to Vilét.
         </h1>
         <p className="mt-4 leading-7 text-[var(--muted)]">
-          Enter your approved email address. Vilét will send a secure,
-          single-use login link.
+          Enter your account email to open the Vilét application. We&apos;ll
+          send a secure, single-use sign-in link—no password required.
         </p>
         {unavailable ? (
           <div className="mt-7 rounded-xl border border-[var(--border)] p-4 text-sm leading-6 text-[var(--muted)]">
             <strong className="block text-[var(--text)]">
-              Authentication is not configured.
+              Sign-in is temporarily unavailable.
             </strong>
-            The platform foundation is available for local review, but no login
-            request will be sent until approved Supabase credentials are
-            configured.
+            Please try again later or contact Vilét if you need help accessing
+            your account.
           </div>
         ) : (
           <form action={requestMagicLink} className="mt-7">
@@ -72,8 +71,11 @@ export default async function LoginPage({
         )}
         {query.error && (
           <p role="alert" className="mt-5 text-sm text-rose-400">
-            The login request could not be completed. Review the email address
-            or try again later.
+            {query.error === "invalid-email"
+              ? "Enter a valid email address and try again."
+              : query.error === "invalid-callback"
+                ? "That sign-in link is invalid or has expired. Request a new link to continue."
+                : "We could not send a sign-in link right now. Wait a moment and try again."}
           </p>
         )}
       </section>

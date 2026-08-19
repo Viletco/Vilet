@@ -17,6 +17,18 @@ Secrets belong in local untracked `.env.local` files or scoped Vercel environmen
 
 Use separate preview and production resources or credentials where provider plans permit. After configuration, run `npm run check:launch` in a securely populated environment; it reports presence and modes without printing values.
 
+## Vilét Platform
+
+| Variable                               | Local                            | Vercel preview                       | Vercel production                  | Sensitive | Notes                                                                 |
+| -------------------------------------- | -------------------------------- | ------------------------------------ | ---------------------------------- | --------- | --------------------------------------------------------------------- |
+| `PLATFORM_AUTH_MODE`                   | `supabase` for integration tests | `supabase`                           | `supabase`                         | No        | Disabled mode fails closed                                            |
+| `NEXT_PUBLIC_APP_URL`                  | `http://localhost:3001`          | Stable configured application origin | `https://app.vilet.co`             | No        | Production magic links always use this value                          |
+| `NEXT_PUBLIC_SUPABASE_URL`             | Staging project URL              | Dedicated staging project URL        | Approved production project URL    | No        | Marketing must never receive this variable                            |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Staging publishable key          | Preview-scoped publishable key       | Production publishable key         | No        | Safe for platform browser use; still scoped by RLS                    |
+| `SUPABASE_SERVICE_ROLE_KEY`            | Privileged scripts only          | Server-only if explicitly required   | Server-only if explicitly required | Yes       | Never use a `NEXT_PUBLIC_` prefix or expose to marketing/browser code |
+
+Vercel preview deployments use their generated `VERCEL_URL` only for the magic-link callback origin. Production deployments ignore that generated URL and use `NEXT_PUBLIC_APP_URL=https://app.vilet.co`.
+
 ## Optional Vilét AI
 
 | Variable                                          | Local/preview default | Production                       | Sensitive | Notes                                         |

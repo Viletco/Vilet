@@ -7,6 +7,8 @@ export const siteNavigation = [
   { label: "Contact", href: "/contact" },
 ] as const;
 
+export const platformLoginUrl = "https://app.vilet.co/login";
+
 export const footerNavigation = [
   { label: "Home", href: "/" },
   { label: "Studio", href: "/services" },
