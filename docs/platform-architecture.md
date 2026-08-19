@@ -191,3 +191,10 @@ The production Supabase project is `detqlxrismxlbgsgeafx`. On 2026-08-19, all th
 The protected Phase D platform preview is `https://vilet-platform-preview-q0xvyxh7b-swzyfrmdarocs-projects.vercel.app`. Vercel reported the deployment ready after a successful production build. An unauthenticated request received the expected Vercel Authentication redirect, secure host-only SSO nonce cookie, HSTS, frame denial, and `X-Robots-Tag: noindex`.
 
 The real Vilét owner session was visually verified on this preview after its exact callback URL was allowlisted. The magic link established the session, root resolved to `/o/vilet`, the active internal organization and Owner role appeared, all thirteen entitled product capabilities produced the expected navigation, and Platform admin was recognized. Refresh preserved the session, authenticated `/login` returned to `/o/vilet`, and Log out returned to the Vilét sign-in page.
+
+## Operational references
+
+- [Production checklist](platform-production-checklist.md)
+- [Operations and recovery runbook](platform-operations-and-recovery.md)
+- [Privacy readiness](platform-privacy-readiness.md)
+- [Phase E Growth architecture](growth-phase-e-architecture.md)

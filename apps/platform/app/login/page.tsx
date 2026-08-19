@@ -73,9 +73,13 @@ export default async function LoginPage({
           <p role="alert" className="mt-5 text-sm text-rose-400">
             {query.error === "invalid-email"
               ? "Enter a valid email address and try again."
-              : query.error === "invalid-callback"
-                ? "That sign-in link is invalid or has expired. Request a new link to continue."
-                : "We could not send a sign-in link right now. Wait a moment and try again."}
+              : query.error === "rate-limited"
+                ? "Too many sign-in emails were requested. Wait about an hour, then request one new link."
+                : query.error === "missing-callback-code"
+                  ? "That sign-in link is incomplete. Return to this page and request a new link."
+                  : query.error === "invalid-callback"
+                    ? "That sign-in link is invalid or has expired. Request a new link to continue."
+                    : "We could not send a sign-in link right now. Wait a moment and try again."}
           </p>
         )}
       </section>

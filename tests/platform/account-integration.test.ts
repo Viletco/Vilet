@@ -70,5 +70,29 @@ test("production magic links use app.vilet.co and previews use only Vercel previ
 test("invalid callbacks return to a branded login error without reflecting redirects", () => {
   const callback = read("apps/platform/app/auth/callback/route.ts");
   assert.match(callback, /invalid-callback/);
+  assert.match(callback, /missing-callback-code/);
   assert.doesNotMatch(callback, /redirect_to|returnTo|next=/);
+});
+
+test("authentication failures are actionable and safely observable", () => {
+  const action = read("apps/platform/app/login/actions.ts");
+  const login = read("apps/platform/app/login/page.tsx");
+  const events = read("apps/platform/lib/safe-events.ts");
+  assert.match(action, /over_email_send_rate_limit/);
+  assert.match(action, /rate-limited/);
+  assert.match(login, /Wait about an hour/);
+  assert.match(events, /scope: "vilet-platform"/);
+  assert.doesNotMatch(events, /email|token|cookie|authorization|service.role/i);
+});
+
+test("privileged staging identity and connectivity tools require explicit targets", () => {
+  const identity = read("scripts/create-platform-test-user.mjs");
+  const connectivity = read("scripts/verify-platform-connectivity.mjs");
+  assert.match(identity, /Test identities may be created only in staging/);
+  assert.match(identity, /validateBootstrapTarget/);
+  assert.match(connectivity, /--environment must be staging or production/);
+  assert.match(
+    connectivity,
+    /Configured Supabase URL does not match --project-ref/,
+  );
 });

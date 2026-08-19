@@ -150,14 +150,14 @@ export async function requireCapability(
   capability: CapabilityKey,
 ) {
   const context = await requireOrganizationMembership(slug);
-  if (!hasCapability(context, capability)) throw new AuthorizationError();
+  if (!hasCapability(context, capability)) notFound();
   return context;
 }
 
 export async function requirePlatformAdministrator() {
   const user = await requireUser();
   const client = await createPlatformServerClient();
-  if (!client) throw new AuthorizationError();
+  if (!client) notFound();
   const { data } = await client
     .from("platform_administrators")
     .select("user_id")
@@ -165,6 +165,6 @@ export async function requirePlatformAdministrator() {
     .is("revoked_at", null)
     .returns<{ user_id: string }[]>()
     .maybeSingle();
-  if (!data) throw new AuthorizationError();
+  if (!data) notFound();
   return user;
 }
