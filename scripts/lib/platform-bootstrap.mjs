@@ -17,10 +17,17 @@ export const internalCapabilityKeys = Object.freeze([
   "support.access",
 ]);
 
-export function loadPlatformEnvironment(cwd = process.cwd()) {
-  const environmentPath = path.join(cwd, "apps", "platform", ".env.local");
+export function loadPlatformEnvironment(
+  cwd = process.cwd(),
+  environmentFile = ".env.local",
+) {
+  if (![".env.local", ".env.production.local"].includes(environmentFile))
+    throw new Error(
+      "--credential-file must be .env.local or .env.production.local.",
+    );
+  const environmentPath = path.join(cwd, "apps", "platform", environmentFile);
   if (!fs.existsSync(environmentPath))
-    throw new Error("apps/platform/.env.local is required.");
+    throw new Error(`apps/platform/${environmentFile} is required.`);
   return Object.fromEntries(
     fs
       .readFileSync(environmentPath, "utf8")
@@ -41,6 +48,7 @@ export function parseBootstrapArguments(argumentsList) {
     userId: "",
     userEmail: "",
     productionConfirmation: "",
+    environmentFile: ".env.local",
   };
   for (const argument of argumentsList) {
     if (argument === "--apply") options.apply = true;
@@ -56,6 +64,8 @@ export function parseBootstrapArguments(argumentsList) {
       options.productionConfirmation = argument.slice(
         "--confirm-production=".length,
       );
+    else if (argument.startsWith("--credential-file="))
+      options.environmentFile = argument.slice("--credential-file=".length);
     else throw new Error(`Unknown bootstrap argument: ${argument}`);
   }
   return options;
@@ -87,7 +97,8 @@ export function validateBootstrapTarget(options, supabaseUrl) {
     );
   if (
     options.environment === "production" &&
-    (!options.apply || options.productionConfirmation !== options.projectRef)
+    options.apply &&
+    options.productionConfirmation !== options.projectRef
   )
     throw new Error(
       "Production apply requires --confirm-production matching --project-ref.",

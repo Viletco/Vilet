@@ -9,7 +9,10 @@ import {
 } from "./lib/platform-bootstrap.mjs";
 
 const options = parseBootstrapArguments(process.argv.slice(2));
-const environment = loadPlatformEnvironment();
+const environment = loadPlatformEnvironment(
+  process.cwd(),
+  options.environmentFile,
+);
 options.projectRef ||= environment.VILET_SUPABASE_PROJECT_REF ?? "";
 if (!options.userId && !options.userEmail)
   options.userId = environment.VILET_BOOTSTRAP_ADMIN_USER_ID ?? "";

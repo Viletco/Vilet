@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import {
   internalCapabilityKeys,
+  loadPlatformEnvironment,
   parseBootstrapArguments,
   summarizeBootstrapState,
   validateBootstrapTarget,
@@ -38,6 +39,13 @@ test("bootstrap rejects environment confusion and ambiguous identities", () => {
       mismatch,
       "https://aaaaaaaaaaaaaaaaaaaa.supabase.co",
     ),
+  );
+});
+
+test("privileged tooling limits credentials to explicit staging or production files", () => {
+  assert.throws(
+    () => loadPlatformEnvironment(process.cwd(), ".env.customer.local"),
+    /--credential-file must be .env.local or .env.production.local/,
   );
 });
 

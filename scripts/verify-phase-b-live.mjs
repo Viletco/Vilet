@@ -9,7 +9,10 @@ import {
 } from "./lib/platform-bootstrap.mjs";
 
 const options = parseBootstrapArguments(process.argv.slice(2));
-const environment = loadPlatformEnvironment();
+const environment = loadPlatformEnvironment(
+  process.cwd(),
+  options.environmentFile,
+);
 validateBootstrapTarget(options, environment.NEXT_PUBLIC_SUPABASE_URL);
 if (
   !environment.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ||

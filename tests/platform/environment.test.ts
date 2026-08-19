@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { readFileSync } from "node:fs";
 import { validatePlatformEnvironment } from "../../packages/shared-config/src/index.ts";
 
 test("disabled mode requires no credentials and remains explicit", () => {
@@ -48,4 +49,12 @@ test("valid Supabase configuration keeps the service role optional and server-di
   assert.equal(config.authMode, "supabase");
   if (config.authMode === "supabase")
     assert.equal(config.serviceRoleKey, undefined);
+});
+
+test("live RLS fixture verification requires an explicit environment and project", () => {
+  const source = readFileSync("scripts/verify-live-rls.mjs", "utf8");
+  assert.match(source, /--environment must be staging or production/);
+  assert.match(source, /Configured Supabase URL does not match --project-ref/);
+  assert.match(source, /Production RLS fixtures require --confirm-production/);
+  assert.match(source, /Temporary RLS fixtures removed/);
 });

@@ -1,24 +1,40 @@
 import crypto from "node:crypto";
-import fs from "node:fs";
-import path from "node:path";
 import process from "node:process";
 import { createClient } from "@supabase/supabase-js";
+import { loadPlatformEnvironment } from "./lib/platform-bootstrap.mjs";
 
-const environmentPath = path.join(
+const target = {
+  environment: "",
+  projectRef: "",
+  confirmation: "",
+  environmentFile: ".env.local",
+};
+for (const argument of process.argv.slice(2)) {
+  if (argument.startsWith("--environment="))
+    target.environment = argument.slice("--environment=".length);
+  else if (argument.startsWith("--project-ref="))
+    target.projectRef = argument.slice("--project-ref=".length);
+  else if (argument.startsWith("--confirm-production="))
+    target.confirmation = argument.slice("--confirm-production=".length);
+  else if (argument.startsWith("--credential-file="))
+    target.environmentFile = argument.slice("--credential-file=".length);
+  else throw new Error(`Unknown verification argument: ${argument}`);
+}
+if (!["staging", "production"].includes(target.environment))
+  throw new Error("--environment must be staging or production.");
+if (!/^[a-z0-9]{20}$/u.test(target.projectRef))
+  throw new Error("--project-ref must be an explicit Supabase project ref.");
+if (
+  target.environment === "production" &&
+  target.confirmation !== target.projectRef
+)
+  throw new Error(
+    "Production RLS fixtures require --confirm-production matching --project-ref.",
+  );
+
+const environment = loadPlatformEnvironment(
   process.cwd(),
-  "apps",
-  "platform",
-  ".env.local",
-);
-const environment = Object.fromEntries(
-  fs
-    .readFileSync(environmentPath, "utf8")
-    .split(/\r?\n/u)
-    .filter((line) => line && !line.startsWith("#") && line.includes("="))
-    .map((line) => {
-      const separator = line.indexOf("=");
-      return [line.slice(0, separator), line.slice(separator + 1).trim()];
-    }),
+  target.environmentFile,
 );
 
 const url = environment.NEXT_PUBLIC_SUPABASE_URL;
@@ -26,6 +42,8 @@ const publishableKey = environment.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
 const serviceRoleKey = environment.SUPABASE_SERVICE_ROLE_KEY;
 if (!url || !publishableKey || !serviceRoleKey)
   throw new Error("Supabase environment is incomplete.");
+if (new URL(url).hostname !== `${target.projectRef}.supabase.co`)
+  throw new Error("Configured Supabase URL does not match --project-ref.");
 
 const admin = createClient(url, serviceRoleKey, {
   auth: { autoRefreshToken: false, persistSession: false },
@@ -61,7 +79,10 @@ async function createUser(label) {
     email: `phase-a-${label}-${suffix}@example.invalid`,
     password,
     email_confirm: true,
-    user_metadata: { environment: "staging", purpose: "temporary-rls-test" },
+    user_metadata: {
+      environment: target.environment,
+      purpose: "temporary-rls-test",
+    },
   });
   if (error) throw error;
   fixtures.userIds.push(data.user.id);
