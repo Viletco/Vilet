@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { requireOrganizationMembership } from "@vilet/auth";
+import { TabNavigation } from "../../../../components/tab-navigation";
 
 export default async function SettingsLayout({
   children,
@@ -20,20 +20,15 @@ export default async function SettingsLayout({
     items.push({ label: "Billing", segment: "billing" });
   return (
     <div>
-      <nav
-        aria-label="Settings"
-        className="mb-10 flex gap-2 overflow-x-auto border-b border-[var(--border)] pb-3"
-      >
-        {items.map((item) => (
-          <Link
-            key={item.segment}
-            className="min-h-10 rounded-lg px-3 py-2 text-sm whitespace-nowrap text-[var(--muted)] hover:bg-[var(--elevated)] hover:text-[var(--text)]"
-            href={`/o/${organizationSlug}/settings/${item.segment}`}
-          >
-            {item.label}
-          </Link>
-        ))}
-      </nav>
+      <TabNavigation
+        label="Settings"
+        className="mb-8"
+        items={items.map((item) => ({
+          label: item.label,
+          href: `/o/${organizationSlug}/settings/${item.segment}`,
+          exact: true,
+        }))}
+      />
       {children}
     </div>
   );

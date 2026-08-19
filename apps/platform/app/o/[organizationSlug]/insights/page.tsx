@@ -1,5 +1,9 @@
 import { requireCapability } from "@vilet/auth";
-import { FeatureList, PageHeader } from "../../../../components/page-frame";
+import {
+  EmptyState,
+  FeatureList,
+  PageHeader,
+} from "../../../../components/page-frame";
 export default async function InsightsPage({
   params,
 }: {
@@ -24,6 +28,10 @@ export default async function InsightsPage({
           "Uptime",
           "Recommendations",
         ]}
+      />
+      <EmptyState
+        title="No data sources connected"
+        description="Approved website, analytics, marketing, search, sales, and reliability connections will appear here when configured. No integrations are simulated."
       />
     </>
   );
