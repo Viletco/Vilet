@@ -1,6 +1,6 @@
-import type { SitePath } from "@/content/navigation";
+import { platformLoginUrl, type SitePath } from "@/content/navigation";
 
-import { ButtonLink, Wordmark } from "@/components/ui";
+import { ButtonLink, TextLink, Wordmark } from "@/components/ui";
 
 import { Container } from "./container";
 import { DesktopNavigation } from "./desktop-navigation";
@@ -19,7 +19,14 @@ export function Header({ currentPath }: HeaderProps) {
             <Wordmark linked />
           </div>
           <DesktopNavigation currentPath={currentPath} />
-          <div className="flex min-w-0 items-center justify-end">
+          <div className="flex min-w-0 items-center justify-end gap-(--ds-space-lg)">
+            <TextLink
+              href={platformLoginUrl}
+              variant="navigation"
+              className="desktop:inline-flex hidden py-(--ds-space-sm)"
+            >
+              Log In
+            </TextLink>
             <ButtonLink
               href="/contact"
               size="sm"

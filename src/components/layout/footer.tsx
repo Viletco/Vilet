@@ -1,5 +1,5 @@
 import { globalSettings } from "@/content";
-import { footerNavigation } from "@/content/navigation";
+import { footerNavigation, platformLoginUrl } from "@/content/navigation";
 
 import { Text, TextLink, Wordmark } from "@/components/ui";
 
@@ -33,6 +33,11 @@ export function Footer() {
                   </TextLink>
                 </li>
               ))}
+              <li>
+                <TextLink href={platformLoginUrl} variant="navigation">
+                  Log In
+                </TextLink>
+              </li>
             </ul>
           </nav>
         </div>
