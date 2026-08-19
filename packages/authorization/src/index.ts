@@ -22,6 +22,8 @@ export const capabilityKeys = [
   "ai.access",
   "billing.manage",
   "support.access",
+  "partner.access",
+  "sales.enablement",
 ] as const;
 export type CapabilityKey = (typeof capabilityKeys)[number];
 

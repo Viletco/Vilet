@@ -18,6 +18,7 @@ import {
   Settings,
   ShieldCheck,
   Sparkles,
+  GraduationCap,
   X,
 } from "lucide-react";
 import type { ProductStatus } from "../lib/platform-products";
@@ -34,6 +35,7 @@ const icons = {
   overview: LayoutDashboard,
   studio: BriefcaseBusiness,
   growth: Gauge,
+  partner: GraduationCap,
   insights: BarChart3,
   ai: Bot,
   billing: CreditCard,
@@ -57,7 +59,7 @@ function Navigation({
 }) {
   const pathname = usePathname();
   const primary = destinations.filter(({ key }) =>
-    ["overview", "studio", "growth", "insights", "ai"].includes(key),
+    ["overview", "studio", "growth", "partner", "insights", "ai"].includes(key),
   );
   const account = destinations.filter(
     ({ key }) => !primary.some((item) => item.key === key),

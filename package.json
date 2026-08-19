@@ -30,6 +30,7 @@
     "platform:bootstrap-owner": "node scripts/bootstrap-vilet-owner.mjs",
     "verify:platform:phase-b": "node scripts/verify-phase-b-live.mjs",
     "verify:growth:e1:rls": "node scripts/verify-growth-e1-rls.mjs",
+    "verify:sales-partner:rls": "node scripts/verify-sales-partner-rls.mjs",
     "check": "npm run format:check && npm run lint && npm run typecheck && npm run test:privacy && npm run build"
   },
   "dependencies": {

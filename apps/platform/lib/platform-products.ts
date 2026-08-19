@@ -38,6 +38,14 @@ export const platformDestinations: readonly PlatformDestination[] = [
     description: "Prospecting and pipeline systems in development.",
   },
   {
+    key: "partner",
+    label: "Partner Hub",
+    segment: "partner",
+    capability: "partner.access",
+    status: "internal",
+    description: "Training, approved sales guidance, leads, and commissions.",
+  },
+  {
     key: "insights",
     label: "Insights",
     segment: "insights",
