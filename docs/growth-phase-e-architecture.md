@@ -162,6 +162,8 @@ Track funnel and business outcomes, not vanity volume: unique prospects, duplica
 - Tests: suppression race, duplicate send prevention, limits, approval, bounce/reply stop, template evidence and complete audit trail.
 - Complete only after policy/counsel approval and a tightly limited internal pilot.
 
-## First implementation prompt after production authentication passes
+## First implementation prompt
+
+Production authentication passed on 2026-08-19. Phase E1 has not begun automatically. Before it is cleared, remove the unnecessary service-role credential from Vercel Preview, redeploy Preview, and reconfirm that Preview targets the staging Supabase project.
 
 Build **Phase E1 only**: multi-tenant Growth prospect/pipeline foundation with migrations and RLS, typed data access, deterministic normalization and deduplication, manual prospect CRUD, CSV preview/commit with idempotency, review decisions, stage/assignment/value/next-action management, meaningful activity records, the five E1 routes, and full tenant/authorization/transaction/UI tests. Do not implement AI, automated discovery, enrichment, contact storage, email, campaigns, or outreach.

@@ -158,15 +158,15 @@ Platform responses include the configured CSP, HSTS, cross-origin policies, perm
 - Organization owners cannot grant platform administration or entitlements through authenticated table policies.
 - Audit records have no authenticated update or delete policy.
 
-## Next phase
+## Implemented application shell
 
 Phase C adds a server-rendered organization application shell and truthful product shells for Overview, Studio, Growth, Insights, Vilét AI, Billing, Support, and Settings. Navigation is derived from live capabilities, while each protected route independently rechecks its capability or role. The interface contains no sample projects, performance metrics, customer records, subscriptions, or other fabricated business data.
 
-The Phase C QA deployment is `https://vilet-platform-preview-aq1maxzr1-swzyfrmdarocs-projects.vercel.app`. Vercel reported the deployment ready after a successful production build, and an unauthenticated request received the expected Vercel Authentication redirect with `X-Robots-Tag: noindex`. The live owner-session UI remains deferred for the reason below.
+The Phase C QA deployment is `https://vilet-platform-preview-aq1maxzr1-swzyfrmdarocs-projects.vercel.app`. Vercel reported the deployment ready after a successful production build, and an unauthenticated request received the expected Vercel Authentication redirect with `X-Robots-Tag: noindex`.
 
 Growth remains an internal product shell, Insights remains a beta shell without connected data, and Billing has no payment processor. Organization management controls, integrations, subscriptions, and operational product functionality remain deferred.
 
-The Phase B owner-session observation on the latest preview remains a pre-production verification item because the staging project's built-in email provider reached its temporary rate limit. The previously verified Phase A authentication lifecycle and all live Phase B database/RLS assertions remain valid.
+The Phase B owner-session observation and the production owner authentication lifecycle have both been completed. The staging and production database/RLS assertions remain valid.
 
 ## Phase D account integration and domain readiness
 
@@ -191,6 +191,12 @@ The production Supabase project is `detqlxrismxlbgsgeafx`. On 2026-08-19, all th
 The protected Phase D platform preview is `https://vilet-platform-preview-q0xvyxh7b-swzyfrmdarocs-projects.vercel.app`. Vercel reported the deployment ready after a successful production build. An unauthenticated request received the expected Vercel Authentication redirect, secure host-only SSO nonce cookie, HSTS, frame denial, and `X-Robots-Tag: noindex`.
 
 The real Vilét owner session was visually verified on this preview after its exact callback URL was allowlisted. The magic link established the session, root resolved to `/o/vilet`, the active internal organization and Owner role appeared, all thirteen entitled product capabilities produced the expected navigation, and Platform admin was recognized. Refresh preserved the session, authenticated `/login` returned to `/o/vilet`, and Log out returned to the Vilét sign-in page.
+
+On 2026-08-19, the owner completed the same authentication lifecycle on production `app.vilet.co`: magic-link delivery and callback succeeded, `/o/vilet` loaded the canonical Vilét organization with an active Owner membership, entitled navigation and routes loaded, Platform admin access was recognized, refresh preserved the session, authenticated `/login` returned to the organization, logout ended the session, and protected routes were denied afterward. This closes the production authentication verification gate. Host-only cookie isolation remains tracked as an independent browser-security inspection.
+
+Production authentication no longer blocks Phase E1. A final Preview-environment cleanup remains before implementation begins: Vercel metadata inspection confirmed Preview protection but also found an unnecessary Preview-scoped `SUPABASE_SERVICE_ROLE_KEY`. Remove it, redeploy Preview, and reconfirm that the hidden Preview Supabase URL targets staging `lzohhfmfdqivnjqqwmqu`. Production does not contain the service-role credential, and the credential is absent from browser bundles.
+
+Once that cleanup passes, Phase E1 is cleared to begin on the QA branch. This clearance covers only the prospect/pipeline foundation defined in the Phase E architecture; it does not authorize automated discovery, AI research, enrichment, contact storage, email, campaigns, outreach, customer rollout, a production deployment, or a merge to `main`.
 
 ## Operational references
 

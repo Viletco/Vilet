@@ -16,27 +16,32 @@ Status date: 2026-08-19. This is the canonical launch gate for `app.vilet.co`. E
 ## Authentication
 
 - [x] Production login form loads
-- [ ] **PENDING — production magic-link delivery after provider rate limit resets**
-- [ ] Production `/auth/callback` exchanges the code
-- [ ] Authenticated user reaches `/o/vilet`
-- [ ] Owner membership is visible
-- [ ] Independent platform-administrator access is visible
-- [ ] Session persists across refresh and navigation
-- [ ] Authenticated `/login` returns to the organization
-- [ ] `/logout` ends the application session
-- [ ] Protected routes are denied after logout
+- [x] Production magic-link delivery succeeds
+- [x] Production `/auth/callback` exchanges the code
+- [x] Authenticated user reaches `/o/vilet`
+- [x] Active Owner membership is visible
+- [x] Independent Platform admin access is visible
+- [x] Expected entitled navigation and routes load
+- [x] Session persists across refresh and navigation
+- [x] Authenticated `/login` returns to the organization
+- [x] `/logout` ends the application session
+- [x] Protected routes are denied after logout
 - [ ] Confirm host-only cookie isolation; no shared `.vilet.co` auth cookie
+
+Production authentication was owner-verified end to end on 2026-08-19 at `app.vilet.co`. The remaining cookie item is a separate browser-security inspection, not an authentication-flow failure.
 
 ## Environment separation and mutation safety
 
-- [x] Preview is protected by Vercel Authentication and uses staging
+- [x] Preview is protected by Vercel Authentication
+- [ ] Reconfirm the hidden Preview Supabase URL targets staging `lzohhfmfdqivnjqqwmqu`
 - [x] Production is public at the application boundary and uses production
 - [x] Privileged credential files are limited to `.env.local` and `.env.production.local`
 - [x] Bootstrap requires environment, matching project ref, dry-run/apply intent, and exact production confirmation
 - [x] Production RLS fixtures require exact project confirmation
 - [x] Staging test identities cannot be created in production
 - [x] Connectivity checks require environment/project consistency
-- [x] Service-role credential is absent from the deployed Vercel runtime
+- [x] Service-role credential is absent from Vercel Production and browser bundles
+- [ ] Remove the unnecessary `SUPABASE_SERVICE_ROLE_KEY` from the Vercel Preview environment and redeploy Preview
 
 ## Security and quality
 
@@ -44,14 +49,14 @@ Status date: 2026-08-19. This is the canonical launch gate for `app.vilet.co`. E
 - [x] Privilege-escalation and entitlement protections verified live
 - [x] Owner bootstrap verified idempotent and transactional
 - [x] Temporary security fixtures removed
-- [ ] Run final repository secret scan immediately before promotion
-- [ ] Scan production browser bundles for privileged credentials
-- [ ] Review dependency audit immediately before promotion
+- [x] Final repository secret scan passed with no suspected tracked credentials
+- [x] Production browser bundle contains no service-role credential
+- [x] Dependency audit reports zero known vulnerabilities
 - [ ] Verify safe structured auth events in Vercel logs during the final login test
 
 ## Visual QA
 
-- [ ] Production desktop login and organization shell
+- [x] Production desktop login and organization shell
 - [ ] Production medium-width layout
 - [ ] Production mobile layout and navigation
 - [ ] Branded expired/invalid-link, no-organization, unknown-organization, and insufficient-access states
