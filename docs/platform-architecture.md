@@ -28,6 +28,8 @@ Platform session cookies use an explicit sliding 90-day browser lifetime. The ca
 
 Cookie scope is intentionally host-only. A session created on `app.vilet.co` does not authenticate `vilet.co`, and a session created on one generated Vercel Preview hostname does not follow the user to a newer generated Preview hostname. Reauthentication after switching Preview deployment URLs is expected and is not a refresh-session failure.
 
+The persistent-cookie policy was live-verified on the protected staging Preview `https://vilet-platform-preview-d9qrswsyn-swzyfrmdarocs-projects.vercel.app` on August 19, 2026. After magic-link authentication, closing and reopening the browser on that same hostname restored the authenticated organization session without another magic link. The deployment CSP targeted only staging Supabase project `lzohhfmfdqivnjqqwmqu`; Production was not modified.
+
 Safe local mode is `PLATFORM_AUTH_MODE=disabled`. It sends no authentication request and exposes no fake user. Supabase mode fails configuration validation unless the URL and publishable key are present.
 
 The service-role key is optional for ordinary application builds and required only by reviewed privileged operations. It must never be sent to the browser.

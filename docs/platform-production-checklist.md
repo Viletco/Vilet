@@ -28,7 +28,7 @@ Status date: 2026-08-19. This is the canonical launch gate for `app.vilet.co`. E
 - [ ] Confirm host-only cookie isolation; no shared `.vilet.co` auth cookie
 - [x] Manually verify the new 90-day persistent-cookie policy in protected Preview by closing and reopening the same browser on the exact same deployment hostname
 
-The 90-day persistence policy was manually verified on the protected staging Preview `https://vilet-platform-preview-d9qrswsyn-swzyfrmdarocs-projects.vercel.app` on 2026-08-19. The owner approved a selective Production rollout of only the session-persistence changes; Production verification remains required after deployment.
+The 90-day persistence policy was implemented on the QA branch and manually verified on 2026-08-19 using the protected staging Preview `https://vilet-platform-preview-d9qrswsyn-swzyfrmdarocs-projects.vercel.app`. The owner completed magic-link authentication, closed the browser, reopened the same browser and deployment hostname, and returned authenticated without another magic link. The owner then approved a selective Production rollout of only these session changes; post-deployment Production verification remains required.
 
 ## Environment separation and mutation safety
 
