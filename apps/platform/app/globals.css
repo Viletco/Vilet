@@ -92,6 +92,22 @@ summary {
   background: hsl(0 0% 100% / 0.04);
   color: var(--foreground);
 }
+.partner-nav-shell {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 0.875rem;
+  background:
+    linear-gradient(100deg, hsl(262 64% 66% / 0.06), transparent 34%),
+    hsl(250 13% 7% / 0.72);
+}
+.partner-progress-ring {
+  background: conic-gradient(
+    var(--primary) calc(var(--partner-progress) * 1%),
+    hsl(250 10% 15%) 0
+  );
+}
 :focus-visible {
   outline: 2px solid var(--ring);
   outline-offset: 3px;
