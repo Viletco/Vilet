@@ -59,9 +59,9 @@ if ((anonymousCapabilities ?? []).length !== 0)
   throw new Error("Anonymous access unexpectedly bypassed capability RLS.");
 if (adminResult.error)
   throw new Error("The privileged server client could not query Supabase.");
-if (adminResult.count !== 13)
+if (adminResult.count !== 15)
   throw new Error("The seeded capability count is incorrect.");
 
 console.log(`Supabase connectivity (${target.environment}): PASS`);
 console.log("Anonymous capability access denied by RLS: PASS");
-console.log("Privileged capability count (13): PASS");
+console.log("Privileged capability count (15): PASS");
