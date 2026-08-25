@@ -4,13 +4,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import {
-  BarChart3,
-  Bot,
-  BriefcaseBusiness,
   ChevronDown,
   CreditCard,
   ExternalLink,
-  Gauge,
   Headphones,
   LayoutDashboard,
   LogOut,
@@ -18,11 +14,12 @@ import {
   Settings,
   ShieldCheck,
   Sparkles,
-  GraduationCap,
   X,
 } from "lucide-react";
 import type { ProductStatus } from "../lib/platform-products";
 import { ProductStatusBadge } from "./page-frame";
+import { ProductMark, type PlatformProductMark } from "./product-mark";
+import { BrandMark } from "./brand-mark";
 
 export interface ShellDestination {
   key: string;
@@ -33,16 +30,19 @@ export interface ShellDestination {
 
 const icons = {
   overview: LayoutDashboard,
-  studio: BriefcaseBusiness,
-  growth: Gauge,
-  partner: GraduationCap,
-  insights: BarChart3,
-  ai: Bot,
   billing: CreditCard,
   support: Headphones,
   settings: Settings,
   admin: ShieldCheck,
 } as const;
+
+const productMarks: Partial<Record<string, PlatformProductMark>> = {
+  studio: "studio",
+  growth: "growth",
+  partner: "partner",
+  insights: "insights",
+  ai: "ai",
+};
 
 function isActive(pathname: string, item: ShellDestination) {
   return item.key === "overview"
@@ -74,20 +74,30 @@ function Navigation({
           {items.map((item) => {
             const active = isActive(pathname, item);
             const Icon = icons[item.key as keyof typeof icons] ?? Sparkles;
+            const mark = productMarks[item.key];
             return (
               <Link
                 key={item.key}
                 href={item.href}
                 onClick={onNavigate}
                 aria-current={active ? "page" : undefined}
-                className={`group flex min-h-10 items-center gap-2.5 rounded-lg px-3 py-2 text-[13.5px] font-medium transition-colors duration-150 ${active ? "text-foreground bg-white/[0.055]" : "hover:text-foreground text-[hsl(240_6%_66%)] hover:bg-white/[0.03]"}`}
+                className={`group flex min-h-10 items-center gap-2.5 rounded-sm px-3 py-2 text-[13.5px] font-medium transition-colors duration-150 ${active ? "vilet-active-rail text-foreground bg-white/[0.035]" : "hover:text-foreground text-[hsl(240_6%_66%)] hover:bg-white/[0.025]"}`}
               >
-                <Icon
-                  aria-hidden="true"
-                  className={active ? "text-primary" : "text-[hsl(240_6%_52%)]"}
-                  size={17}
-                  strokeWidth={active ? 2.2 : 1.9}
-                />
+                {mark ? (
+                  <ProductMark
+                    product={mark}
+                    className={`size-[17px] ${active ? "text-primary" : "text-[hsl(240_6%_52%)]"}`}
+                  />
+                ) : (
+                  <Icon
+                    aria-hidden="true"
+                    className={
+                      active ? "text-primary" : "text-[hsl(240_6%_52%)]"
+                    }
+                    size={17}
+                    strokeWidth={active ? 2.2 : 1.9}
+                  />
+                )}
                 <span className="min-w-0 flex-1 truncate">{item.label}</span>
                 {item.status !== "available" && (
                   <ProductStatusBadge status={item.status} compact />
@@ -169,10 +179,10 @@ function AccountMenu({
 function Brand({ href }: { href: string }) {
   return (
     <Link href={href} className="flex items-center gap-2.5">
-      <span className="border-border text-primary grid size-8 place-items-center rounded-lg border bg-white/[0.02] text-[11px] font-semibold">
-        V
+      <BrandMark className="h-8 w-9" />
+      <span className="text-[15px] font-semibold tracking-[-0.025em]">
+        Vilét
       </span>
-      <span className="text-[15px] font-semibold tracking-tight">Vilét</span>
     </Link>
   );
 }
@@ -219,12 +229,16 @@ export function AppShellClient({
   );
   return (
     <div className="bg-background text-foreground min-h-screen">
-      <aside className="border-border bg-sidebar fixed inset-y-0 left-0 z-30 hidden w-60 flex-col border-r lg:flex">
+      <aside className="platform-rail border-border bg-sidebar fixed inset-y-0 left-0 z-30 hidden w-[15.5rem] flex-col border-r lg:flex">
         <div className="flex h-16 items-center px-5">
           <Brand href={home} />
         </div>
-        <div className="border-border/50 border-y px-5 py-3.5">
-          <p className="truncate text-[12.5px] font-medium">
+        <div className="border-border/50 relative border-y px-5 py-4">
+          <span
+            aria-hidden="true"
+            className="bg-primary absolute top-0 left-5 h-px w-8 -skew-x-[28deg]"
+          />
+          <p className="truncate text-[12.5px] font-semibold tracking-[-0.01em]">
             {organizationName}
           </p>
           <p className="text-muted-foreground mt-0.5 text-[10.5px] capitalize">
@@ -236,7 +250,7 @@ export function AppShellClient({
         </div>
         <div className="border-border/50 border-t p-3">{account}</div>
       </aside>
-      <div className="lg:pl-60">
+      <div className="lg:pl-[15.5rem]">
         <header className="border-border bg-background/85 sticky top-0 z-30 flex h-14 items-center justify-between border-b px-4 backdrop-blur-xl lg:hidden">
           <Brand href={home} />
           <button
@@ -296,7 +310,7 @@ export function AppShellClient({
         )}
         <main
           id="main-content"
-          className="animate-fade-in mx-auto min-h-[calc(100vh-3.5rem)] w-full max-w-[1400px] px-4 py-6 sm:px-6 lg:min-h-screen lg:px-10 lg:py-9"
+          className="platform-canvas mx-auto min-h-[calc(100vh-3.5rem)] w-full max-w-[1480px] px-4 py-6 sm:px-6 lg:min-h-screen lg:px-12 lg:py-10"
         >
           {children}
         </main>

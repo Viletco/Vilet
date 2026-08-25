@@ -1,5 +1,5 @@
 import { requireCapability } from "@vilet/auth";
-import { EmptyState, PageHeader } from "../../../../components/page-frame";
+import { PageHeader } from "../../../../components/page-frame";
 export default async function StudioPage({
   params,
 }: {
@@ -14,35 +14,46 @@ export default async function StudioPage({
         title="Projects and delivery."
         description="A private workspace for approved projects, deliverables, and collaboration."
       />
-      <section className="mt-10">
-        <h2 className="text-muted-foreground text-[13px] font-semibold tracking-[0.08em] uppercase">
-          Offerings
-        </h2>
-        <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+      <section className="mt-12 grid gap-8 xl:grid-cols-[1.4fr_.6fr]">
+        <div className="command-surface min-h-[24rem] p-6 sm:p-8">
+          <p className="vilet-coordinate text-primary">Project canvas</p>
+          <h2 className="mt-4 text-2xl font-semibold tracking-[-0.04em]">
+            No active production
+          </h2>
+          <p className="text-muted-foreground mt-3 max-w-xl text-[13px] leading-6">
+            Approved projects will open here as working canvases with
+            milestones, deliverables, review states, and launch readiness. No
+            demonstration client work is shown.
+          </p>
+          <div className="border-border absolute right-8 bottom-8 left-8 border-t pt-4">
+            <div className="grid grid-cols-3 gap-4 text-[11px]">
+              <span>01 · Discover</span>
+              <span>02 · Build</span>
+              <span>03 · Launch</span>
+            </div>
+          </div>
+        </div>
+        <div className="border-border border-l pl-6">
+          <p className="vilet-coordinate text-muted-foreground">
+            Studio lifecycle
+          </p>
           {[
             "Strategy and planning",
             "Design and development",
             "Delivery and support",
-          ].map((item) => (
-            <div
-              key={item}
-              className="border-border bg-card/40 rounded-2xl border p-5"
-            >
-              <h3 className="text-[15px] font-semibold">{item}</h3>
-              <p className="text-muted-foreground mt-2 text-[13px]">
+          ].map((item, index) => (
+            <div key={item} className="border-border border-b py-5">
+              <span className="text-primary vilet-coordinate">
+                0{index + 1}
+              </span>
+              <h3 className="mt-2 font-semibold">{item}</h3>
+              <p className="text-muted-foreground mt-1 text-xs">
                 Available through an approved Vilét engagement.
               </p>
             </div>
           ))}
         </div>
       </section>
-      <h2 className="text-muted-foreground mt-10 text-[13px] font-semibold tracking-[0.08em] uppercase">
-        Projects
-      </h2>
-      <EmptyState
-        title="No projects yet"
-        description="Projects will appear here only after they are created for this organization. No demonstration projects have been added."
-      />
     </>
   );
 }

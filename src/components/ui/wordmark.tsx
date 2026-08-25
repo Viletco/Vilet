@@ -5,6 +5,7 @@ import type { HTMLAttributes } from "react";
 import { cn } from "@/lib/cn";
 
 import { focusRing, interactiveTransition } from "./interactive-styles";
+import { BrandMark } from "./brand-mark";
 
 const wordmarkVariants = cva("font-semibold tracking-[-0.04em]", {
   variants: {
@@ -60,12 +61,7 @@ export function Wordmark({
         className,
       )}
     >
-      <span
-        aria-hidden="true"
-        className="border-border bg-surface text-accent mr-(--ds-space-sm) grid size-7 place-items-center rounded-md border font-mono text-xs font-semibold"
-      >
-        V
-      </span>
+      <BrandMark className="mr-(--ds-space-sm) h-7 w-8" />
       {wordmark}
     </Link>
   );

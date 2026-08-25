@@ -45,6 +45,96 @@
     auto;
 }
 
+.vilet-brand-mark {
+  position: relative;
+  display: inline-block;
+  flex: none;
+  overflow: hidden;
+  background: #030409;
+}
+
+.vilet-brand-mark__image {
+  position: absolute;
+  width: 168%;
+  max-width: none;
+  height: auto;
+  inset: -35% auto auto -34%;
+}
+
+.vilet-energy-field {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.vilet-energy-field::before {
+  position: absolute;
+  z-index: -1;
+  right: -12%;
+  bottom: 4%;
+  width: min(72rem, 90vw);
+  height: 26rem;
+  background:
+    radial-gradient(ellipse at 78% 52%, rgb(124 50 255 / 22%), transparent 33%),
+    repeating-linear-gradient(
+      164deg,
+      transparent 0 28px,
+      rgb(146 79 255 / 8%) 29px,
+      transparent 30px 58px
+    );
+  content: "";
+  filter: blur(0.3px);
+  mask-image: linear-gradient(90deg, transparent, black 38%, black);
+  pointer-events: none;
+}
+
+.vilet-angle-rule {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(144 76 255 / 62%),
+    rgb(91 52 255 / 8%),
+    transparent
+  );
+  transform: skewY(-5deg);
+}
+
+.energy-path {
+  stroke-dasharray: 7 13;
+  animation: vilet-flow 7s linear infinite;
+}
+.energy-path.delay-1 {
+  animation-delay: -1.4s;
+}
+.energy-path.delay-2 {
+  animation-delay: -2.8s;
+}
+.energy-path.delay-3 {
+  animation-delay: -4.2s;
+}
+.energy-path.delay-4 {
+  animation-delay: -5.6s;
+}
+@keyframes vilet-flow {
+  to {
+    stroke-dashoffset: -80;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .energy-path {
+    animation: none;
+  }
+}
+
+@media (max-width: 47.999rem) {
+  .ecosystem-map {
+    min-height: 25rem;
+    transform: scale(0.9);
+    transform-origin: center;
+  }
+}
+
 .background-card-glow {
   background-image: var(--ds-gradient-card-glow);
 }
@@ -54,4 +144,76 @@
   height: var(--ds-border-width);
   border: 0;
   background: var(--ds-gradient-section-divider);
+}
+
+/* Vilét signature geometry and surface hierarchy */
+.vilet-field {
+  position: relative;
+  background-color: var(--ds-color-field);
+  background-image: linear-gradient(
+    var(--ds-v-angle),
+    transparent 0 48%,
+    rgb(137 87 255 / 7%) 48% 48.35%,
+    transparent 48.35% 100%
+  );
+}
+
+.vilet-workspace {
+  position: relative;
+  border: var(--ds-border-width) solid var(--ds-color-border);
+  border-radius: var(--ds-radius-sm);
+  background: var(--ds-color-workspace);
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--ds-v-cut)) 0,
+    100% var(--ds-v-cut),
+    100% 100%,
+    0 100%
+  );
+}
+
+.vilet-rail {
+  border-left: 1px solid var(--ds-color-rule-strong);
+  background: var(--ds-color-rail);
+}
+
+.vilet-data-plane {
+  border-block: 1px solid var(--ds-color-divider);
+  background: var(--ds-color-data-plane);
+}
+
+.vilet-rule {
+  display: grid;
+  grid-template-columns: minmax(2rem, 7rem) 0.75rem 1fr;
+  align-items: center;
+  width: 100%;
+}
+
+.vilet-rule::before,
+.vilet-rule::after {
+  content: "";
+  height: 1px;
+  background: var(--ds-color-divider);
+}
+
+.vilet-rule > span[aria-hidden="true"] {
+  width: 1px;
+  height: 1rem;
+  justify-self: center;
+  background: var(--ds-color-accent);
+  transform: rotate(var(--ds-v-angle));
+}
+
+.vilet-coordinate {
+  font-family: var(--ds-font-mono);
+  font-size: 0.6875rem;
+  line-height: 1;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 47.999rem) {
+  .vilet-workspace {
+    --ds-v-cut: 1rem;
+  }
 }

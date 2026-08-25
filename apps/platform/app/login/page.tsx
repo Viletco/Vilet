@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { getPlatformConfig, getVerifiedUser } from "@vilet/auth";
 import { requestMagicLink } from "./actions";
+import { BrandMark } from "../../components/brand-mark";
 
 export default async function LoginPage({
   searchParams,
@@ -13,22 +14,24 @@ export default async function LoginPage({
   const unavailable =
     config.authMode === "disabled" || query.configuration === "unavailable";
   return (
-    <main className="grid min-h-screen place-items-center bg-[radial-gradient(ellipse_at_top,hsl(262_64%_66%/0.08),transparent_55%)] px-5 py-12">
-      <section className="animate-scale-in border-border bg-card/50 w-full max-w-md rounded-2xl border p-7 shadow-2xl shadow-black/30 backdrop-blur-sm">
+    <main className="relative grid min-h-screen place-items-center overflow-hidden bg-[radial-gradient(ellipse_at_80%_15%,hsl(266_100%_66%/0.14),transparent_45%)] px-5 py-12">
+      <div
+        aria-hidden="true"
+        className="via-primary/70 absolute inset-x-0 bottom-[18%] h-px -rotate-6 bg-gradient-to-r from-transparent to-transparent"
+      />
+      <section className="animate-scale-in command-surface w-full max-w-md p-7 sm:p-9">
         <a
           href="https://vilet.co"
           className="inline-flex items-center gap-2 rounded-md font-semibold"
           aria-label="Vilét website"
         >
-          <span className="border-border text-primary grid size-8 place-items-center rounded-lg border bg-white/[0.02] text-[11px] font-semibold">
-            V
-          </span>
+          <BrandMark className="h-9 w-10" />
           Vilét
         </a>
         <p className="text-primary/80 mt-9 text-[11px] font-semibold tracking-[0.1em] uppercase">
           Vilét account
         </p>
-        <h1 className="mt-2 text-[26px] font-semibold tracking-tight">
+        <h1 className="vilet-product-title mt-3 text-[30px]">
           Sign in to Vilét.
         </h1>
         <p className="text-muted-foreground mt-3 text-[13.5px] leading-6">

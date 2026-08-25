@@ -1,5 +1,13 @@
 # Vilét Design System
 
+The current system is derived from the owner-supplied Vilét mark and social identity. Its foundation is deep blue-black, cool white, graphite, electric violet, and blue-violet. The mark's diagonal geometry informs active rails, section cuts, progress, and data trajectories. Application and marketing surfaces share these primitives while retaining product-specific information structures.
+
+> The original token reference below documents the currently implemented
+> foundation. The next-generation brand direction, audit findings, and phased
+> migration rules are defined in [Vilét visual language](vilet-visual-language.md).
+> New visual work should follow that specification and migrate existing tokens
+> incrementally rather than extending generic card-and-glow patterns.
+
 ## Design philosophy
 
 The Vilét design language is quiet, precise, and premium. It uses deep neutral surfaces, clear white typography, restrained purple accents, generous space, and subtle depth. Future interfaces should prioritize hierarchy, legibility, and calm interaction over decorative effects.

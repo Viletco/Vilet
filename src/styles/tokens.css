@@ -19,6 +19,7 @@
   --color-glass: var(--ds-color-glass);
 
   --font-sans: var(--ds-font-sans);
+  --font-display: var(--ds-font-display);
   --font-mono: var(--ds-font-mono);
 
   --radius-sm: var(--ds-radius-sm);
@@ -42,17 +43,17 @@
 
 :root {
   /* Semantic color system */
-  --ds-color-background: #08090b;
-  --ds-color-surface: #0d0e11;
-  --ds-color-surface-elevated: #111216;
-  --ds-color-card: #101115;
-  --ds-color-border: #27282e;
-  --ds-color-divider: #202126;
+  --ds-color-background: #05060a;
+  --ds-color-surface: #080a10;
+  --ds-color-surface-elevated: #0c0f18;
+  --ds-color-card: #0a0c13;
+  --ds-color-border: #24273a;
+  --ds-color-divider: #191c2a;
   --ds-color-text-primary: #f5f5f7;
   --ds-color-text-secondary: #b6b4c0;
   --ds-color-text-muted: #777582;
-  --ds-color-accent: #8957ff;
-  --ds-color-accent-hover: #9d75ff;
+  --ds-color-accent: #8c46ff;
+  --ds-color-accent-hover: #a566ff;
   --ds-color-success: #57ad83;
   --ds-color-warning: #d5a64c;
   --ds-color-danger: #d96b75;
@@ -62,9 +63,11 @@
   --ds-color-glass: rgb(17 17 20 / 72%);
 
   /* Typography families */
+  --ds-font-display:
+    Arial, "Helvetica Neue", ui-sans-serif, system-ui, sans-serif;
   --ds-font-sans:
-    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
+    Arial, "Helvetica Neue", ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
   --ds-font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 
   /* Spacing scale */
@@ -99,6 +102,15 @@
   --ds-focus-width: 2px;
   --ds-focus-offset: 3px;
   --ds-glass-blur: 16px;
+  --ds-v-angle: 28deg;
+  --ds-v-cut: 1.5rem;
+
+  /* Vilét surface hierarchy */
+  --ds-color-field: #060710;
+  --ds-color-workspace: #0a0c14;
+  --ds-color-rail: #070810;
+  --ds-color-data-plane: #070910;
+  --ds-color-rule-strong: #34353c;
 
   /* Depth */
   --ds-shadow-sm: 0 1px 2px rgb(0 0 0 / 24%);

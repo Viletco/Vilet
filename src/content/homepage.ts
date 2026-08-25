@@ -13,10 +13,10 @@ const homepageContentDraft = {
   status: "approved",
   hero: {
     status: "approved",
-    eyebrow: "Technology company",
-    headline: "Digital products and systems built for what comes next.",
+    eyebrow: "Vilét technology ecosystem",
+    headline: "Building what’s next.",
     supportingCopy:
-      "Vilét combines product thinking, software, automation, and digital infrastructure to help modern businesses operate clearly and build new opportunities.",
+      "Technology, software, automation, and connected systems designed to help businesses move forward.",
     primaryCta: {
       label: "Discuss a project",
       accessibleLabel: "Discuss a project with Vilét",
