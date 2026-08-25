@@ -25,7 +25,7 @@ export function PageHeader({
             <ProductStatusBadge status={status} />
           )}
         </div>
-        <h1 className="vilet-product-title mt-3 text-[30px] sm:text-[40px]">
+        <h1 className="vilet-product-title mt-3 text-[34px] sm:text-[46px]">
           {title}
         </h1>
         <p className="text-muted-foreground mt-2 max-w-2xl text-[13.5px] leading-6">

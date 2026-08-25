@@ -37,14 +37,14 @@ function MetricCard({
   icon: typeof UsersRound;
 }) {
   return (
-    <article className="border-border bg-card/55 rounded-xl border p-4">
+    <article className="metric-panel p-4">
       <div className="flex items-center justify-between">
         <p className="text-muted-foreground text-[10px] font-semibold tracking-[0.08em] uppercase">
           {label}
         </p>
         <Icon aria-hidden="true" className="text-primary" size={15} />
       </div>
-      <p className="mt-2 text-2xl font-semibold tracking-tight">{value}</p>
+      <p className="editorial-title mt-2 text-3xl">{value}</p>
       <p className="text-muted-foreground mt-1 text-[11px]">{detail}</p>
     </article>
   );
@@ -120,7 +120,7 @@ export default async function PartnerPage({
           <div className="text-primary flex items-center gap-2 text-[10px] font-semibold tracking-[0.18em] uppercase">
             <Sparkles aria-hidden="true" size={13} /> Sales partner dashboard
           </div>
-          <h1 className="mt-3 text-3xl font-semibold tracking-[-0.04em] sm:text-4xl">
+          <h1 className="editorial-title mt-3 text-4xl sm:text-5xl">
             Welcome to your partner workspace.
           </h1>
           <p className="text-muted-foreground mt-2 max-w-2xl text-sm">

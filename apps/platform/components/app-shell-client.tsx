@@ -179,10 +179,8 @@ function AccountMenu({
 function Brand({ href }: { href: string }) {
   return (
     <Link href={href} className="flex items-center gap-2.5">
-      <BrandMark className="h-8 w-9" />
-      <span className="text-[15px] font-semibold tracking-[-0.025em]">
-        Vilét
-      </span>
+      <BrandMark className="h-9 w-10" />
+      <span className="editorial-title text-[21px]">Vilét</span>
     </Link>
   );
 }
@@ -230,7 +228,7 @@ export function AppShellClient({
   return (
     <div className="bg-background text-foreground min-h-screen">
       <aside className="platform-rail border-border bg-sidebar fixed inset-y-0 left-0 z-30 hidden w-[15.5rem] flex-col border-r lg:flex">
-        <div className="flex h-16 items-center px-5">
+        <div className="flex h-[4.5rem] items-center px-5">
           <Brand href={home} />
         </div>
         <div className="border-border/50 relative border-y px-5 py-4">
