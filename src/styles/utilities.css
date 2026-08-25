@@ -88,6 +88,49 @@
   pointer-events: none;
 }
 
+.vilet-ecosystem-window {
+  background:
+    linear-gradient(145deg, rgb(142 78 255 / 9%), transparent 38%),
+    linear-gradient(180deg, rgb(12 16 25 / 96%), rgb(5 8 14 / 98%));
+  box-shadow:
+    inset 0 1px rgb(255 255 255 / 3%),
+    0 28px 90px rgb(0 0 0 / 30%);
+}
+
+.vilet-energy-ribbon {
+  background:
+    radial-gradient(ellipse at 78% 82%, rgb(139 70 255 / 34%), transparent 28%),
+    linear-gradient(
+      156deg,
+      transparent 54%,
+      rgb(196 139 255 / 22%) 54.2%,
+      transparent 54.8%
+    ),
+    linear-gradient(
+      164deg,
+      transparent 62%,
+      rgb(114 48 255 / 34%) 62.2%,
+      transparent 63%
+    ),
+    linear-gradient(
+      170deg,
+      transparent 69%,
+      rgb(220 190 121 / 16%) 69.2%,
+      transparent 69.8%
+    );
+  mask-image: linear-gradient(90deg, transparent 10%, black 48%);
+}
+
+.vilet-mini-product {
+  background: rgb(8 11 18 / 78%);
+  box-shadow: inset 0 1px rgb(255 255 255 / 2.5%);
+}
+
+.vilet-mini-product:hover {
+  border-color: rgb(143 79 255 / 38%);
+  background: rgb(15 15 28 / 88%);
+}
+
 .vilet-angle-rule {
   height: 1px;
   background: linear-gradient(

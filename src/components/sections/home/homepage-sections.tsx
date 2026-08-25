@@ -32,7 +32,7 @@ export function HeroSection({ content }: { content: HeroContent }) {
       className="vilet-energy-field laptop:py-(--ds-section-space) flex min-h-[calc(100svh-var(--ds-header-height))] items-center"
     >
       <Container>
-        <div className="laptop:grid-cols-[1.15fr_0.85fr] laptop:gap-(--ds-space-4xl) grid items-center gap-(--ds-space-3xl)">
+        <div className="laptop:grid-cols-[0.9fr_1.1fr] laptop:gap-(--ds-space-4xl) grid items-center gap-(--ds-space-3xl)">
           <Stack gap="xl" align="start">
             {content.eyebrow && <Eyebrow marker>{content.eyebrow}</Eyebrow>}
             <Heading
