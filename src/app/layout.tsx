@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 
 import "@/styles/globals.css";
 import { defaultOpenGraphImages, defaultTwitterImages } from "@/lib/metadata";
+import { AnalyticsConsent } from "@/components/analytics-consent";
 
 const organizationSchema = {
   "@context": "https://schema.org",
@@ -89,6 +90,9 @@ document.addEventListener("click", function (event) {
           }}
         />
         {children}
+        <AnalyticsConsent
+          measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}
+        />
       </body>
     </html>
   );
