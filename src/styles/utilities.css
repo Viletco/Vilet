@@ -131,6 +131,18 @@
   background: rgb(15 15 28 / 88%);
 }
 
+.vilet-product-tile {
+  border: 1px solid rgb(255 255 255 / 8%);
+  border-radius: 0.2rem;
+  clip-path: polygon(
+    0 0,
+    calc(100% - 0.6rem) 0,
+    100% 0.6rem,
+    100% 100%,
+    0 100%
+  );
+}
+
 .vilet-angle-rule {
   height: 1px;
   background: linear-gradient(
@@ -337,88 +349,6 @@
 }
 .vilet-hero-title::first-line {
   font-style: italic;
-}
-
-.vilet-aperture {
-  position: relative;
-  min-height: clamp(27rem, 49vw, 38rem);
-  overflow: hidden;
-  border-block: 1px solid rgb(255 255 255 / 11%);
-  background:
-    linear-gradient(
-      118deg,
-      transparent 0 54%,
-      rgb(143 79 255 / 8%) 54.1% 54.4%,
-      transparent 54.5%
-    ),
-    radial-gradient(circle at 62% 48%, rgb(143 79 255 / 18%), transparent 28%);
-  clip-path: polygon(0 7%, 93% 0, 100% 89%, 8% 100%);
-}
-
-.vilet-aperture::before,
-.vilet-aperture::after {
-  position: absolute;
-  width: 48%;
-  height: 115%;
-  content: "";
-  transform: rotate(28deg);
-  filter: drop-shadow(0 0 2.5rem rgb(122 57 255 / 25%));
-}
-.vilet-aperture::before {
-  top: -34%;
-  left: 19%;
-  border-left: 1px solid rgb(255 255 255 / 36%);
-  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 4%));
-}
-.vilet-aperture::after {
-  top: 15%;
-  right: 8%;
-  border-left: 2px solid #8f4fff;
-  background: linear-gradient(90deg, rgb(143 79 255 / 8%), transparent);
-}
-.vilet-aperture__mark {
-  position: absolute;
-  z-index: 2;
-  top: 50%;
-  left: 50%;
-  width: clamp(13rem, 29vw, 24rem);
-  aspect-ratio: 1;
-  transform: translate(-50%, -50%);
-  box-shadow: 0 0 7rem rgb(107 45 255 / 22%);
-}
-.vilet-aperture__orbit {
-  position: absolute;
-  inset: 17%;
-  border: 1px solid rgb(255 255 255 / 10%);
-  transform: rotate(-9deg);
-}
-.vilet-aperture__index,
-.vilet-aperture__caption {
-  position: absolute;
-  z-index: 3;
-  display: flex;
-  font-family: var(--ds-font-mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
-.vilet-aperture__index {
-  top: 12%;
-  right: 8%;
-  gap: 1.5rem;
-  color: var(--ds-color-text-muted);
-}
-.vilet-aperture__caption {
-  right: 8%;
-  bottom: 10%;
-  left: 10%;
-  justify-content: space-between;
-  color: var(--ds-color-text-secondary);
-}
-.vilet-aperture__caption span::before {
-  margin-right: 0.5rem;
-  color: #8f4fff;
-  content: "/";
 }
 
 .vilet-pillar-grid > li {
