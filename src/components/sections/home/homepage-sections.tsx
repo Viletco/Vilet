@@ -29,17 +29,17 @@ export function HeroSection({ content }: { content: HeroContent }) {
       background="hero"
       spacing="compact"
       aria-labelledby="hero-heading"
-      className="vilet-energy-field laptop:py-(--ds-section-space) flex min-h-[calc(100svh-var(--ds-header-height))] items-center"
+      className="vilet-energy-field vilet-hero laptop:py-(--ds-section-space) flex min-h-[calc(100svh-var(--ds-header-height))] items-center"
     >
       <Container>
-        <div className="laptop:grid-cols-[0.9fr_1.1fr] laptop:gap-(--ds-space-4xl) grid items-center gap-(--ds-space-3xl)">
+        <div className="laptop:grid-cols-[1.02fr_0.98fr] laptop:gap-(--ds-space-4xl) grid items-center gap-(--ds-space-3xl)">
           <Stack gap="xl" align="start">
             {content.eyebrow && <Eyebrow marker>{content.eyebrow}</Eyebrow>}
             <Heading
               id="hero-heading"
               level={1}
               variant="display-lg"
-              className="max-w-3xl text-balance"
+              className="vilet-hero-title max-w-3xl text-balance"
             >
               {content.headline}
             </Heading>
@@ -96,7 +96,7 @@ export function ValuePropositionSection({
             title={content.headline}
             description={content.body}
           />
-          <ol className="border-divider tablet:grid-cols-2 grid border-y">
+          <ol className="vilet-pillar-grid tablet:grid-cols-2 grid border-y">
             {content.pillars.map((item, index) => (
               <li
                 key={item.id}
@@ -143,7 +143,12 @@ export function ServicesSection({ content }: { content: ServicesContent }) {
             {content.items.map((item) => {
               const Icon = getIcon(item.icon);
               return (
-                <Card as="article" key={item.id} variant="elevated">
+                <Card
+                  as="article"
+                  key={item.id}
+                  variant="elevated"
+                  className="vilet-service-panel"
+                >
                   <Stack gap="lg" align="start" className="h-full">
                     <IconWrapper variant="accent">
                       <Icon />

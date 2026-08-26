@@ -4,7 +4,7 @@ import { focusRing, interactiveTransition } from "./interactive-styles";
 
 export const buttonVariants = cva(
   [
-    "type-button relative inline-flex shrink-0 items-center justify-center gap-(--ds-space-sm) rounded-md border font-semibold",
+    "type-button vilet-button relative inline-flex shrink-0 items-center justify-center gap-(--ds-space-sm) border font-semibold",
     "select-none disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
     focusRing,
     interactiveTransition,
