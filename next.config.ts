@@ -36,17 +36,18 @@ if (
   );
 
 const isVercelPreview = process.env.VERCEL_ENV === "preview";
+const hasGoogleAnalytics = Boolean(process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID);
 
 const securityHeaders = [
   {
     key: "Content-Security-Policy",
     value: [
       "default-src 'self'",
-      `script-src 'self' 'unsafe-inline'${process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : ""}`,
+      `script-src 'self' 'unsafe-inline'${process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : ""}${hasGoogleAnalytics ? " https://www.googletagmanager.com" : ""}`,
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob:",
       "font-src 'self' data:",
-      "connect-src 'self'",
+      `connect-src 'self'${hasGoogleAnalytics ? " https://www.google-analytics.com https://*.google-analytics.com" : ""}`,
       "object-src 'none'",
       "base-uri 'self'",
       "form-action 'self'",

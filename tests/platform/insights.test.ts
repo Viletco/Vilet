@@ -18,6 +18,7 @@ const analytics = new URL(
   "../../src/components/analytics-consent.tsx",
   import.meta.url,
 );
+const marketingConfig = new URL("../../next.config.ts", import.meta.url);
 
 test("Insights schema is tenant isolated and protected with RLS", async () => {
   const sql = await readFile(migration, "utf8");
@@ -54,7 +55,11 @@ test("Insights UI uses real aggregate rows without demonstration metrics", async
 
 test("Marketing analytics is consent gated and disables ad personalization", async () => {
   const source = await readFile(analytics, "utf8");
+  const config = await readFile(marketingConfig, "utf8");
   assert.match(source, /Allow analytics/);
   assert.match(source, /allow_ad_personalization_signals: false/);
   assert.match(source, /localStorage/);
+  assert.match(config, /https:\/\/www\.googletagmanager\.com/);
+  assert.match(config, /https:\/\/\*\.google-analytics\.com/);
+  assert.match(config, /hasGoogleAnalytics/);
 });
