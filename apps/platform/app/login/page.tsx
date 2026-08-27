@@ -111,6 +111,11 @@ export default async function LoginPage({
                 >
                   Sign in
                 </button>
+                <p className="text-muted-foreground text-[12px] leading-5">
+                  First time using a password? Sign in once with a magic link,
+                  then open Settings → Security to create one. Public account
+                  registration is disabled.
+                </p>
               </form>
             ) : (
               <form action={requestMagicLink} className="mt-5">

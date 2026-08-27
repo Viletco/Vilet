@@ -97,6 +97,24 @@ test("login offers native password authentication alongside magic links", () => 
   assert.doesNotMatch(loginActions, /serviceRole|service_role/);
 });
 
+test("approved members can set a password without enabling public signup", () => {
+  const securityPage = read(
+    "apps/platform/app/o/[organizationSlug]/settings/security/page.tsx",
+  );
+  const securityActions = read(
+    "apps/platform/app/o/[organizationSlug]/settings/security/actions.ts",
+  );
+  const loginPage = read("apps/platform/app/login/page.tsx");
+
+  assert.match(securityActions, /requireOrganizationMembership/);
+  assert.match(securityActions, /auth\.updateUser\(\{ password \}\)/);
+  assert.match(securityActions, /MINIMUM_PASSWORD_LENGTH = 12/);
+  assert.match(securityPage, /autoComplete="new-password"/);
+  assert.match(loginPage, /Public account\s+registration is disabled/);
+  assert.doesNotMatch(securityActions, /auth\.signUp|serviceRole|service_role/);
+  assert.doesNotMatch(loginPage, /auth\.signUp|Create account/);
+});
+
 test("privileged staging identity and connectivity tools require explicit targets", () => {
   const identity = read("scripts/create-platform-test-user.mjs");
   const connectivity = read("scripts/verify-platform-connectivity.mjs");
