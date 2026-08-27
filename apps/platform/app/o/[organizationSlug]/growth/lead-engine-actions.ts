@@ -243,8 +243,6 @@ export async function runLeadEngineAction(form: FormData) {
       })
       .eq("id", run.id)
       .eq("organization_id", context.organizationId);
-    revalidatePath(base(slug));
-    redirect(`${base(slug)}/find?completed=1`);
   } catch (error) {
     await db
       .from("growth_discovery_runs")
@@ -263,6 +261,8 @@ export async function runLeadEngineAction(form: FormData) {
       .eq("organization_id", context.organizationId);
     redirect(`${base(slug)}/find?error=provider`);
   }
+  revalidatePath(base(slug));
+  redirect(`${base(slug)}/find?completed=1`);
 }
 
 export async function updateOutreachAction(form: FormData) {

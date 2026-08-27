@@ -157,3 +157,19 @@ test("send path requires approval, suppression, role, and provider idempotency",
   assert.match(provider, /"X-API-KEY"/u);
   assert.doesNotMatch(provider, /NEXT_PUBLIC_HUNTER/u);
 });
+
+test("successful discovery redirects outside the provider error boundary", () => {
+  const source = readFileSync(
+    "apps/platform/app/o/[organizationSlug]/growth/lead-engine-actions.ts",
+    "utf8",
+  );
+  const providerTry = source.indexOf("  try {");
+  const providerCatch = source.indexOf("  } catch (error) {", providerTry);
+  const successRedirect = source.indexOf(
+    "redirect(`${base(slug)}/find?completed=1`);",
+  );
+
+  assert.ok(providerTry >= 0);
+  assert.ok(providerCatch > providerTry);
+  assert.ok(successRedirect > providerCatch);
+});
