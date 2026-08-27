@@ -55,3 +55,45 @@ export async function requestMagicLink(formData: FormData) {
   });
   redirect("/login?sent=1");
 }
+
+export async function signInWithPassword(formData: FormData) {
+  const email = String(formData.get("email") ?? "")
+    .trim()
+    .toLowerCase();
+  const password = String(formData.get("password") ?? "");
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+    redirect("/login?method=password&error=invalid-email");
+  if (!password) redirect("/login?method=password&error=missing-password");
+
+  const config = getPlatformConfig();
+  if (config.authMode !== "supabase") {
+    recordPlatformEvent("error", "auth.configuration.unavailable", {
+      route: "/login",
+    });
+    redirect("/login?method=password&configuration=unavailable");
+  }
+
+  const client = await createPlatformServerClient();
+  if (!client) redirect("/login?method=password&configuration=unavailable");
+
+  const { error } = await client.auth.signInWithPassword({ email, password });
+  if (error) {
+    const rateLimited = error.status === 429;
+    recordPlatformEvent("warn", "auth.password.sign_in_failed", {
+      reason: rateLimited ? "rate_limited" : "invalid_credentials",
+      route: "/login",
+      status: error.status,
+    });
+    redirect(
+      rateLimited
+        ? "/login?method=password&error=rate-limited"
+        : "/login?method=password&error=invalid-credentials",
+    );
+  }
+
+  recordPlatformEvent("info", "auth.password.sign_in_accepted", {
+    route: "/login",
+  });
+  redirect("/");
+}

@@ -85,6 +85,18 @@ test("authentication failures are actionable and safely observable", () => {
   assert.doesNotMatch(events, /email|token|cookie|authorization|service.role/i);
 });
 
+test("login offers native password authentication alongside magic links", () => {
+  const loginPage = read("apps/platform/app/login/page.tsx");
+  const loginActions = read("apps/platform/app/login/actions.ts");
+
+  assert.match(loginPage, /Password/);
+  assert.match(loginPage, /Magic link/);
+  assert.match(loginPage, /autoComplete="current-password"/);
+  assert.match(loginActions, /auth\.signInWithPassword/);
+  assert.match(loginActions, /invalid-credentials/);
+  assert.doesNotMatch(loginActions, /serviceRole|service_role/);
+});
+
 test("privileged staging identity and connectivity tools require explicit targets", () => {
   const identity = read("scripts/create-platform-test-user.mjs");
   const connectivity = read("scripts/verify-platform-connectivity.mjs");
