@@ -119,6 +119,23 @@ test("lead engine migration applies RLS and durable send controls", () => {
   assert.match(sql, /growth_cross_tenant_contact_denied/u);
 });
 
+test("discovery activity does not read prospect fields from discovery runs", () => {
+  const sql = readFileSync(
+    "supabase/migrations/202608270011_fix_growth_discovery_activity_trigger.sql",
+    "utf8",
+  );
+  const discoveryBranch = sql.indexOf(
+    "if tg_table_name = 'growth_discovery_runs' then",
+  );
+  const prospectRead = sql.indexOf("target_prospect := new.prospect_id;");
+  const nonDiscoveryBranch = sql.indexOf("else", discoveryBranch);
+
+  assert.ok(discoveryBranch >= 0);
+  assert.ok(nonDiscoveryBranch > discoveryBranch);
+  assert.ok(prospectRead > nonDiscoveryBranch);
+  assert.match(sql, /target_prospect := null;/u);
+});
+
 test("send path requires approval, suppression, role, and provider idempotency", () => {
   const source = readFileSync(
     "apps/platform/app/o/[organizationSlug]/growth/lead-engine-actions.ts",
