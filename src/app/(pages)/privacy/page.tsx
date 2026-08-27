@@ -152,10 +152,18 @@ export default function PrivacyPage() {
           title="Cookies, Browser Storage, Analytics, and Advertising"
         >
           <Text>
-            No analytics or advertising pixels are enabled, and the public
-            website does not use a targeted-advertising cookie system. A cookie
-            banner is therefore not displayed. Ordinary hosting and security
-            logs are not used for cross-site advertising tracking.
+            Vilét may offer optional, consent-gated Google Analytics measurement
+            to understand aggregate traffic, page performance, and key events.
+            Analytics does not load unless you select “Allow analytics.” Vilét
+            disables advertising personalization and Google signals in this
+            configuration. Declining is remembered in this browser and does not
+            limit access to the website.
+          </Text>
+          <Text>
+            The analytics preference is stored locally in your browser. You can
+            clear the preference through your browser’s site-data controls.
+            Ordinary hosting and security logs are not used for cross-site
+            advertising tracking.
           </Text>
           <Text>
             A preliminary project summary is placed in browser session storage

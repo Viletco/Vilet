@@ -6,7 +6,7 @@ import { cn } from "@/lib/cn";
 import type { PolymorphicProps } from "./component-types";
 import { focusRing, interactiveTransition } from "./interactive-styles";
 
-const cardVariants = cva("rounded-xl bg-card", {
+const cardVariants = cva("vilet-panel bg-card", {
   variants: {
     variant: {
       default: "border-border",

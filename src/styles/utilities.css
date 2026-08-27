@@ -45,6 +45,151 @@
     auto;
 }
 
+.vilet-brand-mark {
+  position: relative;
+  display: inline-block;
+  flex: none;
+  overflow: hidden;
+  background: #030409;
+}
+
+.vilet-brand-mark__image {
+  position: absolute;
+  width: 168%;
+  max-width: none;
+  height: auto;
+  inset: -35% auto auto -34%;
+}
+
+.vilet-energy-field {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.vilet-energy-field::before {
+  position: absolute;
+  z-index: -1;
+  right: -12%;
+  bottom: 4%;
+  width: min(72rem, 90vw);
+  height: 26rem;
+  background:
+    radial-gradient(ellipse at 78% 52%, rgb(124 50 255 / 22%), transparent 33%),
+    repeating-linear-gradient(
+      164deg,
+      transparent 0 28px,
+      rgb(146 79 255 / 8%) 29px,
+      transparent 30px 58px
+    );
+  content: "";
+  filter: blur(0.3px);
+  mask-image: linear-gradient(90deg, transparent, black 38%, black);
+  pointer-events: none;
+}
+
+.vilet-ecosystem-window {
+  background:
+    linear-gradient(145deg, rgb(142 78 255 / 9%), transparent 38%),
+    linear-gradient(180deg, rgb(12 16 25 / 96%), rgb(5 8 14 / 98%));
+  box-shadow:
+    inset 0 1px rgb(255 255 255 / 3%),
+    0 28px 90px rgb(0 0 0 / 30%);
+}
+
+.vilet-energy-ribbon {
+  background:
+    radial-gradient(ellipse at 78% 82%, rgb(139 70 255 / 34%), transparent 28%),
+    linear-gradient(
+      156deg,
+      transparent 54%,
+      rgb(196 139 255 / 22%) 54.2%,
+      transparent 54.8%
+    ),
+    linear-gradient(
+      164deg,
+      transparent 62%,
+      rgb(114 48 255 / 34%) 62.2%,
+      transparent 63%
+    ),
+    linear-gradient(
+      170deg,
+      transparent 69%,
+      rgb(220 190 121 / 16%) 69.2%,
+      transparent 69.8%
+    );
+  mask-image: linear-gradient(90deg, transparent 10%, black 48%);
+}
+
+.vilet-mini-product {
+  background: rgb(8 11 18 / 78%);
+  box-shadow: inset 0 1px rgb(255 255 255 / 2.5%);
+}
+
+.vilet-mini-product:hover {
+  border-color: rgb(143 79 255 / 38%);
+  background: rgb(15 15 28 / 88%);
+}
+
+.vilet-product-tile {
+  border: 1px solid rgb(255 255 255 / 8%);
+  border-radius: 0.2rem;
+  clip-path: polygon(
+    0 0,
+    calc(100% - 0.6rem) 0,
+    100% 0.6rem,
+    100% 100%,
+    0 100%
+  );
+}
+
+.vilet-angle-rule {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(144 76 255 / 62%),
+    rgb(91 52 255 / 8%),
+    transparent
+  );
+  transform: skewY(-5deg);
+}
+
+.energy-path {
+  stroke-dasharray: 7 13;
+  animation: vilet-flow 7s linear infinite;
+}
+.energy-path.delay-1 {
+  animation-delay: -1.4s;
+}
+.energy-path.delay-2 {
+  animation-delay: -2.8s;
+}
+.energy-path.delay-3 {
+  animation-delay: -4.2s;
+}
+.energy-path.delay-4 {
+  animation-delay: -5.6s;
+}
+@keyframes vilet-flow {
+  to {
+    stroke-dashoffset: -80;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .energy-path {
+    animation: none;
+  }
+}
+
+@media (max-width: 47.999rem) {
+  .ecosystem-map {
+    min-height: 25rem;
+    transform: scale(0.9);
+    transform-origin: center;
+  }
+}
+
 .background-card-glow {
   background-image: var(--ds-gradient-card-glow);
 }
@@ -54,4 +199,187 @@
   height: var(--ds-border-width);
   border: 0;
   background: var(--ds-gradient-section-divider);
+}
+
+/* Vilét signature geometry and surface hierarchy */
+.vilet-field {
+  position: relative;
+  background-color: var(--ds-color-field);
+  background-image: linear-gradient(
+    var(--ds-v-angle),
+    transparent 0 48%,
+    rgb(137 87 255 / 7%) 48% 48.35%,
+    transparent 48.35% 100%
+  );
+}
+
+.vilet-workspace {
+  position: relative;
+  border: var(--ds-border-width) solid var(--ds-color-border);
+  border-radius: var(--ds-radius-sm);
+  background: var(--ds-color-workspace);
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--ds-v-cut)) 0,
+    100% var(--ds-v-cut),
+    100% 100%,
+    0 100%
+  );
+}
+
+.vilet-rail {
+  border-left: 1px solid var(--ds-color-rule-strong);
+  background: var(--ds-color-rail);
+}
+
+.vilet-data-plane {
+  border-block: 1px solid var(--ds-color-divider);
+  background: var(--ds-color-data-plane);
+}
+
+.vilet-rule {
+  display: grid;
+  grid-template-columns: minmax(2rem, 7rem) 0.75rem 1fr;
+  align-items: center;
+  width: 100%;
+}
+
+.vilet-rule::before,
+.vilet-rule::after {
+  content: "";
+  height: 1px;
+  background: var(--ds-color-divider);
+}
+
+.vilet-rule > span[aria-hidden="true"] {
+  width: 1px;
+  height: 1rem;
+  justify-self: center;
+  background: var(--ds-color-accent);
+  transform: rotate(var(--ds-v-angle));
+}
+
+.vilet-coordinate {
+  font-family: var(--ds-font-mono);
+  font-size: 0.6875rem;
+  line-height: 1;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* Vilét's identifiable visual grammar: cut planes, split forms, and a violet axis. */
+.vilet-header {
+  border-bottom: 1px solid rgb(255 255 255 / 9%);
+  background: rgb(5 7 11 / 88%);
+  backdrop-filter: blur(18px);
+}
+
+.vilet-header::after {
+  position: absolute;
+  bottom: -1px;
+  left: max(
+    var(--ds-page-padding),
+    calc((100vw - var(--ds-container-content)) / 2)
+  );
+  width: clamp(3rem, 8vw, 7rem);
+  height: 2px;
+  background: linear-gradient(90deg, #fff 0 28%, #8f4fff 28% 100%);
+  content: "";
+}
+
+.vilet-nav-link {
+  position: relative;
+}
+.vilet-nav-link::after {
+  position: absolute;
+  right: 0.65rem;
+  bottom: 0.2rem;
+  left: 0.65rem;
+  height: 1px;
+  background: var(--ds-color-accent);
+  content: "";
+  transform: scaleX(0) skewX(-28deg);
+  transform-origin: right;
+  transition: transform var(--ds-motion-normal) var(--ds-ease-emphasized);
+}
+.vilet-nav-link:hover::after,
+.vilet-nav-link--current::after {
+  transform: scaleX(1) skewX(-28deg);
+}
+
+.vilet-button {
+  border-radius: 0.2rem;
+  clip-path: polygon(
+    0 0,
+    calc(100% - 0.65rem) 0,
+    100% 0.65rem,
+    100% 100%,
+    0 100%
+  );
+}
+
+.vilet-panel {
+  border-radius: 0.35rem;
+  clip-path: polygon(
+    0 0,
+    calc(100% - 1.15rem) 0,
+    100% 1.15rem,
+    100% 100%,
+    0 100%
+  );
+}
+
+.vilet-hero::after {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: clamp(1.25rem, 7vw, 7rem);
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(
+    transparent,
+    rgb(255 255 255 / 14%) 18% 82%,
+    transparent
+  );
+  content: "";
+}
+
+.vilet-hero-title {
+  letter-spacing: -0.055em;
+}
+.vilet-hero-title::first-line {
+  font-style: italic;
+}
+
+.vilet-pillar-grid > li {
+  position: relative;
+  overflow: hidden;
+}
+.vilet-pillar-grid > li::after {
+  position: absolute;
+  right: -2rem;
+  bottom: -4rem;
+  width: 7rem;
+  height: 9rem;
+  border-left: 1px solid rgb(143 79 255 / 28%);
+  content: "";
+  transform: rotate(28deg);
+}
+.vilet-service-panel {
+  min-height: 25rem;
+}
+.vilet-service-panel:nth-child(even) {
+  transform: translateY(2.5rem);
+}
+
+@media (max-width: 63.999rem) {
+  .vilet-service-panel:nth-child(even) {
+    transform: none;
+  }
+}
+
+@media (max-width: 47.999rem) {
+  .vilet-workspace {
+    --ds-v-cut: 1rem;
+  }
 }

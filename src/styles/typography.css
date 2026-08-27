@@ -1,23 +1,26 @@
 /* Responsive type roles: use these classes by meaning, not visual size alone. */
 @utility type-display-xl {
+  font-family: var(--ds-font-display);
   font-size: clamp(3.5rem, 10vw, 8rem);
-  font-weight: 650;
+  font-weight: 400;
   line-height: 0.92;
-  letter-spacing: -0.06em;
+  letter-spacing: -0.045em;
 }
 
 @utility type-display-lg {
+  font-family: var(--ds-font-display);
   font-size: clamp(2.65rem, 5vw, 4rem);
-  font-weight: 650;
-  line-height: 1;
-  letter-spacing: -0.045em;
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.04em;
 }
 
 @utility type-heading-1 {
+  font-family: var(--ds-font-display);
   font-size: clamp(2.5rem, 5vw, 4.5rem);
-  font-weight: 650;
-  line-height: 1;
-  letter-spacing: -0.045em;
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.04em;
 }
 
 @utility type-heading-2 {

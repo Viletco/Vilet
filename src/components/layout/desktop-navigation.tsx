@@ -13,7 +13,7 @@ export function DesktopNavigation({ currentPath }: DesktopNavigationProps) {
       aria-label="Primary navigation"
       className="desktop:block hidden justify-self-center"
     >
-      <ul className="flex items-center gap-(--ds-space-xl)">
+      <ul className="flex items-center gap-1">
         {siteNavigation.map((item) => {
           const current =
             item.href === currentPath ||
@@ -26,8 +26,8 @@ export function DesktopNavigation({ currentPath }: DesktopNavigationProps) {
                 variant="navigation"
                 aria-current={current ? "page" : undefined}
                 className={cn(
-                  "py-(--ds-space-sm)",
-                  current && "text-text-primary font-semibold",
+                  "vilet-nav-link px-3 py-(--ds-space-sm)",
+                  current && "vilet-nav-link--current text-text-primary",
                 )}
               >
                 {item.label}
