@@ -8,6 +8,29 @@ import {
   scoreLead,
   validateDiscoveryInput,
 } from "../../apps/platform/lib/lead-engine-domain.ts";
+import { hunterDiscoveryQueries } from "../../apps/platform/lib/growth-provider-query.ts";
+
+test("Hunter discovery treats optional keywords as preferences and broadens empty searches", () => {
+  assert.deepEqual(
+    hunterDiscoveryQueries({
+      industry: "Dental practices",
+      location: "Tampa, Florida",
+      keywords: "independent, appointment-based",
+    }),
+    [
+      "Dental practices located in Tampa, Florida. Prefer businesses matching any of these characteristics: independent, appointment-based.",
+      "Dental practices located in Tampa, Florida",
+    ],
+  );
+  assert.deepEqual(
+    hunterDiscoveryQueries({
+      industry: "Dental practices",
+      location: "Tampa, Florida",
+      keywords: null,
+    }),
+    ["Dental practices located in Tampa, Florida"],
+  );
+});
 
 test("discovery limits are enforced server-side", () => {
   assert.equal(

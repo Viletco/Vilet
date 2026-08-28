@@ -42,7 +42,9 @@ export default async function FindProspectsPage({
       />
       {query.completed && (
         <p className="border-border bg-card/40 mb-6 rounded-xl border p-4 text-sm">
-          Discovery completed. Review Growth prospects and Outreach for results.
+          {latestRun?.found_count === 0
+            ? "The provider returned no matching businesses. Try removing optional keywords or broadening the location."
+            : "Discovery completed. Review Growth prospects and Outreach for results."}
         </p>
       )}
       {latestRun && (

@@ -3,6 +3,7 @@ import {
   normalizeLeadEmail,
   normalizedProviderDomain,
 } from "./lead-engine-domain";
+import { hunterDiscoveryQueries } from "./growth-provider-query";
 
 const timeout = 12_000;
 async function providerFetch(url: string, init: RequestInit) {
@@ -157,18 +158,19 @@ async function enrichWithApollo(providerOrganizationId: string) {
 async function discoverWithHunter(
   input: DiscoveryInput,
 ): Promise<DiscoveredBusiness[]> {
-  const qualifier = input.keywords ? ` Keywords: ${input.keywords}.` : "";
-  const data = await providerFetch("https://api.hunter.io/v2/discover", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "X-API-KEY": hunterKey(),
-    },
-    body: JSON.stringify({
-      query: `${input.industry} businesses headquartered in ${input.location}.${qualifier}`,
-    }),
-  });
-  const companies = Array.isArray(data.data) ? data.data : [];
+  let companies: unknown[] = [];
+  for (const query of hunterDiscoveryQueries(input)) {
+    const data = await providerFetch("https://api.hunter.io/v2/discover", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-API-KEY": hunterKey(),
+      },
+      body: JSON.stringify({ query }),
+    });
+    companies = Array.isArray(data.data) ? data.data : [];
+    if (companies.length > 0) break;
+  }
   return companies.slice(0, input.limit).flatMap((raw) => {
     const item = raw as Record<string, unknown>;
     const name =
